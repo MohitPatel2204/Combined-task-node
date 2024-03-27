@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cube game</title>
+    <style>
+        td {
+            padding: 30px;
+        }
+    </style>
+    <script>
+
+        let success = 0;
+
+        function randomRGB() {
+            var roundValue = Math.round, rndmValue = Math.random, maxNum = 255;
+            return 'rgba(' + roundValue(rndmValue() * maxNum) + ',' + roundValue(rndmValue() * maxNum) + ',' + roundValue(rndmValue() * maxNum) + ', 1)';
+        }
+
+        function addrow() {
+            let table = document.getElementById("mytable");
+            let rowElement = document.createElement("tr");
+            for (let i = 0; i < table.rows[0].cells.length; i++) {
+                let cellElememt = document.createElement("td");
+                cellElememt.setAttribute("onclick", "gameValid(this)");
+                rowElement.appendChild(cellElememt);
+            }
+            table.children[0].appendChild(rowElement);
+        }
+
+        function addcolumn() {
+            let table = document.getElementById('mytable');
+            for (let i = 0; i < table.rows.length; i++) {
+                let cell = table.rows[i].insertCell(table.rows[i].cells.length);
+                cell.setAttribute("onclick", "gameValid(this)");
+            }
+        }
+
+        function displaycolor() {
+            let color = randomRGB();
+            let table = document.getElementById("mytable");
+            let randomrow = Math.floor(Math.random() * table.rows.length);
+            let randomcell = Math.floor(Math.random() * table.rows[0].cells.length);
+            for (let i = 0; i < table.rows.length; i++) {
+                for (let j = 0; j < table.rows[i].cells.length; j++) {
+                    if (i == randomrow && j == randomcell) {
+                        table.rows[i].cells[j].style.background = color.replace(", 1", ", 0.5");
+                    }
+                    else {
+                        table.rows[i].cells[j].style.background = color;
+                    }
+                    table.rows[i].cells[j].id = "cell" + i + "_" + j;
+                }
+            }
+        }
+
+        function validCell(resultcell) {
+            let table = document.getElementById("mytable");
+            let cellcolor = resultcell.style.background[3];
+            console.log(resultcell)
+            if (cellcolor == 'a') {
+                return true;
+            }
+        }
+
+        function gameValid(resultcell) {
+            console.log();
+            if (validCell(resultcell) && document.getElementById("mytable").scrollHeight<600) {
+                addrow();
+                addcolumn();
+                displaycolor();
+                success++;
+            }
+            else 
+            {
+                alert("Game is over\nScore is : " + success);
+                location.reload();
+            }
+            document.getElementById('msg').innerHTML = "Score is : " + success ;
+        }
+
+        function restart() {
+            alert("Score is : " + success);
+            location.reload();
+        }
+
+        let time =0;
+        setInterval(() => {
+            alert("Game is copmplete\nScore is : " + success);
+            location.reload();
+            displaycolor();
+        }, 60000);
+
+        setInterval(()=>{
+            document.getElementById("timer").innerHTML = "Timer is : " + time++;
+        },1000)
+    </script>
+</head>
+<body onload="displaycolor();" bgcolor="#e8f8f5">
+    <h1 class="text-danger">
+        Cube game<br>
+        Mohit moradiya<br>
+        24DEV044
+    </h1>
+    <p id="msg">
+        Score is : 0
+    </p>
+    <p id="timer">
+        Timer is : 0
+    </p>
+    <table id="mytable">
+        <tr>
+            <td onclick="gameValid(this)"></td>
+            <td onclick="gameValid(this)"></td>
+        </tr>
+        <tr>
+            <td onclick="gameValid(this)"></td>
+            <td onclick="gameValid(this)"></td>
+        </tr>
+    </table>
+    <button onclick="restart();">New</button>
+</body>
+</html>

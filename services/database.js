@@ -5,7 +5,7 @@ class database{
         this.host = process.env.DB_HOST;
         this.user = process.env.DB_USER;
         this.password = process.env.DB_PASSWORD;
-        this.database = database
+        this.database = database;
     }
 
     getConnection = async() =>{

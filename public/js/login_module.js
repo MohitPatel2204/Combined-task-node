@@ -127,19 +127,16 @@ const addUser = async () => {
     return true;
 }
 
-
-const displayUser = async() => {
-    const img = document.getElementById("img");
-    const email = document.getElementById("email");
-
-    let result = await fetch(`/user?activation_code=${window.location.href.split('/').pop()}`);
+const displayUsersDetails = async() => {
+    let host = global.env.HOST || "localhost";
+    let port = global.env.PORT || 8080;
+    let result = await fetch(`http://${host}:${port}/user`);
     result = await result.json();
-    result = result.data;
+    console.log(result)
+    result = result.data.pop();
 
-    img.innerHTML = result[0].email.charAt(0);
-    email.innerHTML = result[0].email;
-
-    document.getElementById("emailid").value = result[0].email;
+    document.getElementById("logo").innerHTML = result.email.charAt(0);
+    document.getElementById("email").innerHTML = result.email;
 }
 
 const isValidForgetPassword = () => {
@@ -212,7 +209,7 @@ const isLogin = async() => {
         },
     })
     result = await result.json();
-    
+
     if(result.flag == false)
     {
         if(result.login_expired == true)
@@ -226,7 +223,7 @@ const isLogin = async() => {
     else
     {
         const token = result.token;
-        let url = `http://${host}:${port}/dashboard/${token}`
+        let url = `http://${host}:${port}/dashboard`
         window.location = url;
     }
 }

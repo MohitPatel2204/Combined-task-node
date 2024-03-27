@@ -1,6 +1,7 @@
 const database = require("../../services/database");
 const { getCode } = require("../../services/date");
 const { isValidPost, isValidGet } = require("../../middlewares/isValid.middleware");
+const isAuthentication = require("../../middlewares/isAuthentication.middleware");
 
 const User = require("express").Router();
 
@@ -77,10 +78,10 @@ User.post("/user", isValidPost, async (request, response) => {
 })
 
 
-User.get("/user/:id", async (request, response) => {
+User.get("/user", isAuthentication,async (request, response) => {
     const db = new database(process.env.DB_DATABASE);
 
-    let result = await db.executeQuery(`select * from users_detail where id = '${request.params.id}'`);
+    let result = await db.executeQuery(`select * from users_detail where id = '${request.body.id}'`);
     if (typeof result == 'string') {
         response.send({
             flag: false,

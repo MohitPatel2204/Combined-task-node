@@ -47,12 +47,13 @@ loginUser.post("/login", isValidPost,async(request, response)=>{
                         msg: "Something is wrong, Restart application...." + result,
                     })
                 }
+                const token = jwt.sign({
+                    id: user.id,       
+                }, process.env.TOKEN_SCREAT_KEY)
+                response.cookie("token", token)
                 response.send({
                     flag: true,
-                    token: jwt.sign({
-                        email: user.email,
-                        phoneno: user.phoneno,               
-                    }, process.env.TOKEN_SCREAT_KEY),
+                    token: token,
                 })
                 response.end();
             }

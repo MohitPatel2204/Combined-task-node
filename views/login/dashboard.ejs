@@ -9,8 +9,8 @@
         .large{
             width: fit-content;
             box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-            padding: 30px 100px;
-            font-size: 200px;
+            padding: 10px 30px;
+            font-size: 50px;
             margin: auto;
             border-radius: 50%;
             font-family:cursive;
@@ -22,25 +22,32 @@
             margin: 20px
         }
     </style>
+
 </head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="large text-center bg-primary text-light"><%=email.charAt(0).toUpperCase()%></div>
+    <body onload="displayUsersDetails()">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="large text-center bg-primary text-light" id="logo"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"><h1 class="text-primary text-center" id="email"></h1></div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <a href="/login" class="btn btn-outline-danger">Logout</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="/cubegame" class="btn btn-outline-primary p-5" target="_blank">Cube game</a>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-3"></div>
+                <div class="col-md-3"></div>
             </div>
         </div>
-        <div class="row">
-            <div class="col"><h1 class="text-primary text-center"><%=email%></h1></div>
-        </div>
-        <div class="row">
-            <div class="col"><h3 class="text-primary text-center">Welcome</h3></div>
-        </div>
-        <div class="row">
-            <div class="col text-center">
-                <a href="/login" class="alert alert-danger">Logout</a>
-            </div>
-        </div>
-    </div>
+    <script src="/js/login_module.js"></script>
 </body>
 </html>
