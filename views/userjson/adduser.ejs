@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add user</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/userjsonstyle.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <form method="post">
+        <table align="center" class="form">
+            <tr>
+                <td colspan="2" style="text-align: center;"><h1>Registration</h1></td>
+            </tr>
+
+            <% if(msg!=undefined) { %>
+                <tr>
+                    <td colspan="2">
+                        <p id="error"><%=msg%></p>
+                    </td>
+                </tr>
+            <% } %>             
+
+            <tr>
+                <td><label>First name</label></td>
+                <td><input type="text" placeholder="Enter first name..." name="firstname"></td>
+            </tr>
+
+            <tr>
+                <td><label>Last name</label></td>
+                <td><input type="text" placeholder="Enter last name..." name="lastname"></td>
+            </tr>
+
+            <tr>
+                <td><label>Age</label></td>
+                <td><input type="number" placeholder="Enter age..." name="age"></td>
+            </tr>
+
+            <tr>
+                <td><label>Mobileno</label></td>
+                <td><input type="number" placeholder="Enter mobile no..." name="mobileno"></td>
+            </tr>
+
+            <tr>
+                <td><label>Email</label></td>
+                <td><input type="email" placeholder="Enter email id..." name="email"></td>
+            </tr>
+
+            <tr>
+                <td><label>Gender</label></td>
+                <td>
+                    <select name="gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Hobbies</label></td>
+                <td>
+                    <input type="checkbox" name="hobby" value="singing">&nbsp;Singing&emsp;
+                    <input type="checkbox" name="hobby" value="writing">&nbsp;Writing<br>
+                    <input type="checkbox" name="hobby" value="drawing">&nbsp;Drawing&emsp;
+                    <input type="checkbox" name="hobby" value="swimming">&nbsp;Swimming
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><label>Address</label></td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><textarea placeholder="Enter address" name="address"></textarea></td>
+            </tr>            
+
+            <tr>
+                <td colspan="2"><input type="submit" value="Add user" onclick="return formValidation()"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

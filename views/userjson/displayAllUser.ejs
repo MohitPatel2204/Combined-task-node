@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management System</title>
+    <link href="/css/userjsonstyle.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <a href="/userjson/add">Add user</a>
+    <table align="center" cellpadding: "30px">
+        <tr class="heading">
+            <th>Index No.</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email ID</th>
+            <th>Mobile No</th>
+            <th>Operation</th>
+        </tr>
+
+        <%let index = 1;%>
+        <% Object.keys(users).forEach((key) => { %>
+            <tr>
+                <td><%=index++;%></td>
+                <td><%=users[key]["firstname"]%></td>
+                <td><%=users[key]["lastname"]%></td>
+                <td><%=users[key]["email"]%></td>
+                <td><%=users[key]["mobileno"]%></td>
+                <td>
+                    <form action="/userjson/display">
+                        <input type="hidden" name="userid" value="<%=key%>">
+                        <input type="submit" name="sbt" value="view">
+                    </form>
+                </td>
+            </tr>
+        <%});%>
+    </table>
+</body>
+</html>
