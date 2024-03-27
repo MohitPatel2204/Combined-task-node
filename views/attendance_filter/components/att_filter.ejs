@@ -1,0 +1,22 @@
+<form method="get">
+    <select name="month">
+        <option value="1" <%if(selectedValue['month']==1){%> selected <%}%>>January</option>
+        <option value="2" <%if(selectedValue['month']==2){%> selected <%}%>>February</option>
+        <option value="3" <%if(selectedValue['month']==3){%> selected <%}%>>March</option>
+        <option value="4" <%if(selectedValue['month']==4){%> selected <%}%>>April</option>
+        <option value="5" <%if(selectedValue['month']==5){%> selected <%}%>>May</option>
+        <option value="6" <%if(selectedValue['month']==6){%> selected <%}%>>June</option>
+        <option value="7" <%if(selectedValue['month']==7){%> selected <%}%>>July</option>
+        <option value="8" <%if(selectedValue['month']==8){%> selected <%}%>>August</option>
+        <option value="9" <%if(selectedValue['month']==9){%> selected <%}%>>September</option>
+        <option value="10" <%if(selectedValue['month']==10){%> selected <%}%>>Octomber</option>
+        <option value="11" <%if(selectedValue['month']==11){%> selected <%}%>>November</option>
+        <option value="12" <%if(selectedValue['month']==12){%> selected <%}%>>December</option>
+    </select>
+    <select name="year">
+        <option value="2024" <%if(selectedValue['year']==2024){%> selected <%}%>>2024</option>
+        <option value="2023"  <%if(selectedValue['year']==2023){%> selected <%}%>>2023</option>
+        <option value="2022" <%if(selectedValue['year']==2022){%> selected <%}%>>2022</option>
+    </select>
+    <input type="submit" value="Go">
+</form>

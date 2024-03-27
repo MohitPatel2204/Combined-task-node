@@ -7,7 +7,7 @@ class database{
         this.password = process.env.DB_PASSWORD;
         this.database = database;
     }
-
+    
     getConnection = async() =>{
         let conn = mysql.createConnection({
             host: this.host,

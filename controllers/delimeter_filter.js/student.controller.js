@@ -1,5 +1,6 @@
 const express = require("express");
 const database = require("../../services/database");
+const isAuthentication = require("../../middlewares/isAuthentication.middleware");
 
 const student = express.Router();
 
@@ -61,7 +62,7 @@ const splitExpression = (exp) => {
     return res;
 }
 
-student.get("/student/delimeter", async(request, response)=>{
+student.get("/student/delimeter", isAuthentication,async(request, response)=>{
     const db = new database(process.env.DB_DATABASE);
     let query = "select * from student"
     let exp = "";
