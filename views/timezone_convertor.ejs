@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time convertor</title>
+    <script>
+        const disp = (node) => {
+            const display = document.getElementById("displayTime1");
+            let date = new Date().toLocaleString("en-us", {
+                timeZone: node.value
+            });
+            display.innerHTML = `${date}`;
+        }
+
+        const disp2 = (node) => {
+            const time = document.getElementById("displayTime1").innerHTML;
+            const display = document.getElementById("displayTime2");
+
+            if (time != "") {
+                let date = new Date(time).toLocaleString("en-us", {
+                    timeZone: node.value
+                });
+                display.innerHTML = `Current Time is : ${date}`;
+            }
+        }
+        const getData = async (url) => {
+            const data = await fetch(url);
+            return await data.json();
+        }
+
+        const fillOption = (id, options) => {
+            id = document.getElementById(id);
+            id.innerHTML = "";
+            options.forEach(option => {
+                id.innerHTML += `<option value=${option[0]}>${option[1]}</option>`;
+            })
+        }
+
+        const display = async () => {
+            const data = await getData("/time/")
+            let options = data.time.map(item => [item, item]);
+            fillOption("time1", options);
+            fillOption("time2", options);
+        }
+    </script>
+</head>
+
+<body onload="display()">
+    <form>
+        <h1>Time convertor</h1>
+        <select id="time1" oninput="disp(this)"></select>
+        <p id='displayTime1'></p>
+        <select id="time2" oninput="disp2(this)"></select>
+        <p id='displayTime2'></p>
+    </form>
+</body>
+</html>
