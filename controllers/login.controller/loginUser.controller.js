@@ -50,7 +50,7 @@ loginUser.post("/login", isValidPost,async(request, response)=>{
                 const token = jwt.sign({
                     id: user.id,       
                 }, process.env.TOKEN_SCREAT_KEY)
-                response.cookie("token", token)
+                response.cookie("token", token, {maxAge: process.env.LOGIN_TIME * 60 * 60 * 1000})
                 response.send({
                     flag: true,
                     token: token,
