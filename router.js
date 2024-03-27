@@ -5,6 +5,7 @@ const javascript_ex_main = require("./controllers/javascript_ex.controller/javas
 const student_grid_pagination_main = require("./controllers/student_grid_pagination.controller.js/student_grid_pagination_main");
 const userjson_main = require("./controllers/userjson.controller/userjson_main");
 const api_call_json_main = require("./controllers/api_call_json.controller/api_call_json_main");
+const dynamic_component_main = require("./controllers/dynamic_component.controller/dynamic_component_main");
 
 const router = (app) => {
     login_main(app);
@@ -12,6 +13,7 @@ const router = (app) => {
     student_grid_pagination_main(app);
     userjson_main(app);    
     api_call_json_main(app);
+    dynamic_component_main(app);
     app.use(clientEnvVariable);
     app.use(errorPage);
 }
