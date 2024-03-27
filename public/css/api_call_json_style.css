@@ -1,0 +1,51 @@
+table {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-collapse: collapse;
+    font-size: 20px;
+    width: 100%;
+}
+
+tr,
+th {
+    border: 3px solid #2e86c1;
+    padding: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #b1c9da;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2e86c1;
+    color: white;
+}
+
+td {
+    padding: 20px;
+}
+
+
+a,
+button {
+    background-color: #2e86c1;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+    color: #f2f2f2;
+    border: 0px;
+    font-size: 20px;
+}
+
+a:hover,
+button:hover {
+    border-radius: 5px;
+    font-weight: lighter;
+    background-color: #1d5377;
+}

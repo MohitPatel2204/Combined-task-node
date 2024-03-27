@@ -7,6 +7,8 @@ clientEnvVariable.get("/clientEnvVariable", (request, response)=>{
         HOST: process.env.HOST,
         PORT: process.env.PORT,
         BLOCKED_ACCOUNT: process.env.BLOCKED_ACCOUNT,
+        POSTS_API_URL : process.env.POSTS_API_URL,
+        COMMENTS_API_URL : process.env.COMMENTS_API_URL,
     })
 })
 
