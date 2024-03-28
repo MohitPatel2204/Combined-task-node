@@ -10,6 +10,7 @@ const delimeter_filter_main = require("./controllers/delimeter_filter.js/delimet
 const attendance_filter_main = require("./controllers/attendance_filter/attendance_filter_main");
 const timezone_convertor_main = require("./controllers/timezone_convertor.controller/timezone_convertor_main");
 const result_main = require("./controllers/result.controller/result_main");
+const state_city_main = require("./controllers/state_city.controller/state_city_main");
 
 const router = (app) => {
     login_main(app);
@@ -22,6 +23,7 @@ const router = (app) => {
     attendance_filter_main(app);
     timezone_convertor_main(app);
     result_main(app);
+    state_city_main(app);
     app.use(clientEnvVariable);
     app.use(errorPage);
 }
