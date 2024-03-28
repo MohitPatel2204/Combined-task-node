@@ -128,18 +128,18 @@ const addUser = async () => {
 }
 
 const displayUsersDetails = async() => {
-    let host = global.env.HOST || "localhost";
-    let port = global.env.PORT || 8080;
-    let result = await fetch(`http://${host}:${port}/user`);
+    let result = await fetch(`/user`);
     try
     {
         result = await result.json();
+        console.log(1, result)
     }
     catch
     {
         let activation_code = window.location.href.split("/").pop();
-        result = await fetch(`http://${host}:${port}/users?activation_code=${activation_code}`);
+        result = await fetch(`/users?activation_code=${activation_code}`);
         result = await result.json();
+        console.log(2, result)
     }
     result = result.data.pop();
 
