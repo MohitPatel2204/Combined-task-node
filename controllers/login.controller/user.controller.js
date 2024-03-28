@@ -96,7 +96,7 @@ User.get("/user", isAuthentication,async (request, response) => {
     }
 })
 
-User.get("/user", isValidGet, async(request, response)=>{
+User.get("/users", isValidGet, async(request, response)=>{
     const db  = new database(process.env.DB_DATABASE);
     let sql = "select * from users_detail";
     const conditions = request.query;

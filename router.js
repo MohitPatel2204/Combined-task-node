@@ -9,6 +9,7 @@ const dynamic_component_main = require("./controllers/dynamic_component.controll
 const delimeter_filter_main = require("./controllers/delimeter_filter.js/delimeter_filter_main");
 const attendance_filter_main = require("./controllers/attendance_filter/attendance_filter_main");
 const timezone_convertor_main = require("./controllers/timezone_convertor.controller/timezone_convertor_main");
+const result_main = require("./controllers/result.controller/result_main");
 
 const router = (app) => {
     login_main(app);
@@ -20,6 +21,7 @@ const router = (app) => {
     delimeter_filter_main(app);
     attendance_filter_main(app);
     timezone_convertor_main(app);
+    result_main(app);
     app.use(clientEnvVariable);
     app.use(errorPage);
 }

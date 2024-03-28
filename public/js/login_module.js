@@ -131,8 +131,16 @@ const displayUsersDetails = async() => {
     let host = global.env.HOST || "localhost";
     let port = global.env.PORT || 8080;
     let result = await fetch(`http://${host}:${port}/user`);
-    result = await result.json();
-    console.log(result)
+    try
+    {
+        result = await result.json();
+    }
+    catch
+    {
+        let activation_code = window.location.href.split("/").pop();
+        result = await fetch(`http://${host}:${port}/users?activation_code=${activation_code}`);
+        result = await result.json();
+    }
     result = result.data.pop();
 
     document.getElementById("logo").innerHTML = result.email.charAt(0);

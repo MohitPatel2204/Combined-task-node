@@ -1,6 +1,8 @@
+const isAuthentication = require("../../middlewares/isAuthentication.middleware");
+
 const timezonesWithCities = require("express").Router();
 
-timezonesWithCities.get("/time", (request, response)=>{
+timezonesWithCities.get("/time", isAuthentication,(request, response)=>{
   let arr  = [
     'Africa/Abidjan',
     'Africa/Accra',

@@ -45,7 +45,7 @@ createUser.post("/password/:activationCode", isValidPost,async(request, response
 
     if(typeof result == 'string')
     {
-        response.render("login/password", {
+        response.render("login/createPassword", {
             error:"Sorry, Somethig is wrong Re-create password",
         })
     }

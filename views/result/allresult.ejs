@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Resule</title>
+    <link href="/css/api_call_json_style.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Name : Mordiya Mohit</h1>
+    <h2>Emp ID : 24DEV044</h2>
+    <h3>Date : 28 / 02 / 2024</h3>
+    <h3>Result</h3>
+    <table width="90%" align="center">
+        <tr>
+            <%Object.keys(fields).forEach((key=>{%>
+                <th>
+                    <%=fields[key]%>
+                </th>
+            <%}))%>
+        </tr>
+        <%if(result.length == 0) {%>
+            <tr>
+                <td colspan="5">Data is not exist</td>
+            </tr>
+        <%} else {%>
+            <%result.forEach(student=>{%>
+                <tr>
+                    <%Object.keys(student).forEach((key=>{%>
+                        <td>
+                            <%=student[key]%>
+                        </td>
+                    <%}))%>
+                    <td><a href="/result/<%=student['sid']%>">View</a></td>
+                </tr>
+             <%})%>
+        <%}%>
+    </table>
+</body>
+
+</html>

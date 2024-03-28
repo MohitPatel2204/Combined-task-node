@@ -4,8 +4,8 @@ const isAuthentication = (request, response, next) => {
     const token = request.cookies.token;
     if(token == undefined || token == "" || token == null)
     {
-        console.log("cookie not avilable")
         response.redirect("/login");
+        return;
     }
 
     let data = jwt.verify(request.cookies.token, process.env.TOKEN_SCREAT_KEY)
@@ -14,6 +14,7 @@ const isAuthentication = (request, response, next) => {
     {
         console.log("id not avilable")
         response.redirect("/login");
+        return;
     }
     request.body.id = id
     next();
