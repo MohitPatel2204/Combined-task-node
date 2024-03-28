@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        form{
+            max-width: 1600px;
+            margin-inline: auto;
+        }
+        label, legend, .container
+        {
+            color: #007e33;
+        }
+        .row
+        {
+            padding: 7px;
+        }
+        fieldset
+        {
+            border: 3px double #007e33;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            border-radius: 5px;
+            padding: 20px;
+        }
+        .form-control{
+            border: 2px solid #007e33;
+        }
+        .form-control:hover, .form-control:focus
+        {
+            border: 2px solid #007e33;
+            box-shadow: 0 0 0 0.50rem #007e3340;
+        }
+    </style>
+    <script src="/js/job_app_without_ajax/validation.js"></script>
+    <script>
+        const removeNode = (btn) => {
+            const parent = btn.parentNode;
+            parent.remove();
+        }
+
+        const createObject = (btn, size) =>{
+            btn = document.getElementById(btn)
+            const parent = btn.parentNode;
+            if(parent.children.length<size)
+            {
+                const node = parent.children[1].cloneNode(true);
+                node.innerHTML += `<span class="col-1 btn btn-danger" onclick=removeNode(this)>Remove</span>`;
+                parent.appendChild(node);
+            }
+        }
+        
+    </script>
+</head>
+
+<body class="bg-success-subtle">
+
+    <form onsubmit="return isValidate()" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-success text-center">Job Application Form</h1>
+                </div>
+            </div>
+
+            <% if(typeof error!='undefined') { %><div class="row"></div><div class="col alert bg-danger text-center text-light"><%= error %></div></div><% } %>
+            <% if(typeof success!='undefined') { %><div class="row"></div><div class="col alert bg-success text-center text-light"><%= success %></div></div><% } %>
+
+            <div class="row">
+                <div class="col"><div class="alert bg-danger text-center text-light" id="error_message" hidden></div></div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Basic Details</legend>
+                        <div class="container">
+                            <input type="hidden" name="candidate_id" id="candidate_id">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>First name : </label>
+                                    <input type="text" name="firstname" placeholder="Enter first name..." id='firstname' maxlength="20" class="form-control" tabindex="1" autofocus>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Last name : </label>
+                                    <input type="text" name="lastname" placeholder="Enter last name..." id="lastname" class="form-control" maxlength="20" tabindex="2">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Designation : </label>
+                                    <input type="text" name="designation" placeholder="Enter designation..." id="designation" class="form-control" tabindex="3">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Email ID : </label>
+                                    <input type="text" name="email" placeholder="Enter email id..." id='email' class="form-control" tabindex="4">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Phone no : </label>
+                                    <input type="text" name="phno" placeholder="Enter phone no..." class="form-control" id='phno' tabindex="5">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Gender : </label><br>
+                                    <input type="radio" name="gender" value="male" id="male" class="form-radio-input" tabindex="6">&nbsp;&nbsp;<label for="male">Male</label>
+                                    <input type="radio" name="gender" value="female" id="female" class="form-radio-input" tabindex="7">&nbsp;&nbsp;<label for="female">Female</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Relationship status : </label>
+                                    <select class="form-control" name='relationshipstatus' id="relationshipstatus" tabindex="8">
+                                        <option value="single" selected>Single</option>
+                                        <option value="married">Married</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Birthdate : </label><br>
+                                    <input type="text" name="dob" class="form-control" placeholder="Enter birthdate" id="dob" size="10" tabindex="9">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>State : </label>
+                                    <select class="form-control" name='state' id="state" tabindex="10">
+                                        <option value="guj" selected>Gujrat</option>
+                                        <option value="up">Uttar Pradesh</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>City : </label><br>
+                                    <input type="text" name="city" placeholder="Enter city..." class="form-control" id="city" tabindex="11" maxlength="20">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <label>Address 1 : </label>
+                                    <textarea class='form-control' name="address[]" placeholder="Enter addresss 1..." id="address" tabindex="12"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label>Address 2 : </label>
+                                    <textarea class='form-control' name="address[]" id="address" placeholder="Enter addresss 2..." tabindex="13"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Education Details</legend>
+                        <div class="container">
+                            <p class="btn btn-success" onclick="createObject('addeducation', 5)" id="addeducation">Add Education</p>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>Select course : </label>
+                                    <select name="coursename[]" class="form-control" id="coursename" tabindex="14">
+                                        <option value="10th">10th SSC</option>
+                                        <option value="12th">12th HSC</option>
+                                        <option value="UG">UG - Bechlor course</option>
+                                        <option value="PG">PG - Master Course</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Name of Board / University : </label>
+                                    <input type="text" name="board[]" placeholder="Enter board name..." id="board" class="form-control" tabindex="14">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Passing Year : </label>
+                                    <input type="number" name="passingyear[]" placeholder="Enter passing year..." id='passingyear' class="form-control" tabindex="14" max="2024" min="2000">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Percentage : </label>
+                                    <input type="number" name="percentage[]" placeholder="Enter percentage..." id="percentage" class="form-control" tabindex="14">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>
+                            <h4>Work Experience</h4>
+                        </legend>
+                        <div class="container">
+                            <p class="btn btn-success" onclick="createObject('addwork', 10)" id="addwork">Add Work Experience</p>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>Company name </label>
+                                    <input type="text" name="companyname[]" class='form-control' id="work1" placeholder="Enter company name..." tabindex="28">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Designation </label>
+                                    <input type="text" name="work_designation[]" class='form-control' id="work1" placeholder="Enter designation..." tabindex="29">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>From date </label>
+                                    <input type="text" name="form_date[]" class='form-control' id="work1" tabindex="30">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>To date </label>
+                                    <input type="text" name="to_date[]" class='form-control' id="work1" tabindex="31" size="10">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <fieldset>
+                        <legend>Language known</legend>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="hindilanguage[]" id="hindilanguage" value="hindi" tabindex="40">&nbsp;&nbsp;<label for="hindilanguage">Hindi</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="hindilanguage[]" id="hindilanguage1" value="r" tabindex="41">&nbsp;&nbsp;<label for="hindilanguage1">Read</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="hindilanguage[]" id='hindilanguage2' value="w" tabindex="42">&nbsp;&nbsp;<label for="hindilanguage2">Write</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="hindilanguage[]" id="hindilanguage3" value="s" tabindex="43">&nbsp;&nbsp;<label for="hindilanguage3">Speak</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="englishlanguage[]" id="englishlanguage" value="english" tabindex="44">&nbsp;&nbsp;<label for="englishlanguage">English</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="englishlanguage[]" id="englishlanguage1" value="r" tabindex="45">&nbsp;&nbsp;<label for="englishlanguage1">Read</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="englishlanguage[]" id="englishlanguage2" value="w" tabindex="46">&nbsp;&nbsp;<label for="englishlanguage2">Write</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="englishlanguage[]" id="englishlanguage3" value="s" tabindex="47">&nbsp;&nbsp;<label for="englishlanguage3">Speak</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="gujratilanguage[]" id="gujratilanguage" value="gujrati" tabindex="48">&nbsp;&nbsp;<label for="gujratilanguage">Gujrati</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="gujratilanguage[]" id="gujratilanguage1" value="r" tabindex="49">&nbsp;&nbsp;<label for="gujratilanguage3">Read</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="gujratilanguage[]" id='gujratilanguage2' value="w" tabindex="50">&nbsp;&nbsp;<label for="gujratilanguage2">Write</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="gujratilanguage[]" id="gujratilanguage3" value="s" tabindex="51">&nbsp;&nbsp;<label for="gujratilanguage3">Speak</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="col-md-6">
+                    <fieldset>
+                        <legend>Technologies you know</legend>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="phpchk[]" id="phpchk" tabindex="52" value="php">&nbsp;&nbsp;<label for="phpchk">PHP</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="radio" class="form-radio-input" name="phpchk[]" id="phpchk1" value="beg" tabindex="53">&nbsp;&nbsp;<label for="phpchk1">Beginer</label> &emsp;
+                                    <input type="radio" class="form-radio-input" name="phpchk[]" id="phpchk2" value="mid" tabindex="54">&nbsp;&nbsp;<label for="phpchk2">Mideator</label> &emsp;
+                                    <input type="radio" class="form-radio-input" name="phpchk[]" id="phpchk3" value="beg" tabindex="55">&nbsp;&nbsp;<label for="phpchk3">Expert</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="oraclechk[]" id="oraclechk" tabindex="56" value="oracle">&nbsp;&nbsp;<label for="oraclechk">oracle</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="radio" class="form-radio-input" name="oraclechk[]" id="oraclechk1" value="beg" tabindex="57">&nbsp;&nbsp;<label for="oraclechk1">Beginer</label> &emsp;
+                                    <input type="radio" class="form-radio-input" name="oraclechk[]" id="oraclechk2" value="mid" tabindex="58">&nbsp;&nbsp;<label for="oraclechk2">Mideator</label> &emsp;
+                                    <input type="radio" class="form-radio-input" name="oraclechk[]" id="oraclechk3" value="beg" tabindex="59">&nbsp;&nbsp;<label for="oraclechk3">Expert</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="mysqlchk[]" id="mysqlchk" tabindex="60" value="mysql">&nbsp;&nbsp;<label for="mysqlchk">mysql</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="radio" class="form-radio-input" name="mysqlchk[]" id="mysqlchk1" value="beg" tabindex="61">&nbsp;&nbsp;<label for="mysqlchk1">Beginer</label> &emsp;
+                                    <input type="radio" class="form-radio-input" name="mysqlchk[]" id="mysqlchk2" value="mid" tabindex="62">&nbsp;&nbsp;<label for="mysqlchk2">Mideator</label> &emsp;
+                                    <input type="radio" class="form-radio-input" name="mysqlchk[]" id="mysqlchk3" value="beg" tabindex="63">&nbsp;&nbsp;<label for="mysqlchk3">Expert</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="checkbox" class="form-check-input" name="laravelchk[]" id="laravelchk" tabindex="64" value="laravel">&nbsp;&nbsp;<label for="laravelchk">laravel</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="radio" class="form-radio-input" name="laravelchk[]" id="laravelchk1" value="beg" tabindex="65">&nbsp;&nbsp;<label for="laravelchk1">Beginer</label> &emsp;
+                                    <input type="radio" class="form-radio-input" name="laravelchk[]" id="laravelchk2" value="mid" tabindex="66">&nbsp;&nbsp;<label for="laravelchk2">Mideator</label> &emsp;
+                                    <input type="radio" class="form-radio-input" name="laravelchk[]" id="laravelchk3" value="beg" tabindex="67">&nbsp;&nbsp;<label for="laravelchk3">Expert</label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Reference Contact</legend>
+                        <div class="container">
+                            <p class="btn btn-success" onclick="createObject('addreference', 10)" id="addreference">Add Reference</p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Name</label>
+                                    <input type="text" name="ref_name[]" class='form-control' id="reference1" placeholder="Enter name..." tabindex="68">
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Contact no</label>
+                                    <input type="text" name="ref_contact[]" class='form-control' id="reference1" placeholder="Enter contact no..." tabindex="69">
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Relation</label>
+                                    <input type="text" name="ref_relation[]" class='form-control' id="reference1" placeholder="Enter relation..." tabindex="70">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Preferances</legend>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Prefered Location</label>
+                                    <select class="form-control" name="preferedlocation" id="preferedlocation" multiple tabindex="74">
+                                        <option value="Ahmdabad">Ahmdabad</option>
+                                        <option value="Rajkot">Rajkot</option>
+                                        <option value="Bhavnagar">Bhavnagar</option>
+                                        <option value="Nadiad">Nadiad</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Notice period</label>
+                                    <input type="number" name="noticeperiod" class="form-control" id="noticeperiod" placeholder="Enter Notice period.." tabindex="75" min="0" max="20"><br>
+                                    <label>Expected CTC</label>
+                                    <input type="number" name="expectedctc" class="form-control" id="expectedctc" placeholder="Enter Expected CTC.."  tabindex="76" min="0" step="10000" max="10000000"><br>
+                                    <label>Current CTC</label>
+                                    <input type="number" name="currentctc" class="form-control" id="currentctc" placeholder="Enter Current CTC.."  tabindex="77" min="0" step="10000" max="10000000">
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Department</label>
+                                    <select class="form-control" name="department[]" id="department" tabindex="78">
+                                        <option value="Development">Development</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="Design">Design</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col btn-group" role="group" aria-label="Basic mixed styles example">
+                    <input type="submit"    name="save" value="submit" id="save" class="btn btn-success w-50" tabindex="79">
+                    <input type="reset" name="save" value="Clear" id="clear" class="btn btn-danger w-50" tabindex="80">
+                    <a class="btn btn-primary" href="/job_app_without_ajax/candidates/">Back</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+<script src="/js/job_app_without_ajax/fillData.js"></script>
+<script>
+    let operation = window.location.href.split("/");
+    operation = operation.indexOf("insert")>=0?"Insert":"Update";
+    document.getElementById("save").value = operation;
+    if(operation == 'Update')
+    {
+        display();
+    }
+</script>
+</html>

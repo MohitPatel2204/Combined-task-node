@@ -215,3 +215,97 @@ INSERT INTO cities (city_name, state_id) VALUES
 ('Haridwar', 27), -- Uttarakhand
 ('Kolkata', 28), -- West Bengal
 ('Howrah', 28); -- West Bengal
+
+CREATE TABLE `candidates_master` (
+  `candidate_id` int NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(15) DEFAULT NULL,
+  `last_name` varchar(15) DEFAULT NULL,
+  `designation` varchar(15) DEFAULT 'Ahemdabad',
+  `address1` text,
+  `address2` text,
+  `email` varchar(70) DEFAULT NULL,
+  `phoneno` varchar(11) DEFAULT NULL,
+  `state` varchar(15) DEFAULT NULL,
+  `gender` char(1) DEFAULT NULL,
+  `relationship` varchar(10) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `expected_ctc` int DEFAULT NULL,
+  `prefered_location` longtext,
+  `department` varchar(30) DEFAULT NULL,
+  `city` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`candidate_id`)
+);
+
+INSERT INTO `candidates_master` VALUES (4,'mohit','mordiya','developer','sd','sd','mohit@gmail.com','9856321470','guj','m','single','2002-04-22',20000,'Rajkot,Nadiad','Development','bhavnagar'),(5,'yash','vachhani','designer','kaliyabid','akhbarnagar','yash@gmail.com','9870654321','guj','m','single','2001-02-15',30000,'Rajkot,Bhavnagar','Design','bhavnagar'),(6,'yashvi','ghetoya','developer','abc','xyz','manil@gmail.com','9876504321','guj','f','single','2002-04-22',190000,'Ahmdabad,Nadiad','Marketing','Navsari'),(7,'mihir','rajpopat','developer','abc','xyz','manil@gmail.com','9876504321','guj','m','single','2002-04-22',190000,'Ahmdabad,Nadiad','Marketing','Navsari'),(8,'jay','dave','developer','abc','xyz','manil@gmail.com','9876504321','guj','m','single','2002-04-22',190000,'Ahmdabad,Nadiad','Marketing','Navsari'),(9,'naitik','dave','developer','abc','xyz','manil@gmail.com','9876504321','guj','m','single','2002-04-22',190000,'Ahmdabad,Nadiad','Marketing','Navsari'),(10,'Manil','SHAH','developer','abc','xyz','manil@gmail.com','9876504321','guj','m','single','2002-04-22',190000,'Ahmdabad,Nadiad','Marketing','Navsari');
+
+CREATE TABLE `educations` (
+  `education_id` int NOT NULL AUTO_INCREMENT,
+  `candidate_id` int NOT NULL,
+  `course` varchar(20) DEFAULT NULL,
+  `board` varchar(20) DEFAULT NULL,
+  `passingyear` int DEFAULT NULL,
+  `percentage` decimal(6,2) DEFAULT NULL,
+  PRIMARY KEY (`education_id`),
+  KEY `candidate_id` (`candidate_id`),
+  CONSTRAINT `educations_ibfk_1` FOREIGN KEY (`candidate_id`) REFERENCES `candidates_master` (`candidate_id`)
+);
+
+INSERT INTO `educations` VALUES (5,5,'10th','GSEB',2013,11.00),(26,4,'10th','GSEB',2011,3.00),(27,4,'12th','GSHEB',2015,21.00),(28,6,'10th','gseb',2003,6.00),(29,6,'12th','GSHEB',2006,35.00),(30,6,'UG','DDU',2010,64.00),(31,6,'PG','MKBU',2008,51.00),(32,7,'10th','gseb',2003,6.00),(33,7,'12th','GSHEB',2006,35.00),(34,7,'UG','DDU',2010,64.00),(35,7,'PG','MKBU',2008,51.00),(36,8,'10th','gseb',2003,6.00),(37,8,'12th','GSHEB',2006,35.00),(38,8,'UG','DDU',2010,64.00),(39,8,'PG','MKBU',2008,51.00),(40,9,'10th','gseb',2003,6.00),(41,9,'12th','GSHEB',2006,35.00),(42,9,'UG','DDU',2010,64.00),(43,9,'PG','MKBU',2008,51.00),(48,10,'10th','gseb',2003,6.00),(49,10,'12th','GSHEB',2006,35.00),(50,10,'UG','DDU',2010,64.00),(51,10,'PG','MKBU',2008,51.00);
+
+CREATE TABLE `languages` (
+  `language_id` int NOT NULL AUTO_INCREMENT,
+  `candidate_id` int DEFAULT NULL,
+  `lan` varchar(30) DEFAULT NULL,
+  `language_lvl` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`language_id`),
+  UNIQUE KEY `candidate_id` (`candidate_id`,`lan`,`language_lvl`),
+  CONSTRAINT `languages_ibfk_1` FOREIGN KEY (`candidate_id`) REFERENCES `candidates_master` (`candidate_id`)
+) ;
+
+INSERT INTO `languages` VALUES (26,4,'english','r'),(27,4,'english','w'),(28,4,'gujrati','r'),(30,4,'gujrati','s'),(29,4,'gujrati','w'),(25,4,'hindi','r'),(10,5,'gujrati','r'),(12,5,'gujrati','s'),(11,5,'gujrati','w'),(8,5,'hindi','r'),(9,5,'hindi','w'),(31,6,'english','r'),(32,6,'english','w'),(33,6,'gujrati','r'),(35,6,'gujrati','s'),(34,6,'gujrati','w'),(36,7,'english','r'),(37,7,'english','w'),(38,7,'gujrati','r'),(40,7,'gujrati','s'),(39,7,'gujrati','w'),(41,8,'english','r'),(42,8,'english','w'),(43,8,'gujrati','r'),(45,8,'gujrati','s'),(44,8,'gujrati','w'),(46,9,'english','r'),(47,9,'english','w'),(48,9,'gujrati','r'),(50,9,'gujrati','s'),(49,9,'gujrati','w'),(76,10,'english','r'),(77,10,'english','w'),(78,10,'gujrati','r'),(80,10,'gujrati','s'),(79,10,'gujrati','w');
+
+CREATE TABLE `preferances` (
+  `candidate_id` int NOT NULL,
+  `notice_period` int DEFAULT '0',
+  `current_ctc` decimal(15,3) DEFAULT '0.000',
+  PRIMARY KEY (`candidate_id`),
+  CONSTRAINT `preferances_ibfk_1` FOREIGN KEY (`candidate_id`) REFERENCES `candidates_master` (`candidate_id`)
+) ;
+
+INSERT INTO `preferances` VALUES (4,4,20000.000),(5,3,40000.000),(6,15,340000.000),(7,15,340000.000),(8,15,340000.000),(9,15,340000.000),(10,15,340000.000);
+
+CREATE TABLE `references` (
+  `ref_id` int NOT NULL AUTO_INCREMENT,
+  `candidate_id` int DEFAULT NULL,
+  `ref_name` varchar(50) DEFAULT NULL,
+  `contact_no` varchar(10) DEFAULT NULL,
+  `relation` varchar(20) DEFAULT 'friend',
+  PRIMARY KEY (`ref_id`),
+  UNIQUE KEY `candidate_id` (`candidate_id`,`ref_name`,`contact_no`),
+  CONSTRAINT `references_ibfk_1` FOREIGN KEY (`candidate_id`) REFERENCES `candidates_master` (`candidate_id`)
+) ;
+
+INSERT INTO `references` VALUES (10,5,'mohit','7418529630','friend'),(18,4,'SD1','124567890','sdfa'),(19,4,'SD2','124567890','sdfa'),(20,4,'SD3','124567890','sdfa'),(21,4,'SD56','124567890','sdfa'),(22,4,'SD5','124567890','sdfa'),(23,4,'SD41','124567890','sdfa'),(24,4,'SD23','124567890','sdfa'),(25,6,'mohit','7418529630','friend'),(26,7,'mohit','7418529630','friend'),(27,8,'mohit','7418529630','friend'),(28,9,'mohit','7418529630','friend'),(34,10,'mohit','7418529630','friend');
+
+CREATE TABLE `technologies` (
+  `tech_id` int NOT NULL AUTO_INCREMENT,
+  `candidate_id` int DEFAULT NULL,
+  `technology` varchar(30) DEFAULT NULL,
+  `tech_lvl` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`tech_id`),
+  UNIQUE KEY `candidate_id` (`candidate_id`,`technology`)
+);
+
+INSERT INTO `technologies` VALUES (5,5,'php','beg'),(6,5,'oracle','mid'),(7,5,'mysql','beg'),(8,5,'laravel','beg'),(17,4,'php','beg'),(18,4,'oracle','mid'),(19,4,'mysql','beg'),(20,4,'laravel','beg'),(21,6,'php','beg'),(22,6,'oracle','mid'),(23,6,'mysql','beg'),(24,6,'laravel','beg'),(25,7,'php','beg'),(26,7,'oracle','mid'),(27,7,'mysql','beg'),(28,7,'laravel','beg'),(29,8,'php','beg'),(30,8,'oracle','mid'),(31,8,'mysql','beg'),(32,8,'laravel','beg'),(33,9,'php','beg'),(34,9,'oracle','mid'),(35,9,'mysql','beg'),(36,9,'laravel','beg'),(57,10,'php','beg'),(58,10,'oracle','mid'),(59,10,'mysql','beg'),(60,10,'laravel','beg');
+
+CREATE TABLE `work_experiences` (
+  `candidate_id` int NOT NULL,
+  `company_name` varchar(50) NOT NULL,
+  `designation` varchar(15) DEFAULT 'Ahemdabad',
+  `from_date` date DEFAULT NULL,
+  `to_date` date DEFAULT NULL,
+  PRIMARY KEY (`candidate_id`,`company_name`),
+  CONSTRAINT `work_experiences_ibfk_1` FOREIGN KEY (`candidate_id`) REFERENCES `candidates_master` (`candidate_id`)
+);
+
+INSERT INTO `work_experiences` VALUES (4,'n1','b','2012-02-10','2012-02-19'),(4,'n2','b','2012-02-11','2012-02-20'),(4,'n3','b','2012-02-12','2012-02-21'),(4,'n4','b','2012-02-13','2012-02-22'),(4,'n5','b','2012-02-14','2012-02-23'),(4,'n6','b','2012-02-15','2012-02-24'),(4,'n9','b','2012-02-18','2012-02-27'),(5,'espark','designer','2004-02-15','2002-04-15'),(6,'espark','designer','2004-02-15','2002-04-15'),(7,'espark','designer','2004-02-15','2002-04-15'),(8,'espark','designer','2004-02-15','2002-04-15'),(9,'espark','designer','2004-02-15','2002-04-15'),(10,'espark','designer','2004-02-15','2002-04-15'),(10,'tata','developer','2004-02-15','2002-04-15');
