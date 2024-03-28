@@ -61,10 +61,18 @@ const regularExp = (type, data) => {
 
 const arraysToObjects = (arr, keys, uniqueField = 0) => {
     let result = [];
+
+    arr = arr.map((item)=>{
+        if(!Array.isArray(item))
+            return Array(item);
+        return item;
+    })
+
     let set = new Set(arr[uniqueField]);
     if (uniqueField >= 0 && set.length < arr[uniqueField].length) {
         return false;
     }
+    
     for (let i = 0; i < arr[0].length; i++) {
         let obj = {};
         for (let j = 0; j < keys.length; j++) {
