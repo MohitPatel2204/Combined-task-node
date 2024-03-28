@@ -309,3 +309,73 @@ CREATE TABLE `work_experiences` (
 );
 
 INSERT INTO `work_experiences` VALUES (4,'n1','b','2012-02-10','2012-02-19'),(4,'n2','b','2012-02-11','2012-02-20'),(4,'n3','b','2012-02-12','2012-02-21'),(4,'n4','b','2012-02-13','2012-02-22'),(4,'n5','b','2012-02-14','2012-02-23'),(4,'n6','b','2012-02-15','2012-02-24'),(4,'n9','b','2012-02-18','2012-02-27'),(5,'espark','designer','2004-02-15','2002-04-15'),(6,'espark','designer','2004-02-15','2002-04-15'),(7,'espark','designer','2004-02-15','2002-04-15'),(8,'espark','designer','2004-02-15','2002-04-15'),(9,'espark','designer','2004-02-15','2002-04-15'),(10,'espark','designer','2004-02-15','2002-04-15'),(10,'tata','developer','2004-02-15','2002-04-15');
+
+create table candidate_masters1(
+    id int primary key auto_increment,
+    first_name varchar(30),
+    last_name varchar(30),
+    designation varchar(30),
+    email text,
+    phone_no varchar(30),
+    gender varchar(10),
+    relationship varchar(30),
+    birthdate date,
+    state varchar(30),
+    city varchar(30),
+    address text,
+    prefered_location text,
+    notice_period int default 0,
+    expected_ctc int default 0,
+    current_ctc int default 0,
+    department varchar(30)
+);
+
+create table education_details1(
+    id int primary key auto_increment,
+    candidate_id int,
+    course varchar(30),
+    board varchar(30),
+    passing_year int default 0,
+    percentage int,
+    foreign key (candidate_id) references candidate_masters1(id),
+    unique key (candidate_id, course)
+);
+
+create table work_experiences1(
+    id int primary key auto_increment,
+    candidate_id int,
+    company_name varchar(30),
+    work_designation varchar(30),
+    from_date date,
+    to_date date,
+    foreign key (candidate_id) references candidate_masters1(id),
+    unique key(candidate_id, company_name)
+);
+
+create table languages1(
+    id int primary key auto_increment,
+    candidate_id int,
+    language varchar(30),
+    language_lvl text,
+    foreign key (candidate_id) references candidate_masters1(id),
+    unique key(candidate_id, language)
+);
+
+create table technologies1(
+    id int primary key auto_increment,
+    candidate_id int,
+    technology varchar(30),
+    technology_lvl text,
+    foreign key (candidate_id) references candidate_masters1(id),
+    unique key(candidate_id, technology)
+);
+
+create table reference_contacts1(
+    id int primary key auto_increment,
+    candidate_id int,
+    name varchar(30),
+    contact char(10),
+    relation varchar(30),
+    foreign key (candidate_id) references candidate_masters1(id),
+    unique key(candidate_id, name)
+);

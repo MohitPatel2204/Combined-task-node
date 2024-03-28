@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .form-control, .form-check-input{
+            border: 1px solid #3B71CA;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section>
+            <div class="p-2 row">
+                <h1 class="col text-primary text-center">Job Application Form</h1>
+            </div>
+            <div class="p-2 row" id="header_section">
+                <div class="col-md bg-primary p-3 text-light text-center"><label>Basic Detail</label></div>
+                <div class="col-md text-primary p-3 text-center"><label>Education Detail</label></div>
+                <div class="col-md text-primary p-3 text-center"><label>Work experience</label></div>
+                <div class="col-md text-primary p-3 text-center"><label>Languages</label></div>
+                <div class="col-md text-primary p-3 text-center"><label>Technologies</label></div>
+                <div class="col-md text-primary p-3 text-center"><label>References</label></div>
+                <div class="col-md text-primary p-3 text-center"><label>Preferences</label></div>
+            </div>
+            <div class="row p-2">
+                <div class="col-12"><p id="error" class="alert bg-danger text-center text-light" style="display: none;">error</p></div>
+            </div>
+        </section>
+        <form id="job_app_form">
+            <section id="form_section" class="p-3 border-primary" style="border: 3px solid;">
+                <div class="basic_details container p-3" style="height: 600px; overflow-y: auto;">
+                    <div class="p-2 row">
+                        <div class="col-md-6">
+                            <input type="hidden" id="candidate_id" name="candidate_id">
+                            <label class="text-primary">First Name :</label><br>
+                            <input 
+                                type="text" 
+                                name="first_name" 
+                                id="first_name" 
+                                placeholder="Enter first name" 
+                                tabindex="1" 
+                                class="form-control"
+                            > 
+                        </div>
+                        <div class="col-md-6">
+                            <label class="text-primary">Last Name :</label><br>
+                            <input 
+                                type="text" 
+                                name="last_name" 
+                                id="last_name" 
+                                placeholder="Enter last name" 
+                                tabindex="2" 
+                                class="form-control"
+                            > 
+                        </div>
+                    </div>
+                    <div class="p-2 row">
+                        <div class="col-md-6">
+                            <label class="text-primary">Designation :</label><br>
+                            <input 
+                                type="text" 
+                                name="designation" 
+                                id="designation" 
+                                placeholder="Enter designation" 
+                                tabindex="3" 
+                                class="form-control"
+                            > 
+                        </div>
+                        <div class="col-md-6">
+                            <label class="text-primary">Email ID :</label><br>
+                            <input 
+                                type="text" 
+                                name="email" 
+                                id="email" 
+                                placeholder="Enter email" 
+                                tabindex="4" 
+                                class="form-control"
+                            > 
+                        </div>
+                    </div>
+                    <div class="p-2 row">
+                        <div class="col-md-6">
+                            <label class="text-primary">Phone no :</label><br>
+                            <input 
+                                type="text" 
+                                name="phone_no" 
+                                id="phone_no" 
+                                placeholder="Enter phone no" 
+                                tabindex="5" 
+                                class="form-control"
+                            > 
+                        </div>
+                        <div class="col-md-6">
+                            <label class="text-primary">Gender :</label><br>
+                            <span class="flex">
+                                <input type="radio" name="gender" id="male" value="male" class="form-check-input" tabindex="6">&nbsp;<label for="male" class="text-primary">Male</label>&emsp13;
+                                <input type="radio" name="gender" id="female" value="female" class="form-check-input" tabindex="6">&nbsp;<label for="female" class="text-primary">Female</label>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="p-2 row">
+                        <div class="col-md-6">
+                            <label class="text-primary">Relationship status :</label><br>
+                            <select
+                                name="relationship" 
+                                id="relationship" 
+                                tabindex="7" 
+                                class="form-control"
+                            >
+                                <option value="single">Single</option> 
+                                <option value="married">Married</option> 
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="text-primary">Birthdate :</label><br>
+                            <input 
+                                type="text" 
+                                name="birthdate" 
+                                id="birthdate" 
+                                placeholder="Enter birthdate" 
+                                tabindex="8" 
+                                class="form-control"
+                            > 
+                        </div>
+                    </div>
+
+                    <div class="p-2 row">
+                        <div class="col-md-6">
+                            <label class="text-primary">State :</label><br>
+                            <select
+                                name="state" 
+                                id="state" 
+                                tabindex="9" 
+                                class="form-control"
+                            >
+                                <option value="gujrat">Gujrat</option> 
+                                <option value="rajsthan">Rajsthan</option> 
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="text-primary">City :</label><br>
+                            <input 
+                                type="text" 
+                                name="city" 
+                                id="city" 
+                                placeholder="Enter city" 
+                                tabindex="10" 
+                                class="form-control"
+                            > 
+                        </div>
+                    </div>
+
+                    <div class="p-2 row">
+                        <div class="col-md">
+                            <label class="text-primary">Address 1</label>
+                            <textarea name="address" id="address1" placeholder="Enter address..." class="form-control" tabindex="11"></textarea>
+                        </div>
+                    </div>
+                    <div class="p-2 row">
+                        <div class="col-md">
+                            <label class="text-primary">Address 2</label>
+                            <textarea name="address" id="address2" placeholder="Enter address..." class="form-control" tabindex="12"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education-details container"  style="display: none;height: 600px; overflow-y: auto;">
+                    <p class="btn btn-primary" onclick="add('addeducation', 4)" id="addeducation">Add Education</p>
+                    <div class="p-2 row">
+                        <div class="col-md-3">
+                            <input type="hidden" id="education_id" name="education_id">
+                            <label class="text-primary">Select course</label>
+                            <select
+                                id = 'course'
+                                name = 'course'
+                                class="form-control"
+                                tabindex="13">
+                                <option value="ssc">SSC</option>
+                                <option value="hsc">HSC</option>
+                                <option value="ug">Under graduction</option>
+                                <option value="pg">Post graduction</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="text-primary">Name of Board / University :</label><br>
+                            <input 
+                                type="text" 
+                                name="board" 
+                                id="board" 
+                                placeholder="Enter Board / University" 
+                                tabindex="13" 
+                                class="form-control"
+                            > 
+                        </div>
+                        <div class="col-md-3">
+                            <label class="text-primary">Passing Year :</label><br>
+                            <input 
+                                type="text" 
+                                name="passing_year" 
+                                id="passing_year" 
+                                placeholder="Enter passing year" 
+                                tabindex="13" 
+                                class="form-control"
+                            > 
+                        </div>
+                        <div class="col-md-3">
+                            <label class="text-primary">Percentage</label><br>
+                            <input 
+                                type="text" 
+                                name="percentage" 
+                                id="percentage" 
+                                placeholder="Enter percentage" 
+                                tabindex="13" 
+                                class="form-control"
+                            > 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work_experience container" style="display: none;height: 600px; overflow-y: auto;">
+                    <p class="btn btn-primary" onclick="add('addwork', 5)" id="addwork">Add Work Experience</p>
+                    <div class="p-2 row">
+                        <div class="p-2 row">
+                            <div class="col-md-3">
+                                <input type="hidden" id="work_id" name="work_id">
+                                <label class="text-primary">Company name</label>
+                                <input 
+                                    type="text"
+                                    id = 'company_name'
+                                    name = 'company_name'
+                                    class="form-control"
+                                    placeholder="Enter company name"
+                                    tabindex="14">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="text-primary">Designation :</label><br>
+                                <input 
+                                    type="text" 
+                                    name="work_designation" 
+                                    id="work_designation" 
+                                    placeholder="Enter designation" 
+                                    tabindex="14" 
+                                    class="form-control"
+                                > 
+                            </div>
+                            <div class="col-md-3">
+                                <label class="text-primary">From date :</label><br>
+                                <input 
+                                    type="text" 
+                                    name="from_date" 
+                                    id="from_date" 
+                                    placeholder="Enter from date" 
+                                    tabindex="14" 
+                                    class="form-control"
+                                > 
+                            </div>
+                            <div class="col-md-3">
+                                <label class="text-primary">To date</label><br>
+                                <input 
+                                    type="text" 
+                                    name="to_date" 
+                                    id="to_date" 
+                                    placeholder="Enter to date" 
+                                    tabindex="14" 
+                                    class="form-control"
+                                > 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="language container"  style="display: none;height: 600px; overflow-y: auto;">
+                    <div class="p-2 row">
+                        <input type="hidden" id="language_id" name="language_id">
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="hindi"
+                                id="hindi_lan"
+                                class="form-check-input"
+                                value="hindi"
+                            >&nbsp;<label for="hindi_lan" class="text-primary">Hindi</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="hindi"
+                                id="hindi_r"
+                                class="form-check-input"
+                                value="r"
+                            >&nbsp;<label for="hindi_r" class="text-primary">Read</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="hindi"
+                                id="hindi_w"
+                                class="form-check-input"
+                                value="w"
+                            >&nbsp;<label for="hindi_r" class="text-primary">Write</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="hindi"
+                                id="hindi_s"
+                                class="form-check-input"
+                                value="s"
+                            >&nbsp;<label for="hindi_s" class="text-primary">Speak</label>
+                        </div>
+                    </div>
+
+                    <div class="p-2 row">
+                        <input type="hidden" id="language_id" name="language_id">
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="english"
+                                id="english_lan"
+                                class="form-check-input"
+                                value="english"
+                            >&nbsp;<label for="english_lan" class="text-primary">English</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="english"
+                                id="english_r"
+                                class="form-check-input"
+                                value="r"
+                            >&nbsp;<label for="english_r" class="text-primary">Read</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="english"
+                                id="english_w"
+                                class="form-check-input"
+                                value="w"
+                            >&nbsp;<label for="english_r" class="text-primary">Write</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="english"
+                                id="english_s"
+                                class="form-check-input"
+                                value="s"
+                            >&nbsp;<label for="english_s" class="text-primary">Speak</label>
+                        </div>
+                    </div>
+                    
+                    <div class="p-2 row">
+                        <input type="hidden" id="language_id" name="language_id">
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="gujrati"
+                                id="gujrati_lan"
+                                class="form-check-input"
+                                value="gujrati"
+                            >&nbsp;<label for="gujrati_lan" class="text-primary">Gujrati</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="gujrati"
+                                id="gujrati_r"
+                                class="form-check-input"
+                                value="r"
+                            >&nbsp;<label for="gujrati_r" class="text-primary">Read</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="gujrati"
+                                id="gujrati_w"
+                                class="form-check-input"
+                                value="w"
+                            >&nbsp;<label for="gujrati_r" class="text-primary">Write</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="gujrati"
+                                id="gujrati_s"
+                                class="form-check-input"
+                                value="s"
+                            >&nbsp;<label for="gujrati_s" class="text-primary">Speak</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="technolgy container"  style="display: none;height: 600px; overflow-y: auto;">
+                    <div class="p-2 row">
+                        <input type="hidden" id="technology_id" name="technolgy_id">
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="php"
+                                id="php_lan"
+                                class="form-check-input"
+                                value="php"
+                            >&nbsp;<label for="php_lan" class="text-primary">php</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="radio"
+                                name="php"
+                                id="php_b"
+                                class="form-check-input"
+                                value="b"
+                            >&nbsp;<label for="php_b" class="text-primary">Beginer</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="radio"
+                                name="php"
+                                id="php_m"
+                                class="form-check-input"
+                                value="m"
+                            >&nbsp;<label for="php_m" class="text-primary">Miderator</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="radio"
+                                name="php"
+                                id="php_e"
+                                class="form-check-input"
+                                value="e"
+                            >&nbsp;<label for="php_e" class="text-primary">Expert</label>
+                        </div>
+                    </div>
+
+                    <div class="p-2 row">
+                        <input type="hidden" id="technology_id" name="technolgy_id">
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="mysql"
+                                id="mysql_lan"
+                                class="form-check-input"
+                                value="mysql"
+                            >&nbsp;<label for="mysql_lan" class="text-primary">mysql</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="radio"
+                                name="mysql"
+                                id="mysql_b"
+                                class="form-check-input"
+                                value="b"
+                            >&nbsp;<label for="mysql_b" class="text-primary">Beginer</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="radio"
+                                name="mysql"
+                                id="mysql_m"
+                                class="form-check-input"
+                                value="m"
+                            >&nbsp;<label for="mysql_m" class="text-primary">Miderator</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="radio"
+                                name="mysql"
+                                id="mysql_e"
+                                class="form-check-input"
+                                value="e"
+                            >&nbsp;<label for="mysql_e" class="text-primary">Expert</label>
+                        </div>
+                    </div>
+
+                    <div class="p-2 row">
+                        <input type="hidden" id="technology_id" name="technolgy_id">
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="oracle"
+                                id="oracle_lan"
+                                class="form-check-input"
+                                value="oracle"
+                            >&nbsp;<label for="oracle_lan" class="text-primary">oracle</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="radio"
+                                name="oracle"
+                                id="oracle_b"
+                                class="form-check-input"
+                                value="b"
+                            >&nbsp;<label for="oracle_b" class="text-primary">Beginer</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="radio"
+                                name="oracle"
+                                id="oracle_m"
+                                class="form-check-input"
+                                value="m"
+                            >&nbsp;<label for="oracle_m" class="text-primary">Miderator</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="radio"
+                                name="oracle"
+                                id="oracle_e"
+                                class="form-check-input"
+                                value="e"
+                            >&nbsp;<label for="oracle_e" class="text-primary">Expert</label>
+                        </div>
+                    </div>
+
+                    <div class="p-2 row">
+                        <input type="hidden" id="technology_id" name="technolgy_id">
+                        <div class="col-md-3">
+                            <input
+                                type="checkbox"
+                                name="laravel"
+                                id="laravel_lan"
+                                class="form-check-input"
+                                value="laravel"
+                            >&nbsp;<label for="laravel_lan" class="text-primary">laravel</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="radio"
+                                name="laravel"
+                                id="laravel_b"
+                                class="form-check-input"
+                                value="b"
+                            >&nbsp;<label for="laravel_b" class="text-primary">Beginer</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="radio"
+                                name="laravel"
+                                id="laravel_m"
+                                class="form-check-input"
+                                value="m"
+                            >&nbsp;<label for="laravel_m" class="text-primary">Miderator</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input
+                                type="radio"
+                                name="laravel"
+                                id="laravel_e"
+                                class="form-check-input"
+                                value="e"
+                            >&nbsp;<label for="laravel_e" class="text-primary">Expert</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reference container" style="display: none;height: 600px; overflow-y: auto;">
+                    <p class="btn btn-primary" onclick="add('addreference', 5)" id="addreference">Add Reference Contact</p>
+                    <div class="p-2 row">
+                        <input type="hidden" id="reference_id" name="reference_id">
+                        <div class="col-md-4">
+                            <label class="text-primary">Name</label>
+                            <input 
+                                type="text"
+                                id = 'name'
+                                name = 'name'
+                                class="form-control"
+                                placeholder="Enter name"
+                                tabindex=""
+                            >
+                        </div>
+                        <div class="col-md-4">
+                            <label class="text-primary">Contact no :</label><br>
+                            <input 
+                                type="text" 
+                                name="contact" 
+                                id="contact" 
+                                placeholder="Enter contact" 
+                                tabindex="" 
+                                class="form-control"
+                            > 
+                        </div>
+                        <div class="col-md-4">
+                            <label class="text-primary">Relation :</label><br>
+                            <input 
+                                type="text" 
+                                name="relation" 
+                                id="relation" 
+                                placeholder="Enter relation" 
+                                tabindex="" 
+                                class="form-control"
+                            > 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preference container" style="display: none;height: 600px; overflow-y: auto;">
+                    <div class="p-2 row">
+                        <div class="col-md-4">
+                            <label class="text-primary">Prefered Location</label>
+                            <select
+                                name="prefered_location"
+                                id="prefered_location"
+                                class="form-control"
+                                multiple
+                            >
+                                <option value="bhavnagar">Bhavnagar</option>
+                                <option value="surat">Surat</option>
+                                <option value="nadiad">Nadiad</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="text-primary">Notice Period</label>
+                            <input 
+                                type="text" 
+                                name="notice_period" 
+                                id="notice_period" 
+                                placeholder="Enter notice period" 
+                                tabindex="" 
+                                class="form-control"
+                            > <br>
+                            <label class="text-primary">Expected CTC</label>
+                            <input 
+                                type="text" 
+                                name="expected_ctc" 
+                                id="expected_ctc" 
+                                placeholder="Enter expected CTC" 
+                                tabindex="" 
+                                class="form-control"
+                            > <br>
+                            <label class="text-primary">Current CTC</label>
+                            <input 
+                                type="text" 
+                                name="current_ctc" 
+                                id="current_ctc" 
+                                placeholder="Enter relation" 
+                                tabindex="" 
+                                class="form-control"
+                            > 
+                        </div>
+                        <div class="col-md-4">
+                            <label class="text-primary">Department</label>
+                            <select
+                                name="department"
+                                id="department"
+                                class="form-control"
+                                tabindex=""
+                            >
+                                <option value="development">Development</option>
+                                <option value="design">Design</option>
+                                <option value="marketing">Marketing</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="p-2 row">
+                        <div class="col-md-6">
+                            <input type="button" value="save" class="btn btn-primary w-100" onclick="return modifyData()">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="clear" value="clear" class="btn btn-danger w-100">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </form>
+
+        <section style="display: fixed; bottom: 10px;">
+            <div class="row p-2" >
+                <div class="col-12 text-center">
+                    <div class="btn-group">
+                        <p class="btn btn-outline-primary disabled" id="prev" onclick="return pageination(-1)">Previous</p>
+                        <p class="btn btn-outline-primary" onclick="return pageination(1)" id="next">Next</p>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <a href="/job_app_ajax/candidates" class="btn btn-outline-primary">Back</a>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="/js/job_app_ajax/pagination.js"></script>
+    <script src="/js/job_app_ajax/modifyData.js"></script>
+    <script src="/js/job_app_ajax/displayData.js"></script>
+</body>
+</html>
