@@ -5,7 +5,19 @@ const database = require("../../services/database");
 
 const loginUser = require("express").Router();
 
-loginUser.get("/login", (request, response)=>{
+loginUser.get("/login",(request, response)=>{
+    if(request.cookies.token != undefined)
+    {
+        let data = jwt.verify(request.cookies.token, process.env.TOKEN_SCREAT_KEY)
+        const id = data.id;
+        if(id == undefined || id == "" || id == null || id <= 0)
+        {
+            response.render("/login");
+            return;
+        }
+        response.redirect("/home");
+        return;
+    }
     response.render("login/login");
 })
 

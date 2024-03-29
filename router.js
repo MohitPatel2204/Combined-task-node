@@ -13,6 +13,8 @@ const result_main = require("./controllers/result.controller/result_main");
 const state_city_main = require("./controllers/state_city.controller/state_city_main");
 const job_app_without_ajax_main = require("./controllers/job_app_without_ajax.controller/job_app_without_ajax_main");
 const job_app_ajax_main = require("./controllers/job_app_ajax.controller/job_app_ajax_main");
+const menu = require("./controllers/menu.controller");
+const home = require("./controllers/home.controller");
 
 const router = (app) => {
     login_main(app);
@@ -29,6 +31,8 @@ const router = (app) => {
     job_app_without_ajax_main(app);
     job_app_ajax_main(app);
     app.use(clientEnvVariable);
+    app.use(home)
+    app.use(menu);
     app.use(errorPage);
 }
 

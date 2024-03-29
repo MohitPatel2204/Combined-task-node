@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body{
+            overflow: hidden;
+        }
+        .txt-success
+        {
+            color:#87B82A;
+        }
+        .success
+        {
+            background-color: #87B82A;
+        }
+        .rounded-50
+        {
+            border-radius: 50%;
+        }
+        .profile
+        {
+            background-color:  #1c2833 ;
+        }
+        .sidebar
+        {
+            height: 92dvh;
+            background-color:  #273746;
+        }
+        ul{
+            display: flex;
+            flex-direction: column;
+        }
+        .nav-link:hover
+        {
+            font-weight: bold;
+            border-bottom: 1px solid #ff7800;
+        }
+        .nav-item-content{
+            font-size: 14px;
+        }
+        .logo
+        {
+            background-color: white;
+            color:#1c2833;
+            border-radius: 50%;
+            font-weight: bold;
+            font-family:fantasy;
+            margin: 0px 7px 7px 7px;
+            padding: 5px 15px;
+            font-size: 30px;
+            height: 55px;
+        }
+    </style>
+</head>
+
+<body onload="displayUsersDetails()">
+    <div class="d-flex flex-column">
+        <div class="profile pt-2 d-flex flex-row" style="border-top-right-radius: 0px;">
+            <div class="logo" id="logo">M</div>
+            <div class="content ps-3">
+                <div class="text-light fs-5" id="email">John David</div>
+                <p class="txt-success">online</p>
+            </div>
+        </div>
+        <div class="sidebar p-md-3" id="sidebar" style="overflow-y: scroll;">
+            <ul class="nav" id="navbar">
+                <li class="nav-item p-2">
+                    <a href="/dashboard" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-speedometer2" style="color: yellow;"></i>
+                        <p class="nav-item-content">&emsp;Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/cubegame" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-controller" style="color: #ff7800;"></i>
+                        <p class="nav-item-content">&emsp;Cukoo Cube Game</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/dynamictable" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-table" style="color:  #6c3483 "></i>
+                        <p class="nav-item-content">&emsp;Dynamic Table</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/events" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-list-task" style="color: #b600b1"></i>
+                        <p class="nav-item-content">&emsp;Javascripts Events</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/tic_tac_toe" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-controller" style="color: #003ecc"></i>
+                        <p class="nav-item-content">&emsp;Tic Tac Toe</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/student" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-person-bounding-box" style="color:  #d35400 "></i>
+                        <p class="nav-item-content">&emsp;Student Pagination & Sorting</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/userjson" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-clipboard2-data-fill" style="color: #e70177;"></i>
+                        <p class="nav-item-content">&emsp;User crud operation - File</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/posts" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-table" style="color: #f5b041;"></i>
+                        <p class="nav-item-content">&emsp;Post API Call With grid</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/dynamic_component" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-plus-circle" style="color: #b600b1;"></i>
+                        <p class="nav-item-content">&emsp;Dynamic Component Genrate</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/student/delimeter" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-funnel-fill" style="color: #27ae60;"></i>
+                        <p class="nav-item-content">&emsp;Delimeter Filter</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/attendance" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-door-open" style="color: yellow;"></i>
+                        <p class="nav-item-content">&emsp;Attendance Filter</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/timezone_convertor" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-clock-fill" style="color: #ff7800;"></i>
+                        <p class="nav-item-content">&emsp;Timezone convetor</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/allresult" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-file-earmark-plus-fill" style="color: #6c3483;"></i>
+                        <p class="nav-item-content">&emsp;Student Result</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/state_city" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-globe-asia-australia" style="color: #b600b1;"></i>
+                        <p class="nav-item-content">&emsp;Select state and city</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/job_app_without_ajax/candidates/" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-ui-radios" style="color: #003ecc"></i>
+                        <p class="nav-item-content">&emsp;Job application Form</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/job_app_ajax/candidates/" target="container" class="nav-link text-light d-flex ">
+                        <i class="bi bi-ui-checks-grid" style="color: #d35400;"></i>
+                        <p class="nav-item-content">&emsp;Job application Form - Ajax</p>
+                    </a>
+                </li>
+                <li class="nav-item p-1">
+                    <a href="/logout" target="_parent" class="nav-link text-light d-flex ">
+                        <i class="bi bi-box-arrow-left" style="color: #e70177;"></i>
+                        <p class="nav-item-content">&emsp;Logout</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="/js/login_module.js"></script>
+</body>
+</html>

@@ -132,18 +132,17 @@ const displayUsersDetails = async() => {
     try
     {
         result = await result.json();
-        console.log(1, result)
+        console.log(result)
     }
     catch
     {
         let activation_code = window.location.href.split("/").pop();
         result = await fetch(`/users?activation_code=${activation_code}`);
         result = await result.json();
-        console.log(2, result)
+        console.log(result)
     }
     result = result.data.pop();
-
-    document.getElementById("logo").innerHTML = result.email.charAt(0);
+    document.getElementById("logo").innerHTML = result.email.charAt(0).toUpperCase();
     document.getElementById("email").innerHTML = result.email;
 }
 
@@ -231,7 +230,7 @@ const isLogin = async() => {
     else
     {
         const token = result.token;
-        let url = `http://${host}:${port}/dashboard`
+        let url = `http://${host}:${port}/home`
         window.location = url;
     }
 }

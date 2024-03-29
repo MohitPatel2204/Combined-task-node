@@ -21,16 +21,16 @@ attendance.get("/attendance/:operation/", isAuthentication,async(request, respon
 
     const db = new database(process.env.DB_DATABASE);
     let totalRecord = await db.executeQuery(`
-        select count(*) as no_of_std from student;
+        SELECT distinct count(sid) as no_of_std FROM attendance group by sid;
     `);
 
     if(page)
     {
-        page = pagination(request.params.operation, totalRecord[0]['no_of_std'], 50, page.currentPageno);
+        page = pagination(request.params.operation, totalRecord[0]['no_of_std'], 10, page.currentPageno);
     }
     else 
     {
-        page = pagination(request.params.operation, totalRecord[0]['no_of_std'], 50, 1);
+        page = pagination(request.params.operation, totalRecord[0]['no_of_std'], 10, 1);
     }
 
     query = `
@@ -41,7 +41,7 @@ attendance.get("/attendance/:operation/", isAuthentication,async(request, respon
         from student left join attendance 
         on student.sid = attendance.sid
         where att = 'p' and MONTH(att_date) = ${month} and YEAR(att_date) = ${year}
-        group by attendance.sid limit ${page.currentPageno*50}, ${50};
+        group by attendance.sid limit ${page.currentPageno*10}, ${10};
     `;
     let result = await db.executeQuery(query);
 

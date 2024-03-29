@@ -19,4 +19,5 @@ const isAuthentication = (request, response, next) => {
     request.body.id = id
     next();
 }
+
 module.exports = isAuthentication;

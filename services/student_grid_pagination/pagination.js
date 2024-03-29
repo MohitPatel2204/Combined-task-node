@@ -32,7 +32,6 @@ const pagination = (operation, totalRecord, displayRecord, currentPageno) => {
             }
             break;
         case "0":
-            console.log(page);
             if(page.currentPageno > 0)
             {
                 page.currentPageno--;

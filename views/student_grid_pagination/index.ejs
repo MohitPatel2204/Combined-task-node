@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Information</title>
+    <link href="/css/api_call_json_style.css" rel="stylesheet">
 </head>
 <body>
     <%-include('pagination.ejs')%>
-    <table border="1">
+    <table border="1" width="100%">
         <tr>
             <%Object.keys(fields).forEach((key=>{%>
                 <td>

@@ -4,7 +4,7 @@ body{
 }
 
 .heading, th{
-    background: rgba(37, 77, 0, 0.945);
+    background: #273746;
     color: #fff;
     margin: 0px;
     padding: 20px;
@@ -27,7 +27,7 @@ tr:nth-child(odd)
 
 input[type="submit"]
 {
-    background-color: rgba(37, 77, 0, 0.945);
+    background-color: #273746;
     color: white;
     padding: 10px;
     width: 100%;
@@ -41,7 +41,7 @@ input[type="submit"]:hover
 }
 
 a{
-    color: rgba(37, 77, 0, 0.945);
+    color: #273746;
     text-decoration: none;
     text-align: center;
     display: flex;
@@ -58,7 +58,7 @@ a:hover
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     padding: 20px;
-    color: rgba(37, 77, 0, 0.945)
+    color: #273746
 }
 
 .form td, .form tr, .form
@@ -75,8 +75,8 @@ select,
 textarea
 {
     border: 0px;
-    border-bottom: 2px solid rgba(37, 77, 0, 0.945);
-    color: rgba(37, 77, 0, 0.945);
+    border-bottom: 2px solid #273746;
+    color: #273746;
     background-color: #d1d1d1;
     width: 90%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
