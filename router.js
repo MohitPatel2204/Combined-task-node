@@ -15,6 +15,7 @@ const job_app_without_ajax_main = require("./controllers/job_app_without_ajax.co
 const job_app_ajax_main = require("./controllers/job_app_ajax.controller/job_app_ajax_main");
 const menu = require("./controllers/menu.controller");
 const home = require("./controllers/home.controller");
+const index = require("./controllers/index.controller");
 
 const router = (app) => {
     login_main(app);
@@ -31,7 +32,8 @@ const router = (app) => {
     job_app_without_ajax_main(app);
     job_app_ajax_main(app);
     app.use(clientEnvVariable);
-    app.use(home)
+    app.use(index);
+    app.use(home);
     app.use(menu);
     app.use(errorPage);
 }

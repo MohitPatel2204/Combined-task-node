@@ -21,7 +21,7 @@ app.listen(port, error=>{
     else
     {
         console.log(`Server is running ${port}`);
-        console.log(`URL is : http://${process.env.HOST}:${port}/createUser`);
+        console.log(`URL is : http://${process.env.HOST}:${port}/index`);
         app.use(cookieParser());
         router(app);
     }
