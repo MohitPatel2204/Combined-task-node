@@ -1,7 +1,4 @@
-const express = require("express");
 const database = require("../../services/database");
-const isAuthentication = require("../../middlewares/isAuthentication.middleware");
-const dynamic_component = express.Router();
 
 const getInput = async(componentName) => {
     const db = new database(process.env.DB_DATABASE);
@@ -19,7 +16,7 @@ const getInput = async(componentName) => {
     }
 }
 
-dynamic_component.get("/dynamic_component", isAuthentication,async(request, response)=>{
+const dynamic_component = (async(request, response)=>{
     if(request.query.componentName)
     {
         let result = await getInput(request.query.componentName);

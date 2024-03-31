@@ -1,9 +1,7 @@
-const student = require('express').Router();
-const isAuthentication = require('../../middlewares/isAuthentication.middleware');
 const database = require('../../services/database');
 const pagination = require('../../services/student_grid_pagination/pagination');
 
-student.get("/student/:operation/:key/:order", isAuthentication,async(request, response)=>{
+const studentOPeration = (async(request, response)=>{
     let page = undefined;
     let db = new database(process.env.DB_DATABASE);
     let totalRecord = await db.executeQuery("select count(*) as no_of_std from student");
@@ -37,8 +35,8 @@ student.get("/student/:operation/:key/:order", isAuthentication,async(request, r
     response.render("student_grid_pagination/index", {"page": page, "fields" : field, "result": res});
 })
 
-student.get("/student", isAuthentication,(request, response)=>{
+const students = ((request, response)=>{
     response.redirect(`/student/first/sid/asc`);
 })
 
-module.exports = student;
+module.exports = {students, studentOPeration};

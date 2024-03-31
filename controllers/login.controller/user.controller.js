@@ -1,11 +1,11 @@
 const database = require("../../services/database");
 const { getCode } = require("../../services/date");
-const { isValidPost, isValidGet } = require("../../middlewares/isValid.middleware");
-const isAuthentication = require("../../middlewares/isAuthentication.middleware");
+// const { isValidPost, isValidGet } = require("../../middlewares/isValid.middleware");
+// const isAuthentication = require("../../middlewares/isAuthentication.middleware");
 
-const User = require("express").Router();
+// const User = require("express").Router();
 
-User.post("/user", isValidPost, async (request, response) => {
+const userPost = (async (request, response) => {
     let user = request.body;
     let db = new database(process.env.DB_DATABASE);
     let result = await db.executeQuery(`select * from users_detail where email = '${user.email}' or phoneno = '${user.phoneno}'`);
@@ -78,7 +78,7 @@ User.post("/user", isValidPost, async (request, response) => {
 })
 
 
-User.get("/user", isAuthentication,async (request, response) => {
+const userGet = (async (request, response) => {
     const db = new database(process.env.DB_DATABASE);
 
     let result = await db.executeQuery(`select * from users_detail where id = '${request.body.id}'`);
@@ -96,7 +96,7 @@ User.get("/user", isAuthentication,async (request, response) => {
     }
 })
 
-User.get("/users", isValidGet, async(request, response)=>{
+const usersGet = (async(request, response)=>{
     const db  = new database(process.env.DB_DATABASE);
     let sql = "select * from users_detail";
     const conditions = request.query;
@@ -130,4 +130,8 @@ User.get("/users", isValidGet, async(request, response)=>{
 })
 
 
-module.exports = User;
+module.exports = {
+    userGet,
+    userPost,
+    usersGet,
+};

@@ -1,8 +1,4 @@
-const express = require("express");
 const database = require("../../services/database");
-const isAuthentication = require("../../middlewares/isAuthentication.middleware");
-
-const student = express.Router();
 
 const splitExpression = (exp) => {
     const res = {
@@ -62,7 +58,7 @@ const splitExpression = (exp) => {
     return res;
 }
 
-student.get("/student/delimeter", isAuthentication,async(request, response)=>{
+const student = (async(request, response)=>{
     const db = new database(process.env.DB_DATABASE);
     let query = "select * from student"
     let exp = "";
@@ -106,7 +102,5 @@ student.get("/student/delimeter", isAuthentication,async(request, response)=>{
 })
 
 module.exports = student;
-
-
 
 //_Aili_Gale^Marden$Aili.Marden@gmail.com}m{6106120618#Ambon_Shirlee

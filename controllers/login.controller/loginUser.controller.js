@@ -3,25 +3,25 @@ const jwt = require("jsonwebtoken");
 const { isValidPost } = require("../../middlewares/isValid.middleware");
 const database = require("../../services/database");
 
-const loginUser = require("express").Router();
+// const loginUser = require("express").Router();
 
-loginUser.get("/login",(request, response)=>{
-    if(request.cookies.token != undefined)
-    {
-        let data = jwt.verify(request.cookies.token, process.env.TOKEN_SCREAT_KEY)
-        const id = data.id;
-        if(id == undefined || id == "" || id == null || id <= 0)
-        {
-            response.render("/login");
-            return;
-        }
-        response.redirect("/home");
-        return;
-    }
+const loginUserGet = ((request, response)=>{
+    // if(request.cookies.token != undefined)
+    // {
+    //     let data = jwt.verify(request.cookies.token, process.env.TOKEN_SCREAT_KEY)
+    //     const id = data.id;
+    //     if(id ==  undefined || id == "" || id == null || id <= 0)
+    //     {
+    //         response.render("/login/login");
+    //         return;
+    //     }
+    //     response.redirect("/home");
+    //     return;
+    // }
     response.render("login/login");
 })
 
-loginUser.post("/login", isValidPost,async(request, response)=>{
+const loginUserPost = (async(request, response)=>{
     let username = request.body.username;
     let password = request.body.password;
     const db = new database(process.env.DB_DATABASE);
@@ -108,4 +108,7 @@ loginUser.post("/login", isValidPost,async(request, response)=>{
     }
 })
 
-module.exports = loginUser;
+module.exports = {
+    loginUserGet, 
+    loginUserPost,
+};

@@ -1,13 +1,11 @@
 const database = require("../../services/database");
 const { getCode } = require("../../services/date");
 
-const forgetPassword = require("express").Router();
-
-forgetPassword.get("/forgetpassword", (request, response)=>{
+const forgetPasswordForm = ((request, response)=>{
     response.render("login/forgetpassword")
 })
 
-forgetPassword.get("/forgetpassword/:username", async(request, response)=>{
+const forgetPassword = (async(request, response)=>{
     username = request.params.username;
     const db = new database(process.env.DB_DATABASE);
     
@@ -50,4 +48,7 @@ forgetPassword.get("/forgetpassword/:username", async(request, response)=>{
     }
 })
 
-module.exports = forgetPassword;
+module.exports = {
+    forgetPasswordForm,
+    forgetPassword,
+};

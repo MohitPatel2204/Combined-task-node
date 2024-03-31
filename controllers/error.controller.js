@@ -1,6 +1,4 @@
-const errorPage = require("express").Router();
-
-errorPage.get("*", (request, response)=>{
+const errorPage = ((request, response)=>{
     response.render("error");
 })
 

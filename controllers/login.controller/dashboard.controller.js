@@ -1,7 +1,5 @@
 const isAuthentication = require("../../middlewares/isAuthentication.middleware");
-const dashboard = require("express").Router();
-
-dashboard.get("/dashboard", isAuthentication,(request, response)=>{
+const dashboard = ((request, response)=>{
     response.render("login/dashboard");
 })
 

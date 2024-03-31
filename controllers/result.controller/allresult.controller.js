@@ -2,9 +2,7 @@ const isAuthentication = require("../../middlewares/isAuthentication.middleware"
 const database = require("../../services/database");
 const { resultAll } = require("../../services/result.services/query");
 
-const allresult = require("express").Router();
-
-allresult.get("/allresult", isAuthentication,async(request, response)=>{
+const allresult = (async(request, response)=>{
     const db = new database(process.env.DB_DATABASE);
     let result = await  db.executeQuery(resultAll);
     let fields = {

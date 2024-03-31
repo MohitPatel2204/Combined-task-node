@@ -1,6 +1,4 @@
-const index = require("express").Router();
-
-index.get("/index",(request,response)=>{
+const index = ((request,response)=>{
     response.render("index");
 })
 

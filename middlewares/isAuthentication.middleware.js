@@ -4,7 +4,7 @@ const isAuthentication = (request, response, next) => {
     const token = request.cookies.token;
     if(token == undefined || token == "" || token == null)
     {
-        response.redirect("/login");
+        response.redirect("/login/");
         return;
     }
 
@@ -13,7 +13,7 @@ const isAuthentication = (request, response, next) => {
     if(id == undefined || id == "" || id == null || id <= 0)
     {
         console.log("id not avilable")
-        response.redirect("/login");
+        response.redirect("/login/");
         return;
     }
     request.body.id = id

@@ -1,8 +1,8 @@
-const isAuthentication = require("../../middlewares/isAuthentication.middleware");
+// const isAuthentication = require("../../middlewares/isAuthentication.middleware");
 
-const events = require("express").Router();
+// const events = require("express").Router();
 
-events.get("/events", isAuthentication, (request, response)=>{
+const events = ((request, response)=>{
     response.render("javascript_ex/events");
 })
 

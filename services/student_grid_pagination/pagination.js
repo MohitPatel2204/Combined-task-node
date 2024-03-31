@@ -5,7 +5,6 @@ let page = {
 
 const pagination = (operation, totalRecord, displayRecord, currentPageno) => {
     let end = Math.floor(totalRecord/displayRecord);
-    
 
     switch(operation)
     {

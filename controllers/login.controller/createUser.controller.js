@@ -1,15 +1,13 @@
 const md5 = require("md5");
 const database = require("../../services/database");
 const { getDifferenceSeconds, getCode } = require("../../services/date");
-const { isValidPost } = require("../../middlewares/isValid.middleware");
-
-const createUser = require("express").Router();
-
-createUser.get("/createUser", (request, response) => {
+// const { isValidPost } = require("../../middlewares/isValid.middleware");
+// const createUser = require("express").Router();
+const registerForm = ((request, response) => {
     response.render("login/createUser")
 })
 
-createUser.get("/password/:activationCode", async(request, response)=>{
+const createPasswordGet = (async(request, response)=>{
     const activation_code = request.params.activationCode;
 
     if(activation_code != "")
@@ -35,7 +33,7 @@ createUser.get("/password/:activationCode", async(request, response)=>{
     }
 })
 
-createUser.post("/password/:activationCode", isValidPost,async(request, response)=>{
+const createPasswordPost = (async(request, response)=>{
     const db = new database(process.env.DB_DATABASE);
     const soalt = getCode(process.env.SOALT_LENGTH);
     const password = md5(`${request.body.password}${soalt}`);
@@ -55,6 +53,8 @@ createUser.post("/password/:activationCode", isValidPost,async(request, response
     }
 })
 
-
-
-module.exports = createUser;
+module.exports = {
+    registerForm, 
+    createPasswordGet,
+    createPasswordPost
+}

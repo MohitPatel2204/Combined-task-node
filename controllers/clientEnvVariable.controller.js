@@ -1,6 +1,4 @@
-const clientEnvVariable = require('express').Router();
-
-clientEnvVariable.get("/clientEnvVariable", (request, response)=>{
+const clientEnvVariable = ((request, response)=>{
     response.send({
         TIME_ZONE : process.env.TIME_ZONE,
         ACTIVATION_LINK_TIME : process.env.ACTIVATION_LINK_TIME,

@@ -1,7 +1,6 @@
 const student = require("./student.controller");
+const delimeter_filter_main = require("express").Router();
 
-const delimeter_filter_main = (app) =>{
-    app.use(student);
-}
+delimeter_filter_main.get("/delimeter", student)
 
 module.exports = delimeter_filter_main;

@@ -1,8 +1,4 @@
-const isAuthentication = require("../middlewares/isAuthentication.middleware");
-
-const menu = require("express").Router();
-
-menu.get("/menu",isAuthentication,(request,response)=>{
+const menu = ((request,response)=>{
     response.render("login/menu");
 })
 

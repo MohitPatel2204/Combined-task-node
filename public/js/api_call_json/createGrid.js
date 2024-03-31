@@ -38,7 +38,7 @@ const createBody = (grid) => {
             let td = document.createElement("td");
             if(key == "operations")
             {
-                td.innerHTML = `<a href = "/post/${item.id}">View More</a>`;
+                td.innerHTML = `<a href = "/json_app/post/${item.id}">View More</a>`;
             }
             else
             {
