@@ -1,9 +1,5 @@
 const database = require("../../services/database");
 const { getCode } = require("../../services/date");
-// const { isValidPost, isValidGet } = require("../../middlewares/isValid.middleware");
-// const isAuthentication = require("../../middlewares/isAuthentication.middleware");
-
-// const User = require("express").Router();
 
 const userPost = (async (request, response) => {
     let user = request.body;
@@ -78,7 +74,7 @@ const userPost = (async (request, response) => {
 })
 
 
-const userGet = (async (request, response) => {
+const userGet = (async(request, response) => {
     const db = new database(process.env.DB_DATABASE);
 
     let result = await db.executeQuery(`select * from users_detail where id = '${request.body.id}'`);

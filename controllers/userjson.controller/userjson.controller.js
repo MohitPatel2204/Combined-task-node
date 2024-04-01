@@ -1,11 +1,9 @@
-const isAuthentication = require("../../middlewares/isAuthentication.middleware");
 const addUser = require("../../services/userjson/addUser");
 const getData = require("../../services/userjson/getData");
 const getUser = require("../../services/userjson/getUser");
 const isEmpty = require("../../services/userjson/isEmpty");
-const userjson = require("express").Router();
 
-userjson.get("/userjson", isAuthentication, (req, res)=>{
+const userjson = ((req, res)=>{
     try
     {
         let users = getData();
@@ -18,7 +16,7 @@ userjson.get("/userjson", isAuthentication, (req, res)=>{
     }
 })
 
-userjson.get("/userjson/display", isAuthentication,(req, res)=>{
+const userjsonDisplay = ((req, res)=>{
     if(req.query["sbt"] == "view" && req.query["userid"]>=0)
     {
         try
@@ -37,12 +35,12 @@ userjson.get("/userjson/display", isAuthentication,(req, res)=>{
     }
 })
 
-userjson.get("/userjson/add", isAuthentication,(req, res)=>{
+const userAddGet = ((req, res)=>{
     res.render("userjson/adduser", {msg: ""})
     res.end();
 })
 
-userjson.post("/userjson/add",isAuthentication,(req, res)=>{
+const userAddPost = ((req, res)=>{
     let error = isEmpty(req.body)
     if(error==true)
     {
@@ -65,4 +63,9 @@ userjson.post("/userjson/add",isAuthentication,(req, res)=>{
 })
 
 
-module.exports = userjson;
+module.exports = {
+    userjson,
+    userjsonDisplay,
+    userAddGet,
+    userAddPost,
+};

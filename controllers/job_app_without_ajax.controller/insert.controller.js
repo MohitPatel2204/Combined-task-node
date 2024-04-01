@@ -4,7 +4,7 @@ const insertData = require("../../services/job_app_without_ajax/insertData");
 const formValidate = require("../../middlewares/formValidate.middleware");
 const insert = express.Router();
 
-insert.post("/job_app_without_ajax/insert", isAuthentication, formValidate, async(request, response)=>{
+const insertPost = (async(request, response)=>{
     let data = request.body;
     let result = await insertData(data);
     if(result==true)
@@ -18,8 +18,11 @@ insert.post("/job_app_without_ajax/insert", isAuthentication, formValidate, asyn
     }
 })
 
-insert.get("/job_app_without_ajax/insert", (request, response)=>{
+const insertGet = ((request, response)=>{
     response.render("job_app_without_ajax/form");
 })
 
-module.exports = insert;
+module.exports = {
+    insertGet,
+    insertPost,
+};

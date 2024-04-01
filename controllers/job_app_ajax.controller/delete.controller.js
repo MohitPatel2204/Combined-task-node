@@ -1,9 +1,6 @@
-const isAuthentication = require('../../middlewares/isAuthentication.middleware');
 const database = require('../../services/database');
 
-const deleteCandidate = require('express').Router();
-
-deleteCandidate.get('/job_app_ajax/delete/:id', isAuthentication,async(request, response)=>{
+const deleteCandidate = (async(request, response)=>{
     const candidate_id = request.params.id;
 
     const db = new database(process.env.DB_DATABASE);
@@ -32,7 +29,7 @@ deleteCandidate.get('/job_app_ajax/delete/:id', isAuthentication,async(request, 
     if(typeof result  == 'string')
         response.send({error: `Something is wrong ${result}`});
 
-    response.redirect("job_app_ajax/candidates");
+    response.redirect("/job_app_ajax/candidates");
 })
 
 module.exports = deleteCandidate;

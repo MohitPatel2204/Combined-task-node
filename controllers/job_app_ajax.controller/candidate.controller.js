@@ -1,9 +1,9 @@
-const isAuthentication = require("../../middlewares/isAuthentication.middleware");
+// const isAuthentication = require("../../middlewares/isAuthentication.middleware");
 const database = require("../../services/database");
 
-const candidate = require("express").Router();
+// const candidate = require("express").Router();
 
-candidate.get("/job_app_ajax/candidate/:id", isAuthentication,async(request, response)=>{
+const candidateAPI = (async(request, response)=>{
     let candidate_result = {};
     const db = new database(process.env.DB_DATABASE);
     const candidate_id = request.params.id;
@@ -51,4 +51,4 @@ candidate.get("/job_app_ajax/candidate/:id", isAuthentication,async(request, res
     }
 })
 
-module.exports = candidate;
+module.exports = candidateAPI;

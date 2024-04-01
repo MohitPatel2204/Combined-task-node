@@ -27,7 +27,7 @@ login_main.get("/forgetpassword/:username", forgetPassword)
 login_main.get("/login/", loginUserGet)
 login_main.post("/login/", loginUserPost)
 
-login_main.get("/user", isValidPost, userGet)
+login_main.get("/user", isAuthentication,isValidPost, userGet)
 login_main.post("/user", isAuthentication, userPost)
 login_main.get("/users", isValidGet, usersGet)
 

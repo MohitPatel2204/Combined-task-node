@@ -54,7 +54,7 @@ const display = () => {
             window.location.href = "*";
             return;
         }
-        console.log(candidate)
+        
         const basic_details = candidate.basic_detail;
         const education = candidate.educations;
         let languages = candidate.languages;

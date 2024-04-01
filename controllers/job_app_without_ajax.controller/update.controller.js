@@ -2,13 +2,11 @@ const formValidate = require("../../middlewares/formValidate.middleware");
 const isAuthentication = require("../../middlewares/isAuthentication.middleware");
 const updateData = require("../../services/job_app_without_ajax/updateData");
 
-const update = require("express").Router();
-
-update.get("/job_app_without_ajax/update/:id", async(request, response)=>{
+const updateGet = (async(request, response)=>{
     response.render("job_app_without_ajax/form");
 })
 
-update.post("/job_app_without_ajax/update/:id",isAuthentication,formValidate,async(request, response)=>{
+const updatePost = (async(request, response)=>{
     const data = request.body;
     let result = await updateData(data);
     if(result==true)
@@ -23,4 +21,7 @@ update.post("/job_app_without_ajax/update/:id",isAuthentication,formValidate,asy
     }
 })
 
-module.exports = update;
+module.exports = {
+    updateGet,
+    updatePost
+};

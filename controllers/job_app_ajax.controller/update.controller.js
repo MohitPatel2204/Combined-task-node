@@ -4,11 +4,11 @@ const database = require('../../services/database');
 
 const update = require('express').Router();
 
-update.get("/job_app_ajax/update_candidate/:id", isAuthentication,(request, response)=>{
+const candidateUpdateGet = ((request, response)=>{
     response.render("job_app_ajax/form");
 })
 
-update.post("/job_app_ajax/update_candidate/:id", isAuthentication, validation,async(request,response)=>{
+const candidateUpdatePost = (async(request,response)=>{
     const candidate_id = request.params.id;
     const db = new database(process.env.DB_DATABASE);
 
@@ -111,4 +111,7 @@ update.post("/job_app_ajax/update_candidate/:id", isAuthentication, validation,a
     response.send({error: "Data is updated"})
 })
 
-module.exports = update;
+module.exports = {
+    candidateUpdateGet,
+    candidateUpdatePost
+};

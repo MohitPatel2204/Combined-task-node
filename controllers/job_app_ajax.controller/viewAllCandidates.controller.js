@@ -1,9 +1,6 @@
-const isAuthentication = require("../../middlewares/isAuthentication.middleware");
 const database = require("../../services/database");
 
-const viewAllCandidates = require("express").Router();
-
-viewAllCandidates.get("/job_app_ajax/candidates/", isAuthentication,async(request, response)=>{
+const viewAllCandidates = (async(request, response)=>{
     let db = new database(process.env.DB_DATABASE);
     let candidates = await db.executeQuery("SELECT id, first_name, last_name, designation, email, phone_no, gender FROM candidate_masters1;");
     let table = {
@@ -26,7 +23,7 @@ viewAllCandidates.get("/job_app_ajax/candidates/", isAuthentication,async(reques
         operation:{
             view: ['job_app_ajax/candidate', "id", "View"],
             update: ['job_app_ajax/update_candidate', "id", "Edit"],
-            delete: ['job_app_ajax/delete', "id", "Remove"]
+            delete: ['/job_app_ajax/delete', "id", "Remove"]
         }
     }
 

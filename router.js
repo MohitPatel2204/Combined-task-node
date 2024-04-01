@@ -14,6 +14,10 @@ const state_city_main = require("./controllers/state_city.controller/state_city_
 const student_grid_pagination_main = require("./controllers/student_grid_pagination.controller.js/student_grid_pagination_main");
 const timezone_convertor_main = require("./controllers/timezone_convertor.controller/timezone_convertor_main");
 const login_main = require("./controllers/login.controller/login_main");
+const userjson_main = require("./controllers/userjson.controller/userjson_main");
+const job_app_ajax_main = require("./controllers/job_app_ajax.controller/job_app_ajax_main");
+const job_app_without_ajax_main = require("./controllers/job_app_without_ajax.controller/job_app_without_ajax_main");
+const html_ex_main = require("./controllers/html_ex.controller/html_ex_main");
 
 const router = (app) => {
     app.use("/", login_main);
@@ -28,20 +32,10 @@ const router = (app) => {
     app.use("/", isAuthentication, state_city_main);
     app.use("/", student_grid_pagination_main);
     app.use("/", timezone_convertor_main);
-
-    // javascript_ex_main(app);
-    // student_grid_pagination_main(app);
-    // userjson_main(app);    
-    // api_call_json_main(app);
-    // dynamic_component_main(app);
-    // delimeter_filter_main(app);
-    // attendance_filter_main(app);
-    // timezone_convertor_main(app);
-    // result_main(app);
-    // state_city_main(app);
-    // job_app_without_ajax_main(app);
-    // job_app_ajax_main(app);
-
+    app.use("/userjson", isAuthentication,userjson_main)
+    app.use("/job_app_ajax/", isAuthentication, job_app_ajax_main);
+    app.use("/job_app_without_ajax/", isAuthentication, job_app_without_ajax_main);
+    app.use("/", isAuthentication,html_ex_main)
     app.use("/home", isAuthentication, home);
     app.use("/menu", isAuthentication, menu);
     app.use("*", errorPage);

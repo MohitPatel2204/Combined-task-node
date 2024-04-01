@@ -3,11 +3,11 @@ const validation = require("../../middlewares/validation.middleware");
 const database = require("../../services/database");
 const insert = require("express").Router();
 
-insert.get("/job_app_ajax/insert_candidate", isAuthentication,(request, response)=>{
+const candidateAddGet = ((request, response)=>{
     response.render("job_app_ajax/form")
 })
 
-insert.post("/job_app_ajax/insert_candidate", isAuthentication, validation,async(request, response)=>{
+const candidateAddPost = (async(request, response)=>{
     const db = new database(process.env.DB_DATABASE);
     let result;
     result = await db.insertData("candidate_masters1", request.body.candidate_masters)
@@ -65,4 +65,7 @@ insert.post("/job_app_ajax/insert_candidate", isAuthentication, validation,async
     response.send({'error': "Data is sucessfully inserted"})
 })
 
-module.exports = insert;
+module.exports = {
+    candidateAddGet,
+    candidateAddPost,
+};
