@@ -24,6 +24,7 @@ const result = require("../app/controllers/result.controller/result.controller")
 const { getCity, getCityWithID } = require("../app/controllers/state_city.controller/get_city.controller");
 const getState = require("../app/controllers/state_city.controller/get_state.controller");
 const stateCityForm = require("../app/controllers/state_city.controller/state_city_form.controller");
+const { students, studentOperation } = require("../app/controllers/student_grid_pagination.controller.js/student.controller");
 const isAuthentication = require("../middlewares/isAuthentication.middleware");
 const { isValidPost, isValidGet } = require("../middlewares/isValid.middleware");
 
@@ -95,6 +96,16 @@ routers.get("/state", getState);
 routers.get("/state_city", stateCityForm);
 
 /* ========================================================
+student grid pagination and order by module routers
+=========================================================== */
+routers.get("/student", students);
+routers.get("/student/:operation/:key/:order", studentOperation);
+
+/* ========================================================
+student grid pagination and order by module routers
+=========================================================== */
+
+/* ========================================================
 error page routers
 =========================================================== */
 routers.get("*", errorPage);
@@ -111,7 +122,7 @@ module.exports = routers;
 // app.use("/", isAuthentication, dynamic_component_main);
 // app.use("/", isAuthentication, result_main);
 // app.use("/", isAuthentication, state_city_main);
-//     app.use("/", student_grid_pagination_main);
+// app.use("/", student_grid_pagination_main);
 //     app.use("/", timezone_convertor_main);
 //     app.use("/userjson", isAuthentication,userjson_main)
 //     app.use("/job_app_ajax/", isAuthentication, job_app_ajax_main);
