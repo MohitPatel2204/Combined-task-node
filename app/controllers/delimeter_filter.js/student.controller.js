@@ -1,4 +1,4 @@
-const database = require("../../services/database");
+const database = require("../../../services/database");
 
 const splitExpression = (exp) => {
     const res = {
@@ -92,13 +92,18 @@ const student = (async(request, response)=>{
         }
     }
     
-    let result = await db.executeQuery(query);
-    let table = {
-        name: "table1",
-        data: result,
-        displayRecord: 21
+    try{
+        let result = await db.executeQuery(query);
+        let table = {
+            name: "table1",
+            data: result,
+            displayRecord: 10
+        }
+        response.render("delimeter_filter/student", {table, exp});
     }
-    response.render("delimeter_filter/student", {table, exp});
+    catch{
+        response.render("error");
+    }
 })
 
 module.exports = student;

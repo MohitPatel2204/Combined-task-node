@@ -1,8 +1,13 @@
-const getStudentResult = require("../../services/result.services/getStudentResult");
+const getStudentResult = require("../../../services/result.services/getStudentResult");
 
 const result = (async(request, response)=>{
-    let userresult = await getStudentResult(request.params.id);
-    response.render("result/displayrecord" , {result: userresult});
+    try{
+        let userresult = await getStudentResult(request.params.id);
+        response.render("result/displayrecord" , {result: userresult});
+    }
+    catch{
+        response.render("error")
+    }
 })
 
 module.exports = result;
