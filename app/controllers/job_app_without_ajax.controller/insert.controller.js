@@ -1,25 +1,32 @@
-const express = require("express");
-const isAuthentication = require("../../middlewares/isAuthentication.middleware");
-const insertData = require("../../services/job_app_without_ajax/insertData");
-const formValidate = require("../../middlewares/formValidate.middleware");
-const insert = express.Router();
+const insertData = require("../../../services/job_app_without_ajax/insertData");
 
 const insertPost = (async(request, response)=>{
     let data = request.body;
-    let result = await insertData(data);
-    if(result==true)
-    {
-        response.redirect("/job_app_without_ajax/candidates");
+    try{
+        let result = await insertData(data);
+        if(result==true)
+        {
+            response.redirect("/job_app_without_ajax/candidates");
+        }
+        else
+        {
+            response.method="GET";
+            response.render("job_app_without_ajax/form", {error: result});
+        }
     }
-    else
-    {
-        response.method="GET";
-        response.render("job_app_without_ajax/form", {error: result});
+    catch{
+        response.render("job_app_without_ajax/form", {error: "Server side error, data not inserted...."});
     }
 })
 
 const insertGet = ((request, response)=>{
-    response.render("job_app_without_ajax/form");
+    try
+    {
+        response.render("job_app_without_ajax/form");
+    }
+    catch{
+        response.render("error");
+    }
 })
 
 module.exports = {

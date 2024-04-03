@@ -167,7 +167,6 @@ const createHeader = (data) => {
         th.setAttribute("onclick", "sort(this, obj)");
         tr.appendChild(th);
     })
-    console.log(data)
     if(Object.keys(data).indexOf("operation")>=0)
     {
         const th = document.createElement("th");

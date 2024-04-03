@@ -7,15 +7,20 @@ const isAuthentication = (request, response, next) => {
     return;
   }
 
-  let data = jwt.verify(request.cookies.token, process.env.TOKEN_SCREAT_KEY)
-  const id = data.id
-  if (id == undefined || id == "" || id == null || id <= 0) {
-    console.log("id not avilable")
-    response.redirect("/login/");
-    return;
+  try{
+    let data = jwt.verify(request.cookies.token, process.env.TOKEN_SCREAT_KEY)
+    const id = data.id
+    if (id == undefined || id == "" || id == null || id <= 0) {
+      console.log("id not avilable")
+      response.redirect("/login/");
+      return;
+    }
+    request.body.id = id
+    next();
   }
-  request.body.id = id
-  next();
+  catch{
+    response.redirect("*");
+  }
 }
 
 module.exports = isAuthentication;

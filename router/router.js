@@ -12,6 +12,11 @@ const cubegame = require("../app/controllers/javascript_ex.controller/cubegame.c
 const dynamicTable = require("../app/controllers/javascript_ex.controller/dynamicTable.controller");
 const events = require("../app/controllers/javascript_ex.controller/events.controller");
 const tic_tac_toe = require("../app/controllers/javascript_ex.controller/tic_tac_toe.controller");
+const deleteData = require("../app/controllers/job_app_without_ajax.controller/deleteData.controller");
+const fetchData = require("../app/controllers/job_app_without_ajax.controller/fetchData.controller");
+const { insertGet, insertPost } = require("../app/controllers/job_app_without_ajax.controller/insert.controller");
+const { updateGet, updatePost } = require("../app/controllers/job_app_without_ajax.controller/update.controller");
+const viewAllCandidates = require("../app/controllers/job_app_without_ajax.controller/viewAllCandidates.controller");
 const { registerForm, createPasswordGet, createPasswordPost } = require("../app/controllers/login.controller/createUser.controller");
 const dashboard = require("../app/controllers/login.controller/dashboard.controller");
 const { forgetPasswordForm, forgetPassword } = require("../app/controllers/login.controller/forgetPassword.controller");
@@ -28,6 +33,7 @@ const { students, studentOperation } = require("../app/controllers/student_grid_
 const convertor = require("../app/controllers/timezone_convertor.controller/convertor.controller");
 const timezonesWithCities = require("../app/controllers/timezone_convertor.controller/timezonesWithCities.controller");
 const { userjson, userjsonDisplay, userAddGet, userAddPost } = require("../app/controllers/userjson.controller/userjson.controller");
+const formValidate = require("../middlewares/formValidate.middleware");
 const isAuthentication = require("../middlewares/isAuthentication.middleware");
 const { isValidPost, isValidGet } = require("../middlewares/isValid.middleware");
 
@@ -121,6 +127,17 @@ routers.post("/userjson/add", userAddPost);
 /* ========================================================
 job application without ajax by module routers
 =========================================================== */
+routers.get("/job_app_without_ajax/delete/:id", isAuthentication, deleteData);
+
+routers.get("/job_app_without_ajax/fetch/:id", isAuthentication, fetchData);
+
+routers.get("/job_app_without_ajax/insert", isAuthentication, insertGet);
+routers.post("/job_app_without_ajax/insert", formValidate, isAuthentication, insertPost)
+
+routers.get("/job_app_without_ajax/update/:id", isAuthentication, updateGet);
+routers.post("/job_app_without_ajax/update/:id", formValidate, isAuthentication, updatePost);
+
+routers.get("/job_app_without_ajax/candidates/", isAuthentication, viewAllCandidates);
 
 /* ========================================================
 error page routers

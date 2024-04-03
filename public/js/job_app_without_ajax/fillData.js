@@ -90,69 +90,72 @@ const displayMdArrayData = (arr) => {
 
 const display = () => {
     let candidate_id = window.location.href.split("/").pop();
-    let url = `/job_app_without_ajax/fetch/${candidate_id}`;
+    const url = `/job_app_without_ajax/fetch/${candidate_id}`;
     fetch(url).then(response => response.json()).then(candidate => {
-        if (candidate.error) {
-            window.location.href = "*";
-            return;
+        if(candidate.flag==true)
+        {
+            candidate = candidate.result;
+            const basic_details = candidate.basic;
+            const education = candidate.education;
+            const language = mdArrayToObject(candidate.language);
+            const technology = mdArrayToObject(candidate.technology);
+            const work = candidate.work;
+            const references = candidate.references;
+            const preference = candidate.preference[0];
+    
+            let obj1 = {
+                candidate_id: basic_details.candidate_id,
+                firstname: basic_details.first_name,
+                lastname: basic_details.last_name,
+                designation: basic_details.designation,
+                email: basic_details.email,
+                phno: basic_details.phoneno,
+                relationshipstatus: basic_details.relationship,
+                dob: basic_details.dob,
+                state: basic_details.state,
+                city: basic_details.city,
+                expectedctc: basic_details.expected_ctc,
+                noticeperiod: preference.notice_period,
+                currentctc: preference.current_ctc,
+                preferedlocation: basic_details.prefered_location,
+                "department[]": basic_details.department,
+            }
+            displayTextData(obj1);
+    
+            obj1 = {
+                gender: basic_details.gender == 'm' ? "male" : "female",
+                "address[]": [basic_details.address1, basic_details.address2],
+                "hindilanguage[]": language.hindi,
+                "englishlanguage[]": language.english,
+                "gujratilanguage[]": language.gujrati,
+                "phpchk[]": technology.php,
+                "oraclechk[]": technology.oracle,
+                "mysqlchk[]": technology.mysql,
+                "laravelchk[]": technology.laravel
+            }
+            displayArrayData(obj1);
+    
+            obj1 = [
+                {
+                    nodes: ["coursename[]", "board[]", "passingyear[]", 'percentage[]'],
+                    data: education,
+                    genrateId: 'addeducation'
+                },
+                {
+                    nodes: ['companyname[]', 'work_designation[]', 'form_date[]', 'to_date[]'],
+                    data: work,
+                    genrateId: 'addwork'
+                },
+                {
+                    nodes: ['ref_name[]', 'ref_contact[]', 'ref_relation[]'],
+                    data: references,
+                    genrateId: 'addreference'
+                },
+            ]
+            displayMdArrayData(obj1);    
         }
-        const basic_details = candidate.basic;
-        const education = candidate.education;
-        const language = mdArrayToObject(candidate.language);
-        const technology = mdArrayToObject(candidate.technology);
-        const work = candidate.work;
-        const references = candidate.references;
-        const preference = candidate.preference[0];
-
-        let obj1 = {
-            candidate_id: basic_details.candidate_id,
-            firstname: basic_details.first_name,
-            lastname: basic_details.last_name,
-            designation: basic_details.designation,
-            email: basic_details.email,
-            phno: basic_details.phoneno,
-            relationshipstatus: basic_details.relationship,
-            dob: basic_details.dob,
-            state: basic_details.state,
-            city: basic_details.city,
-            expectedctc: basic_details.expected_ctc,
-            noticeperiod: preference.notice_period,
-            currentctc: preference.current_ctc,
-            preferedlocation: basic_details.prefered_location,
-            "department[]": basic_details.department,
+        else{
+            alert(candidate.msg)
         }
-        displayTextData(obj1);
-
-        obj1 = {
-            gender: basic_details.gender == 'm' ? "male" : "female",
-            "address[]": [basic_details.address1, basic_details.address2],
-            "hindilanguage[]": language.hindi,
-            "englishlanguage[]": language.english,
-            "gujratilanguage[]": language.gujrati,
-            "phpchk[]": technology.php,
-            "oraclechk[]": technology.oracle,
-            "mysqlchk[]": technology.mysql,
-            "laravelchk[]": technology.laravel
-        }
-        displayArrayData(obj1);
-
-        obj1 = [
-            {
-                nodes: ["coursename[]", "board[]", "passingyear[]", 'percentage[]'],
-                data: education,
-                genrateId: 'addeducation'
-            },
-            {
-                nodes: ['companyname[]', 'work_designation[]', 'form_date[]', 'to_date[]'],
-                data: work,
-                genrateId: 'addwork'
-            },
-            {
-                nodes: ['ref_name[]', 'ref_contact[]', 'ref_relation[]'],
-                data: references,
-                genrateId: 'addreference'
-            },
-        ]
-        displayMdArrayData(obj1);
     })
 }
