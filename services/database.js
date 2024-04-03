@@ -17,85 +17,101 @@ class database{
             dateStrings: true,
         });
 
-        const connection = new Promise((resolve, reject)=>{
-            conn.connect(error=>{
-                if(error){
-                    reject(error.sqlMessage);
-                }
-                else{
-                    resolve(conn); 
-                }
-            })
-        })
-
-        return connection.then(result=>{
-            return result;
-        }).catch(error=>{
-            return error;
-        })
+        return await new Promise((resolve, reject)=>{
+            try {
+                conn.connect(error=>{
+                    if(error){
+                        reject(error.sqlMessage);
+                    }
+                    else{
+                        resolve(conn); 
+                    }
+                })
+            }
+            catch(error){
+                throw error;
+            }
+        })  
     }
 
-    executeQuery = async(sql)=>{
+    executeQuery = async(sql, values)=>{
         const conn = await this.getConnection();
-        const query1 = new Promise((resolve,reject)=>{
-            conn.query(sql, (error, result)=>{
-                if(error)
-                    reject(error.sqlMessage);
-                else
-                    resolve(result)
-            })
-        })
-
-        return query1.then(result=>{
-            return result;
-        }).catch(error=>{
-            return error;
+        return await new Promise((resolve,reject)=>{
+            try{
+                conn.query(sql, values, (error, result)=>{
+                    if(error) {
+                        reject(error.sqlMessage);
+                    }
+                    else
+                        resolve(result);
+                });
+            }
+            catch(error){
+                throw error;
+            }
         })
     }
 
     insertData = async(tablename, data) => {
+        let values = [];
         let sql = `insert into ${tablename}(`;
-
         Object.keys(data).forEach(key=>{
             sql += `${key},`;
         })
-        
         sql = sql.slice(0, sql.length-1) + ") values (";
-        
         Object.keys(data).forEach(key=>{
-            sql += `'${data[key]}',`;
+            sql += `?,`;
+            values.push(data[key].toString());
         })
-
         sql = sql.slice(0, sql.length-1) + ");";
-
-        return await this.executeQuery(sql);
+        try{
+            return await this.executeQuery(sql, values);
+        }
+        catch(error){
+            throw error;
+        }
     }
 
     updateData = async(tablename, newdata, conditions)=>{
+        let values = [];
         let sql = `update ${tablename} set `;
 
         Object.keys(newdata).forEach(key=>{
-            sql += `${key} = '${newdata[key]}', `
+            sql += `${key} = ?, `
+            values.push(newdata[key].toString());
         })
 
         sql = sql.slice(0, sql.length-2) + " where ";
         
         Object.keys(conditions).forEach(key=>{
-            sql += `${key} = '${conditions[key]}' and `
+            sql += `${key} = ? and `;
+            values.push(conditions[key].toString());
         })
         
         sql = sql.slice(0, sql.length-5) + ";";
-        return await this.executeQuery(sql)
+        try{
+            return await this.executeQuery(sql, values)
+        }
+        catch(error){
+            throw error;
+        }
     }
     
     deleteData = async(tablename, conditions) => {
+        let values = [];
         let sql = `delete from ${tablename} where `;
         Object.keys(conditions).forEach(key=>{
-            sql += `${key} = '${conditions[key]}' and `
+            sql += `${key} = ? and `;
+            values.push(conditions[key].toString());
         })
         
         sql = sql.slice(0, sql.length-5) + ";";
-        return await this.executeQuery(sql)
+        try{
+            return await this.executeQuery(sql, values)
+        }
+        catch(error){
+            throw error;
+        }
     }
 }
 

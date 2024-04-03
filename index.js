@@ -1,8 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const router = require('./router');
+// const router = require('./router');
 const cookieParser = require('cookie-parser');
+const routers = require('./router/router');
 const app = express();
 
 const port = process.env.PORT || 8000;
@@ -23,6 +24,7 @@ app.listen(port, error=>{
         console.log(`Server is running ${port}`);
         console.log(`URL is : http://${process.env.HOST}:${port}/index`);
         app.use(cookieParser());
-        router(app);
+        app.use(routers);
+        // router(app);
     }
 })
