@@ -1,9 +1,19 @@
-const isAuthentication = require('../../middlewares/isAuthentication.middleware');
-const database = require('../../services/database');
+const database = require('../../../services/database');
 
 const getState = (async(request, response)=>{
-    let db = new database(process.env.DB_DATABASE);
-    response.send(await db.executeQuery("select * from states;"));
+    try{
+        let db = new database(process.env.DB_DATABASE);
+        response.send({
+            flag: true,
+            data: await db.executeQuery(`select * from states;`, [])
+        })
+    }
+    catch{
+        response.send({
+            error: "Something is wrong, restart your application....",
+            flag: false,
+        })
+    }
 })
 
 module.exports = getState;

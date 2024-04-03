@@ -21,6 +21,9 @@ const { userGet, userPost, usersGet } = require("../app/controllers/login.contro
 const menu = require("../app/controllers/menu.controller");
 const allresult = require("../app/controllers/result.controller/allresult.controller");
 const result = require("../app/controllers/result.controller/result.controller");
+const { getCity, getCityWithID } = require("../app/controllers/state_city.controller/get_city.controller");
+const getState = require("../app/controllers/state_city.controller/get_state.controller");
+const stateCityForm = require("../app/controllers/state_city.controller/state_city_form.controller");
 const isAuthentication = require("../middlewares/isAuthentication.middleware");
 const { isValidPost, isValidGet } = require("../middlewares/isValid.middleware");
 
@@ -86,7 +89,10 @@ routers.get("/result/:id", result);
 /* ========================================================
 state city selection module routers
 =========================================================== */
-
+routers.get("/city", getCity);
+routers.get("/city/:state_id", getCityWithID);
+routers.get("/state", getState);
+routers.get("/state_city", stateCityForm);
 
 /* ========================================================
 error page routers
@@ -104,7 +110,7 @@ module.exports = routers;
 // app.use("/student", isAuthentication, delimeter_filter_main);
 // app.use("/", isAuthentication, dynamic_component_main);
 // app.use("/", isAuthentication, result_main);
-//     app.use("/", isAuthentication, state_city_main);
+// app.use("/", isAuthentication, state_city_main);
 //     app.use("/", student_grid_pagination_main);
 //     app.use("/", timezone_convertor_main);
 //     app.use("/userjson", isAuthentication,userjson_main)
