@@ -25,6 +25,9 @@ const { getCity, getCityWithID } = require("../app/controllers/state_city.contro
 const getState = require("../app/controllers/state_city.controller/get_state.controller");
 const stateCityForm = require("../app/controllers/state_city.controller/state_city_form.controller");
 const { students, studentOperation } = require("../app/controllers/student_grid_pagination.controller.js/student.controller");
+const convertor = require("../app/controllers/timezone_convertor.controller/convertor.controller");
+const timezonesWithCities = require("../app/controllers/timezone_convertor.controller/timezonesWithCities.controller");
+const { userjson, userjsonDisplay, userAddGet, userAddPost } = require("../app/controllers/userjson.controller/userjson.controller");
 const isAuthentication = require("../middlewares/isAuthentication.middleware");
 const { isValidPost, isValidGet } = require("../middlewares/isValid.middleware");
 
@@ -74,35 +77,49 @@ routers.get("/attendance_filter/attendance/", isAuthentication,attendance);
 /* ========================================================
 delimeter module router
 =========================================================== */
-routers.get("/student/delimeter", student)
+routers.get("/student/delimeter", isAuthentication, student)
 
 /* ========================================================
 dynamic component module router
 =========================================================== */
-routers.get("/dynamic_component/", dynamic_component);
+routers.get("/dynamic_component/", isAuthentication,dynamic_component);
 
 /* ========================================================
 student exam result module routers
 =========================================================== */
-routers.get("/allresult", allresult);
-routers.get("/result/:id", result);
+routers.get("/allresult", isAuthentication, allresult);
+routers.get("/result/:id", isAuthentication, result);
 
 /* ========================================================
 state city selection module routers
 =========================================================== */
-routers.get("/city", getCity);
-routers.get("/city/:state_id", getCityWithID);
-routers.get("/state", getState);
-routers.get("/state_city", stateCityForm);
+routers.get("/city", isAuthentication, getCity);
+routers.get("/city/:state_id", isAuthentication, getCityWithID);
+routers.get("/state", isAuthentication, getState);
+routers.get("/state_city", isAuthentication, stateCityForm);
 
 /* ========================================================
 student grid pagination and order by module routers
 =========================================================== */
-routers.get("/student", students);
-routers.get("/student/:operation/:key/:order", studentOperation);
+routers.get("/student", isAuthentication, students);
+routers.get("/student/:operation/:key/:order", isAuthentication, studentOperation);
 
 /* ========================================================
-student grid pagination and order by module routers
+timezone convetor order by module routers
+=========================================================== */
+routers.get("/time", isAuthentication, timezonesWithCities);
+routers.get("/timezone_convertor", isAuthentication, convertor);
+
+/* ========================================================
+user json by module routers
+=========================================================== */
+routers.get("/userjson/",userjson);
+routers.get("/userjson/display",userjsonDisplay);
+routers.get("/userjson/add", userAddGet);
+routers.post("/userjson/add", userAddPost);
+
+/* ========================================================
+job application without ajax by module routers
 =========================================================== */
 
 /* ========================================================
@@ -123,9 +140,9 @@ module.exports = routers;
 // app.use("/", isAuthentication, result_main);
 // app.use("/", isAuthentication, state_city_main);
 // app.use("/", student_grid_pagination_main);
-//     app.use("/", timezone_convertor_main);
-//     app.use("/userjson", isAuthentication,userjson_main)
-//     app.use("/job_app_ajax/", isAuthentication, job_app_ajax_main);
+// app.use("/", timezone_convertor_main);
+// app.use("/userjson", isAuthentication,userjson_main)
+// app.use("/job_app_ajax/", isAuthentication, job_app_ajax_main);
 //     app.use("/job_app_without_ajax/", isAuthentication, job_app_without_ajax_main);
 //     app.use("/", isAuthentication, html_ex_main)
 //     app.use("/home", isAuthentication, home);

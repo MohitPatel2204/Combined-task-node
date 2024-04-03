@@ -1,5 +1,10 @@
 const convertor = ((reuest, response)=>{
-    response.render("timezone_convertor");
+    try{
+        response.render("timezone_convertor");
+    }
+    catch{
+        response.render("error")
+    }
 })
 
 module.exports = convertor;

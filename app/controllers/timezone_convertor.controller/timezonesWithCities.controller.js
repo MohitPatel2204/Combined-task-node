@@ -1,5 +1,3 @@
-const isAuthentication = require("../../middlewares/isAuthentication.middleware");
-
 const timezonesWithCities = ((request, response)=>{
   let arr  = [
     'Africa/Abidjan',
@@ -595,7 +593,7 @@ const timezonesWithCities = ((request, response)=>{
     'WET',
     'Zulu',
     ];
-      response.send({time: arr})
+    response.send({time: arr})
 })
 
 module.exports = timezonesWithCities;

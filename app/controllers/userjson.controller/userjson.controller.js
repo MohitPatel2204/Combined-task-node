@@ -1,7 +1,7 @@
-const addUser = require("../../services/userjson/addUser");
-const getData = require("../../services/userjson/getData");
-const getUser = require("../../services/userjson/getUser");
-const isEmpty = require("../../services/userjson/isEmpty");
+const addUser = require("../../../services/userjson/addUser");
+const getData = require("../../../services/userjson/getData");
+const getUser = require("../../../services/userjson/getUser");
+const isEmpty = require("../../../services/userjson/isEmpty");
 
 const userjson = ((req, res)=>{
     try
