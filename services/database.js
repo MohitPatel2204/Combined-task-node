@@ -80,7 +80,6 @@ class database{
             sql += `${key} = ?, `
             values.push(newdata[key].toString());
         })
-
         sql = sql.slice(0, sql.length-2) + " where ";
         
         Object.keys(conditions).forEach(key=>{

@@ -7,11 +7,17 @@ const student = require("../app/controllers/delimeter_filter.js/student.controll
 const dynamic_component = require("../app/controllers/dynamic_component.controller/dynamic_component.controller");
 const errorPage = require("../app/controllers/error.controller");
 const home = require("../app/controllers/home.controller");
+const { task1, task2 , task3 } = require("../app/controllers/html_ex.controller/tasks.controller");
 const index = require("../app/controllers/index.controller");
 const cubegame = require("../app/controllers/javascript_ex.controller/cubegame.controller");
 const dynamicTable = require("../app/controllers/javascript_ex.controller/dynamicTable.controller");
 const events = require("../app/controllers/javascript_ex.controller/events.controller");
 const tic_tac_toe = require("../app/controllers/javascript_ex.controller/tic_tac_toe.controller");
+const candidateAPI = require("../app/controllers/job_app_ajax.controller/candidate.controller");
+const deleteCandidate = require("../app/controllers/job_app_ajax.controller/delete.controller");
+const { candidateAddGet, candidateAddPost } = require("../app/controllers/job_app_ajax.controller/insert.controller");
+const { candidateUpdateGet, candidateUpdatePost } = require("../app/controllers/job_app_ajax.controller/update.controller");
+const viewAllCandidatesAjax = require("../app/controllers/job_app_ajax.controller/viewAllCandidates.controller");
 const deleteData = require("../app/controllers/job_app_without_ajax.controller/deleteData.controller");
 const fetchData = require("../app/controllers/job_app_without_ajax.controller/fetchData.controller");
 const { insertGet, insertPost } = require("../app/controllers/job_app_without_ajax.controller/insert.controller");
@@ -36,6 +42,7 @@ const { userjson, userjsonDisplay, userAddGet, userAddPost } = require("../app/c
 const formValidate = require("../middlewares/formValidate.middleware");
 const isAuthentication = require("../middlewares/isAuthentication.middleware");
 const { isValidPost, isValidGet } = require("../middlewares/isValid.middleware");
+const validation = require("../middlewares/validation.middleware");
 
 const routers = require("express").Router();
 /* ========================================================
@@ -140,28 +147,30 @@ routers.post("/job_app_without_ajax/update/:id", formValidate, isAuthentication,
 routers.get("/job_app_without_ajax/candidates/", isAuthentication, viewAllCandidates);
 
 /* ========================================================
+job application with ajax by module routers
+=========================================================== */
+routers.get("/job_app_ajax/candidate/:id", candidateAPI);
+
+routers.get('/job_app_ajax/delete/:id', deleteCandidate);
+
+routers.get("/job_app_ajax/insert_candidate", candidateAddGet)
+routers.post("/job_app_ajax/insert_candidate", validation,candidateAddPost);
+
+routers.get("/job_app_ajax/update_candidate/:id", candidateUpdateGet);
+routers.post("/job_app_ajax/update_candidate/:id", validation,candidateUpdatePost);
+
+routers.get("/job_app_ajax/candidates", viewAllCandidatesAjax);
+
+/* ========================================================
+html ex. by module routers
+=========================================================== */
+routers.get("/task1", task1);
+routers.get("/task2", task2);
+routers.get("/task3", task3);
+
+/* ========================================================
 error page routers
 =========================================================== */
 routers.get("*", errorPage);
 
 module.exports = routers;
-
-// app.use("/", login_main);
-// app.use("/index", index);
-// app.use("/clientEnvVariable", clientEnvVariable);
-// app.use("/javascript_ex/", isAuthentication, javascript_ex_main);
-// app.use("/json_app", isAuthentication, api_call_json_main);
-// app.use("/attendance_filter", isAuthentication, attendance_filter_main);    
-// app.use("/student", isAuthentication, delimeter_filter_main);
-// app.use("/", isAuthentication, dynamic_component_main);
-// app.use("/", isAuthentication, result_main);
-// app.use("/", isAuthentication, state_city_main);
-// app.use("/", student_grid_pagination_main);
-// app.use("/", timezone_convertor_main);
-// app.use("/userjson", isAuthentication,userjson_main)
-// app.use("/job_app_ajax/", isAuthentication, job_app_ajax_main);
-//     app.use("/job_app_without_ajax/", isAuthentication, job_app_without_ajax_main);
-//     app.use("/", isAuthentication, html_ex_main)
-//     app.use("/home", isAuthentication, home);
-//     app.use("/menu", isAuthentication, menu);
-//     app.use("*", errorPage);

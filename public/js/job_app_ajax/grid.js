@@ -37,7 +37,7 @@ const printData = (grid,start, end) => {
             td.setAttribute("style", grid.cellStyle);
             const opearion = grid.operation;
             Object.keys(opearion).forEach(key=>{
-                td.innerHTML += `<a class="${grid.buttonClass}" style="${grid.buttonStyle}" href="/${opearion[key][0]}/${data[i][opearion[key][1]]}">${opearion[key][2]}</a>`
+                td.innerHTML += `<a class="${grid.buttonClass}" style="${grid.buttonStyle}" href="${opearion[key][0]}/${data[i][opearion[key][1]]}">${opearion[key][2]}</a>`
             })
             tr.appendChild(td)
         }

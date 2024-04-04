@@ -4,7 +4,7 @@ const isRequiredString = (obj) =>{
     keys = Object.keys(obj);
     for(let i=0; i<keys.length; i++)
     {
-        if(document.getElementById(keys[i]).value=="")
+        if(document.getElementById(keys[i]).value.trim()=="")
         {
             return keys[i];
         }
@@ -22,7 +22,7 @@ const isNumberString = (obj) =>{
     let keys = Object.keys(obj);
     for(let i=0; i<keys.length; i++)
     {
-        if(!isNaN(document.getElementById(keys[i]).value))
+        if(!isNaN(document.getElementById(keys[i]).value.trim()))
         {
             return keys[i];
         }
@@ -37,15 +37,15 @@ const regularExp = (type, id) => {
     switch(type)
     {
         case "email":
-            if(EMAIL.test(document.getElementById(id).value))   
+            if(EMAIL.test(document.getElementById(id).value.trim()))   
                 return true;
             break;
         case "mobile":
-            if(CONTACT.test(document.getElementById(id).value))
+            if(CONTACT.test(document.getElementById(id).value.trim()))
                 return true;
             break;
         case "date":
-            if(DATE.test(document.getElementById(id).value))
+            if(DATE.test(document.getElementById(id).value.trim()))
                 return true;
             break;
     }
@@ -61,8 +61,8 @@ const isArraySame = (arr) => {
             item = document.getElementsByName(item)
             let row = [];
             item.forEach(element => {
-                if(element.value != "")
-                    row.push(element.value)
+                if(element.value.trim() != "")
+                    row.push(element.value.trim())
             });
             result.push(row);
         })
@@ -88,7 +88,7 @@ const arrayRequired = (arr) => {
         if(obj.type=="text")
         {
             inputs.forEach(input=>{
-                if(input.value != "")
+                if(input.value.trim() != "")
                     count++;
             })
         }

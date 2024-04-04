@@ -1,4 +1,3 @@
-// let hide_navigation_count = 1;
 let decrease_width_count = 1;
 function decrease_width() {
     if (decrease_width_count == 1) {

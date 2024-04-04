@@ -100,4 +100,5 @@ const validation = (request, response, next) => {
 	request.body['technologies'] = arraysToObjects1(data, ['php', 'mysql', 'laravel', 'oracle'], ['technology', 'technology_lvl'])
 	next();
 }
+
 module.exports = validation;
