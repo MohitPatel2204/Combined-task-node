@@ -2,144 +2,144 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tic tac toe</title>
-    <style>
-        .col {
-            height: 100px;
-            width: 100px;
-            margin: 2px;
-            border-radius: 10px;
-            }
-        p{
-            font-size:65px;
-            color: white;
-        }
-    </style>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script>
-        let text="O";
-        let count = 0;
-        function createArray()
-        {                                                                                                                                         
-            let table = document.getElementById("mytable");
-            let arr = Array(Array(), Array(), Array());
-            for(let i=0; i<table.children.length; i++)
-            {
-                for(let j=0; j<table.children[i].children.length; j++)
-                {
-                    arr[i][j] = table.children[i].children[j].children[0].innerHTML;
-                }
-            }
-            return arr;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>tic tac toe</title>
+	<style>
+		.col {
+			height: 100px;
+			width: 100px;
+			margin: 2px;
+			border-radius: 10px;
+			}
+		p{
+			font-size:65px;
+			color: white;
+		}
+	</style>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script>
+		let text="O";
+		let count = 0;
+		function createArray()
+		{                                                                                                                                         
+			let table = document.getElementById("mytable");
+			let arr = Array(Array(), Array(), Array());
+			for(let i=0; i<table.children.length; i++)
+			{
+				for(let j=0; j<table.children[i].children.length; j++)
+				{
+					arr[i][j] = table.children[i].children[j].children[0].innerHTML;
+				}
+			}
+			return arr;
+		}
 
-        function isValid()
-        {
-            let arr = createArray();
-            let res5 = res6 = res7 = res8 = 0;
-            if(count == 9)
-            {
-                alert("Match is draw");
-                return true;
-            }
-            for(let i=0; i<3; i++)
-            {
-                let res1 = res2 = res3= res4 = 0;
-                for(let j=0; j<3; j++)
-                {
-                    if(arr[i][j] == "O") res1++;
-                    if(arr[i][j] == "X") res2++;
-                    if(arr[j][i] == "O") res3++;
-                    if(arr[j][i] == "X") res4++;
-                    if(i == j && arr[i][j] == "O") res5++;
-                    if(i == j && arr[i][j] == "X") res6++;
-                    if((i==0 && j==2 && arr[i][j] == "O") || (i==1 && j==1 && arr[i][j] == "O") || (i==2 && j==0 && arr[i][j] == "O")) res7++;
-                    if((i==0 && j==2 && arr[i][j] == "X") || (i==1 && j==1 && arr[i][j] == "X") || (i==2 && j==0 && arr[i][j] == "X")) res8++;
-                }
+		function isValid()
+		{
+			let arr = createArray();
+			let res5 = res6 = res7 = res8 = 0;
+			if(count == 9)
+			{
+				alert("Match is draw");
+				return true;
+			}
+			for(let i=0; i<3; i++)
+			{
+				let res1 = res2 = res3= res4 = 0;
+				for(let j=0; j<3; j++)
+				{
+					if(arr[i][j] == "O") res1++;
+					if(arr[i][j] == "X") res2++;
+					if(arr[j][i] == "O") res3++;
+					if(arr[j][i] == "X") res4++;
+					if(i == j && arr[i][j] == "O") res5++;
+					if(i == j && arr[i][j] == "X") res6++;
+					if((i==0 && j==2 && arr[i][j] == "O") || (i==1 && j==1 && arr[i][j] == "O") || (i==2 && j==0 && arr[i][j] == "O")) res7++;
+					if((i==0 && j==2 && arr[i][j] == "X") || (i==1 && j==1 && arr[i][j] == "X") || (i==2 && j==0 && arr[i][j] == "X")) res8++;
+				}
 
-                if(res1 == 3 || res3 == 3)
-                {
-                    alert(`Player 1 is winner\nTime is : ${time}`);
-                    return true;
-                }
-                if(res2 == 3 ||  res4 == 3)
-                {
-                    alert(`Player 2 is winner\nTime is : ${time}`);
-                    return true;
-                }
-            }
-            if(res5 == 3 || res7 == 3)
-            {
-                alert(`Player 1 is winner\nTime is : ${time}`);
-                return true;
-            }
-            if(res6 == 3 ||  res8 == 3)
-            {
-                alert(`Player 2 is winner\nTime is : ${time}`);
-                return true;
-            }
-            return false;
-        }
+				if(res1 == 3 || res3 == 3)
+				{
+					alert(`Player 1 is winner\nTime is : ${time}`);
+					return true;
+				}
+				if(res2 == 3 ||  res4 == 3)
+				{
+					alert(`Player 2 is winner\nTime is : ${time}`);
+					return true;
+				}
+			}
+			if(res5 == 3 || res7 == 3)
+			{
+				alert(`Player 1 is winner\nTime is : ${time}`);
+				return true;
+			}
+			if(res6 == 3 ||  res8 == 3)
+			{
+				alert(`Player 2 is winner\nTime is : ${time}`);
+				return true;
+			}
+			return false;
+		}
 
-        function game(resultcell)
-        {
-            
-            let p = resultcell.children[0];
-            if(p.innerHTML=="")
-            {
-                p.innerHTML = text;
-                count++;
-                if(text == "O")
-                    text = "X";
-                else
-                    text = "O";
-            }
+		function game(resultcell)
+		{
+			
+			let p = resultcell.children[0];
+			if(p.innerHTML=="")
+			{
+				p.innerHTML = text;
+				count++;
+				if(text == "O")
+					text = "X";
+				else
+					text = "O";
+			}
 
-            if(isValid())
-            {
-                location.reload();
-            }
-        }
+			if(isValid())
+			{
+				location.reload();
+			}
+		}
 
-        let time = 0;
-        setInterval(()=>{
-            document.getElementById("time").innerHTML = `Time : ${time++}`;
-        }, 1000)
-    </script>
+		let time = 0;
+		setInterval(()=>{
+			document.getElementById("time").innerHTML = `Time : ${time++}`;
+		}, 1000)
+	</script>
 </head>
 
 <body>
-    <center>
-        <div class="h2 text-success">
-            Dynamic table<br>
-            Mohit moradiya<br>
-            24DEV044
-        </div>
-        <div class="h1 text-danger">
-            Tic Tac Toe
-        </div>
-        <div class="container w-25" id="mytable">
-            <div class="row">
-                <div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
-                <div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
-                <div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
-            </div>
-            <div class="row">
-                <div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
-                <div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
-                <div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
-            </div>
-            <div class="row">
-                <div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
-                <div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
-                <div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
-            </div>
-            </div>
-        <div class="bg-danger p-2 m-2 w-25 rounded"><h1 class="text-light" id="time">Time : 0</h1></div>
-        <button onclick="location.reload();" class="btn btn-warning text-light">New</button>
-    </center>
+	<center>
+		<div class="h2 text-success">
+			Dynamic table<br>
+			Mohit moradiya<br>
+			24DEV044
+		</div>
+		<div class="h1 text-danger">
+			Tic Tac Toe
+		</div>
+		<div class="container w-25" id="mytable">
+			<div class="row">
+				<div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
+				<div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
+				<div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
+			</div>
+			<div class="row">
+				<div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
+				<div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
+				<div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
+			</div>
+			<div class="row">
+				<div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
+				<div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
+				<div class="col bg-primary" onclick="game(this)"><p class="text-center"></p></div>
+			</div>
+			</div>
+		<div class="bg-danger p-2 m-2 w-25 rounded"><h1 class="text-light" id="time">Time : 0</h1></div>
+		<button onclick="location.reload();" class="btn btn-warning text-light">New</button>
+	</center>
 </body>
 
 </html>

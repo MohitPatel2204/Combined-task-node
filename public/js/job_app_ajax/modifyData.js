@@ -19,6 +19,4 @@ const modifyData = async() => {
     })
     result = await result.json();
     displayError(result.error);
-    // url = `/update_candidate/${document.getElementById("candidate_id").value}`;
-    // return true;
 }

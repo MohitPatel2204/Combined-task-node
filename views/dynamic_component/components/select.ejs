@@ -1,72 +1,72 @@
 <% if(component && component.options.length > 0) { %>
-    <% if(component.type == "radiobutton") { %>
-        <div 
-        style="margin-inline-start: 100px;"
-        id="<%=component.select_key%>"
-        name="<%=component.select_key%>"
-        <% if(component.multiple==1){ %>multiple <% } %>
-        <% if(component.class != null){ %> class = "<%= component.class %>" <% } %>>
-            <%  component.options.forEach(option => { %>
-                <input
-                    type="radio"
-                    name="<%= option.select_key %>"
-                    id="<%= option.option_key %>"
-                    value="<%= option.option_key %>"
-                    <% if(option.is_select){ %> checked <% } %>
-                    <% if(option.class != null){ %> class = "<%= option.class %>" <% } %>
-                >
-                <label 
-                    id = "<%=  option.option_key%>"
-                    for = "<%= option.option_key%>"
-                >
-                    <%= option.option_name %>
-                </label>
-            <% }) %>
-        </div>
-    <% } %>
-    <% if(component.type == "checkbox") { %>
-        <div 
-        style="margin-inline-start: 100px;"
-        id="<%=component.select_key%>"
-        name="<%=component.select_key%>"
-        <% if(component.multiple==1){ %>multiple <% } %>
-        <% if(component.class != null){ %> class = "<%= component.class %>" <% } %>>
-            <%  component.options.forEach(option => { %>
-                <input
-                    type="checkbox"
-                    name="<%= option.select_key %>"
-                    id="<%= option.option_key %>"
-                    value="<%= option.option_key %>"
-                    <% if(option.is_select){ %> checked <% } %>
-                    <% if(option.class != null){ %> class = "<%= option.class %>" <% } %>
-                >
-                <label 
-                    id = "<%=  option.option_key%>"
-                    for = "<%= option.option_key%>"
-                >
-                    <%= option.option_name %>
-                </label>
-            <% }) %>
-        </div>
-    <% } %>
-    <% if(component.type == "dropdown") { %>
-        <select
-        style="margin-inline-start: 100px;"
-        id="<%=component.select_key%>"
-        name="<%=component.select_key%>"
-        <% if(component.multiple==1){ %>multiple <% } %>
-        <% if(component.class != null){ %> class = "<%= component.class %>" <% } %>>
-            <%  component.options.forEach(option => { %>
-                <option
-                    value="<%= option.option_key %>"
-                    <% if(option.is_select){ %> checked <% } %>
-                    <% if(option.class != null){ %> class = "<%= option.class %>" <% } %>
-                >
-                    <%= option.option_name %>
-                </option>
-            <% }) %>
-        </select>
-    <% } %>
+	<% if(component.type == "radiobutton") { %>
+		<div 
+		style="margin-inline-start: 100px;"
+		id="<%=component.select_key%>"
+		name="<%=component.select_key%>"
+		<% if(component.multiple==1){ %>multiple <% } %>
+		<% if(component.class != null){ %> class = "<%= component.class %>" <% } %>>
+			<%  component.options.forEach(option => { %>
+				<input
+					type="radio"
+					name="<%= option.select_key %>"
+					id="<%= option.option_key %>"
+					value="<%= option.option_key %>"
+					<% if(option.is_select){ %> checked <% } %>
+					<% if(option.class != null){ %> class = "<%= option.class %>" <% } %>
+				>
+				<label 
+					id = "<%=  option.option_key%>"
+					for = "<%= option.option_key%>"
+				>
+					<%= option.option_name %>
+				</label>
+			<% }) %>
+		</div>
+	<% } %>
+	<% if(component.type == "checkbox") { %>
+		<div 
+		style="margin-inline-start: 100px;"
+		id="<%=component.select_key%>"
+		name="<%=component.select_key%>"
+		<% if(component.multiple==1){ %>multiple <% } %>
+		<% if(component.class != null){ %> class = "<%= component.class %>" <% } %>>
+			<%  component.options.forEach(option => { %>
+				<input
+					type="checkbox"
+					name="<%= option.select_key %>"
+					id="<%= option.option_key %>"
+					value="<%= option.option_key %>"
+					<% if(option.is_select){ %> checked <% } %>
+					<% if(option.class != null){ %> class = "<%= option.class %>" <% } %>
+				>
+				<label 
+					id = "<%=  option.option_key%>"
+					for = "<%= option.option_key%>"
+				>
+					<%= option.option_name %>
+				</label>
+			<% }) %>
+		</div>
+	<% } %>
+	<% if(component.type == "dropdown") { %>
+		<select
+		style="margin-inline-start: 100px;"
+		id="<%=component.select_key%>"
+		name="<%=component.select_key%>"
+		<% if(component.multiple==1){ %>multiple <% } %>
+		<% if(component.class != null){ %> class = "<%= component.class %>" <% } %>>
+			<%  component.options.forEach(option => { %>
+				<option
+					value="<%= option.option_key %>"
+					<% if(option.is_select){ %> checked <% } %>
+					<% if(option.class != null){ %> class = "<%= option.class %>" <% } %>
+				>
+					<%= option.option_name %>
+				</option>
+			<% }) %>
+		</select>
+	<% } %>
 <% } else { %>
-    ERROR : Component not found
+	ERROR : Component not found
 <% } %>

@@ -1,27 +1,27 @@
 <div style="display: flex; gap: 10px">
-    <%if(page.hide.indexOf("first")==-1){%>
-        <a href="/attendance_filter/attendance/first" ><btuton><<</btuton></a>
-    <%} else { %>
-        <a href="" ><btuton><<</btuton></a>
-    <%}%>
+	<%if(page.hide.indexOf("first")==-1){%>
+		<a href="/attendance_filter/attendance/first" ><btuton><<</btuton></a>
+	<%} else { %>
+		<a href="" ><btuton><<</btuton></a>
+	<%}%>
 
-    <%if(page.hide.indexOf("0")==-1){%>
-        <a href="/attendance_filter/attendance/0" ><btuton><</btuton></a>
-    <%} else { %>
-        <a href=""><btuton><</btuton></a>
-    <%}%>
+	<%if(page.hide.indexOf("0")==-1){%>
+		<a href="/attendance_filter/attendance/0" ><btuton><</btuton></a>
+	<%} else { %>
+		<a href=""><btuton><</btuton></a>
+	<%}%>
 
-    <p style="margin-top: auto;">Page no : <%=page.currentPageno+1%></p>
+	<p style="margin-top: auto;">Page no : <%=page.currentPageno+1%></p>
 
-    <%if(page.hide.indexOf("1")==-1){%>
-        <a href="/attendance_filter/attendance/1" ><btuton>></btuton></a>
-    <%} else { %>
-        <a href=""><btuton>></btuton></a>
-    <%}%>
+	<%if(page.hide.indexOf("1")==-1){%>
+		<a href="/attendance_filter/attendance/1" ><btuton>></btuton></a>
+	<%} else { %>
+		<a href=""><btuton>></btuton></a>
+	<%}%>
 
-    <%if(page.hide.indexOf("last")==-1){%>
-        <a href="/attendance_filter/attendance/last" ><btuton>>></btuton></a>
-    <%} else { %>
-        <a href=""><btuton>>></btuton></a>
-    <%}%>
+	<%if(page.hide.indexOf("last")==-1){%>
+		<a href="/attendance_filter/attendance/last" ><btuton>>></btuton></a>
+	<%} else { %>
+		<a href=""><btuton>>></btuton></a>
+	<%}%>
 </div>

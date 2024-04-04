@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 </head>
 <body>
-    <form>
-        <input type="text" name="componentName" placeholder="Enter Component Name...." value="<% if(componentName!="") {%><%=componentName%><%} %>">
-        <input type="submit" value="go">
-    </form>
-    <hr>
-    <% try { %>
-        <%- include("components/select", {component: component}) %>
-    <% } catch(error) { %>
-        <h1 style="color: red;">Component not found</h1>    
-    <% } %>
+	<form>
+		<input type="text" name="componentName" placeholder="Enter Component Name...." value="<% if(componentName!="") {%><%=componentName%><%} %>">
+		<input type="submit" value="go">
+	</form>
+	<hr>
+	<% try { %>
+		<%- include("components/select", {component: component}) %>
+	<% } catch(error) { %>
+		<h1 style="color: red;">Component not found</h1>    
+	<% } %>
 </body>
 </html>

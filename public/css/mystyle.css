@@ -1,19 +1,19 @@
 body{
-    height: 900px;
-    width: 100%;
-    overflow: hidden;
-    background-color: #fff;
+	height: 900px;
+	width: 100%;
+	overflow: hidden;
+	background-color: #fff;
 }
 .container
 {
-    border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    margin: auto;
-    margin-top: 10%;
+	border-radius: 15px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+	margin: auto;
+	margin-top: 10%;
 }
 .row{
-    padding: 10px;
+	padding: 10px;
 }
 .form-control{
-    border: 1px solid;
+	border: 1px solid;
 }

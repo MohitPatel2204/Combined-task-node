@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/userjsonstyle.css" rel="stylesheet" type="text/css">
-    <title>Display User</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/userjsonstyle.css" rel="stylesheet" type="text/css">
+	<title>Display User</title>
 </head>
 <body>
-    <table align="center">
-        <tr class="heading">
-            <th colspan="2"><h1><%=user["firstname"]%> <%=user["lastname"]%></h1></th>
-        </tr>
+	<table align="center">
+		<tr class="heading">
+			<th colspan="2"><h1><%=user["firstname"]%> <%=user["lastname"]%></h1></th>
+		</tr>
 
-        <tr>
-            <td>Age</td>
-            <td><%=user["age"]%></td>
-        </tr>
+		<tr>
+			<td>Age</td>
+			<td><%=user["age"]%></td>
+		</tr>
 
-        <tr>
-            <td>Mobile no : </td>
-            <td><%=user["mobileno"]%></td>
-        </tr>
+		<tr>
+			<td>Mobile no : </td>
+			<td><%=user["mobileno"]%></td>
+		</tr>
 
-        <tr>
-            <td>Email ID</td>
-            <td><%=user["email"]%></td>
-        </tr>
+		<tr>
+			<td>Email ID</td>
+			<td><%=user["email"]%></td>
+		</tr>
 
-        <tr>
-            <td>Gender : </td>
-            <td><%=user["gender"]%></td>
-        </tr>
+		<tr>
+			<td>Gender : </td>
+			<td><%=user["gender"]%></td>
+		</tr>
 
-        <tr>
-            <td>Hobbies : </td>
-            <td><%=user["hobby"].toString()%></td>
-        </tr>
+		<tr>
+			<td>Hobbies : </td>
+			<td><%=user["hobby"].toString()%></td>
+		</tr>
 
-        <tr>
-            <td>Address : </td>
-            <td><%=user["address"]%></td>
-        </tr>
-    </table>
-    <a href="/userjson">Back</a>
+		<tr>
+			<td>Address : </td>
+			<td><%=user["address"]%></td>
+		</tr>
+	</table>
+	<a href="/userjson">Back</a>
 </body>
 </html>

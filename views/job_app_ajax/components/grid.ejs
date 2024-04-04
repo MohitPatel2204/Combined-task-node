@@ -1,56 +1,56 @@
 <script src="/js/job_app_ajax/grid.js"></script>
 
 <body>
-    <table border="2" style='<%= table.tableStyle %>' class='<%=table.tableClass%>' id="<%=table.name%>">
-        <thead class="<%=table.headerClass%>" style="<%=table.headerStyle%>"></thead>
-        <tbody class="<%=table.bodyClass%>" style="<%=table.bodyStyle%>"></tbody>
-        <tfoot class="<%=table.footerClass%>" style="<%=table.footerStyle%>">
-            <tr>
-                <td colspan="<%=Object.keys(table.data[0]).length%>" style="text-align: center;">
-                    <form style="display: flex; flex-direction: row; gap: 3px;">
-                        <input type="text" placeholder="Search here...." id="globalsearch"
-                            class="<%= table.inputClass %>" style="<%= table.inputStyle %>">
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="<%=table.data.length%>">
-                    <div colspan="4"
-                        style="text-align: center;display: flex; margin:10px auto; width: fit-content; height: 30px; gap: 10px">
-                        <button onclick="pagination(obj, this)" id="first" class="<%=table.buttonClass%>"
-                            style="<%=table.buttonStyle%>">&laquo;</button>
-                        <button onclick="pagination(obj, this)" id="prev" class="<%=table.buttonClass%>"
-                            style="<%=table.buttonStyle%>">&lsaquo;</button>
-                        <p id="page">1</p>
-                        <button onclick="pagination(obj, this)" id="next" class="<%=table.buttonClass%>"
-                            style="<%=table.buttonStyle%>">&rsaquo;</button>
-                        <button onclick="pagination(obj, this)" id="last" class="<%=table.buttonClass%>"
-                            style="<%=table.buttonStyle%>">&raquo;</button>
-                    </div>
-                </td>
-            </tr>
-        </tfoot>
-    </table>
+	<table border="2" style='<%= table.tableStyle %>' class='<%=table.tableClass%>' id="<%=table.name%>">
+		<thead class="<%=table.headerClass%>" style="<%=table.headerStyle%>"></thead>
+		<tbody class="<%=table.bodyClass%>" style="<%=table.bodyStyle%>"></tbody>
+		<tfoot class="<%=table.footerClass%>" style="<%=table.footerStyle%>">
+			<tr>
+				<td colspan="<%=Object.keys(table.data[0]).length%>" style="text-align: center;">
+					<form style="display: flex; flex-direction: row; gap: 3px;">
+						<input type="text" placeholder="Search here...." id="globalsearch"
+							class="<%= table.inputClass %>" style="<%= table.inputStyle %>">
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="<%=table.data.length%>">
+					<div colspan="4"
+						style="text-align: center;display: flex; margin:10px auto; width: fit-content; height: 30px; gap: 10px">
+						<button onclick="pagination(obj, this)" id="first" class="<%=table.buttonClass%>"
+							style="<%=table.buttonStyle%>">&laquo;</button>
+						<button onclick="pagination(obj, this)" id="prev" class="<%=table.buttonClass%>"
+							style="<%=table.buttonStyle%>">&lsaquo;</button>
+						<p id="page">1</p>
+						<button onclick="pagination(obj, this)" id="next" class="<%=table.buttonClass%>"
+							style="<%=table.buttonStyle%>">&rsaquo;</button>
+						<button onclick="pagination(obj, this)" id="last" class="<%=table.buttonClass%>"
+							style="<%=table.buttonStyle%>">&raquo;</button>
+					</div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
 </body>
 
 <script>
 
-    const getJson = (text) => {
-        let div = document.createElement("div");
-        text = text.replaceAll("\n", "<br>")
-        div.innerHTML = text;
-        return JSON.parse(div.innerHTML);
-    }
+	const getJson = (text) => {
+		let div = document.createElement("div");
+		text = text.replaceAll("\n", "<br>")
+		div.innerHTML = text;
+		return JSON.parse(div.innerHTML);
+	}
 
-    let obj = getJson(`<%=JSON.stringify(table)%>`);
-    obj["buttonsID"] =["first", "prev", "next", "last"];
-    obj['printPageNo'] = 'page';
+	let obj = getJson(`<%=JSON.stringify(table)%>`);
+	obj["buttonsID"] =["first", "prev", "next", "last"];
+	obj['printPageNo'] = 'page';
 
-    if (`<%=JSON.stringify(table.header)%>`)
-        obj["header"] = getJson(`<%=JSON.stringify(table.header)%>`);
-    pagination(obj);
-    
-    document.getElementById("globalsearch").addEventListener("input", () => {
-        globalSearch(obj, document.getElementById("globalsearch").value)
-    })
+	if (`<%=JSON.stringify(table.header)%>`)
+		obj["header"] = getJson(`<%=JSON.stringify(table.header)%>`);
+	pagination(obj);
+	
+	document.getElementById("globalsearch").addEventListener("input", () => {
+		globalSearch(obj, document.getElementById("globalsearch").value)
+	})
 </script>

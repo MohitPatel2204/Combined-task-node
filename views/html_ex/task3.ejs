@@ -1,467 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="./css/htmltask3.css" rel="stylesheet">
-    <script>
-        let count = 0;
-        function nextSlide(id)
-        {
-            id = document.getElementById(id);
-            let length = id.children.length;
-            if(count<length-1)
-            {
-                id.children[count].style.display = "none";
-                id.children[++count].style.display = "block";
-            }
-        }
-        function prevSlide(id)
-        {
-            id = document.getElementById(id);
-            if(count>0)
-            {
-                id.children[count].style.display = "none";
-                id.children[--count].style.display = "block";
-            }
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="./css/htmltask3.css" rel="stylesheet">
+	<script>
+		let count = 0;
+		function nextSlide(id)
+		{
+			id = document.getElementById(id);
+			let length = id.children.length;
+			if(count<length-1)
+			{
+				id.children[count].style.display = "none";
+				id.children[++count].style.display = "block";
+			}
+		}
+		function prevSlide(id)
+		{
+			id = document.getElementById(id);
+			if(count>0)
+			{
+				id.children[count].style.display = "none";
+				id.children[--count].style.display = "block";
+			}
+		}
 
-        let toggleNavigation = true;
-        function hideNavigation(id)
-        {
-            if(toggleNavigation)
-            {
-                toggleNavigation= false;
-                document.getElementById(id).className = "hide";       
-            }
-            else
-            {
-                toggleNavigation = true;
-                document.getElementById(id).className = "navbar show";       
-            }
-        }
-    </script>
+		let toggleNavigation = true;
+		function hideNavigation(id)
+		{
+			if(toggleNavigation)
+			{
+				toggleNavigation= false;
+				document.getElementById(id).className = "hide";       
+			}
+			else
+			{
+				toggleNavigation = true;
+				document.getElementById(id).className = "navbar show";       
+			}
+		}
+	</script>
 </head>
 <body style="width: 100%;">
-    <div class="body bg-site">
-        <header>
-            <div class="container navigationbar">
-                <div class="row">
-                    <div class="col-2 flex" style="width: 40%;">
-                        <img src="./assets/HireX_black.png">
-                        <btn class="btn btn-orange btn-navigation-hide" style="margin-left: 80%;width: fit-content"  onclick="hideNavigation('navbar')"><img src="./assets/arrow-right-2.png" height="10px"></btn>
-                    </div>
-                    <div class="col-2 navbar" style="width: 60%;" id="navbar">   
-                        <li class="nav-item">
-                            <a href="">Works</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="">Blogs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="">FAQs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="">Contact Us</a>
-                        </li>
-                        <li class="nav-item btn btn-black">
-                            <span style="width: fit-content">
-                                We're Hearing
-                            </span>
-                            <img src="./assets/arrow-right.png">
-                        </li>
-                    </div>
-                </div>
-            </div>
-        </header>
+	<div class="body bg-site">
+		<header>
+			<div class="container navigationbar">
+				<div class="row">
+					<div class="col-2 flex" style="width: 40%;">
+						<img src="./assets/HireX_black.png">
+						<btn class="btn btn-orange btn-navigation-hide" style="margin-left: 80%;width: fit-content"  onclick="hideNavigation('navbar')"><img src="./assets/arrow-right-2.png" height="10px"></btn>
+					</div>
+					<div class="col-2 navbar" style="width: 60%;" id="navbar">   
+						<li class="nav-item">
+							<a href="">Works</a>
+						</li>
+						<li class="nav-item">
+							<a href="">About Us</a>
+						</li>
+						<li class="nav-item">
+							<a href="">Blogs</a>
+						</li>
+						<li class="nav-item">
+							<a href="">FAQs</a>
+						</li>
+						<li class="nav-item">
+							<a href="">Contact Us</a>
+						</li>
+						<li class="nav-item btn btn-black">
+							<span style="width: fit-content">
+								We're Hearing
+							</span>
+							<img src="./assets/arrow-right.png">
+						</li>
+					</div>
+				</div>
+			</div>
+		</header>
 
-        <div class="main">
-            <section id="home">
-                <div class="container">
-                    <div class="row mt-3">
-                        <div class="col-2">
-                            <div class="flex">
-                                <div class="text-black bold large   " style="margin: auto 0;">WELCOME TO HIREX</div>
-                                <img src="./assets/Star 1.png">
-                            </div>
-                            <div class="xx-large text-black mt-3 bold">Award Winning<br>Digital Agency.</div>
-                            <p class="text-black mt-3">Digital Agency offering unique solutions to create digital presense and increase your sales</p>
-                            <form class="flex shadow">
-                                <input type="text" placeholder="Your Email Address" name="email" style="border: 2px solid black; border-radius: 0px; width: 100%; padding: 10px;">
-                                <input type="submit" value="Request Access" name="request" class="btn btn-yellow" style="width: fit-content; border-radius: 0px;">
-                            </form> 
-                            <div class="mt-2" style="background-color: rgba(247, 168, 0, 0.192); padding: 10px; width: fit-content;">
-                                Open account and get 5 boxes
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div style="position: relative; height: 500px; width: 100%">
-                                <div class="right-top text-dark bg-orange">
-                                    <img src="./assets/image 2 (Traced).png">
-                                    <div class="x-large">Web<br>Design</div>
-                                </div>
-                                <div class="center text-dark bg-yellow">
-                                    <img src="./assets/image 6 (Traced).png">
-                                    <div class="x-large">Social Media</div>
-                                </div>
-                                <div class="left-bottom text-white bg-green">
-                                    <div class="x-large">UIX<br>Design</div>
-                                    <img src="./assets/image 1 (Traced).png">
-                                </div>
-                                <div class="right-bottom">
-                                    <img src="./assets/Group 6.png">
-                                </div>
-                            </di>
-                        </div>
-                    </div>
-                </div>
-            </section>
+		<div class="main">
+			<section id="home">
+				<div class="container">
+					<div class="row mt-3">
+						<div class="col-2">
+							<div class="flex">
+								<div class="text-black bold large   " style="margin: auto 0;">WELCOME TO HIREX</div>
+								<img src="./assets/Star 1.png">
+							</div>
+							<div class="xx-large text-black mt-3 bold">Award Winning<br>Digital Agency.</div>
+							<p class="text-black mt-3">Digital Agency offering unique solutions to create digital presense and increase your sales</p>
+							<form class="flex shadow">
+								<input type="text" placeholder="Your Email Address" name="email" style="border: 2px solid black; border-radius: 0px; width: 100%; padding: 10px;">
+								<input type="submit" value="Request Access" name="request" class="btn btn-yellow" style="width: fit-content; border-radius: 0px;">
+							</form> 
+							<div class="mt-2" style="background-color: rgba(247, 168, 0, 0.192); padding: 10px; width: fit-content;">
+								Open account and get 5 boxes
+							</div>
+						</div>
+						<div class="col-2">
+							<div style="position: relative; height: 500px; width: 100%">
+								<div class="right-top text-dark bg-orange">
+									<img src="./assets/image 2 (Traced).png">
+									<div class="x-large">Web<br>Design</div>
+								</div>
+								<div class="center text-dark bg-yellow">
+									<img src="./assets/image 6 (Traced).png">
+									<div class="x-large">Social Media</div>
+								</div>
+								<div class="left-bottom text-white bg-green">
+									<div class="x-large">UIX<br>Design</div>
+									<img src="./assets/image 1 (Traced).png">
+								</div>
+								<div class="right-bottom">
+									<img src="./assets/Group 6.png">
+								</div>
+							</di>
+						</div>
+					</div>
+				</div>
+			</section>
 
-            <section id="about">
-                <marquee class="bg-black">
-                    <div class="bg-black">
-                    <div class="flex" style="padding: 5px;">
-                        <div class="flex" style="margin: auto;" >
-                            <h2 class="text-white" style="margin: auto;">GET ACCESS NOW!</h2>
-                            <img src="./assets/image-fBLQvAFN1-transformed 1.png" width="50">
-                        </div>
-                        <div style="margin: auto;padding-inline: 20px;"><img src="./assets/Line 5.png"></div>
-                        <div class="flex" style="margin: auto;" >
-                            <h2 class="text-white" style="margin: auto;">GET ACCESS NOW!</h2>
-                            <img src="./assets/image-fBLQvAFN1-transformed 1.png" width="50">
-                        </div>
-                        <div style="margin: auto;padding-inline: 20px;"><img src="./assets/Line 5.png"></div>
-                        <div class="flex" style="margin: auto;" >
-                            <h2 class="text-white" style="margin: auto;">GET ACCESS NOW!</h2>
-                            <img src="./assets/image-fBLQvAFN1-transformed 1.png" width="50">
-                        </div>
-                    </div>
-                </div>
-            </marquee>
+			<section id="about">
+				<marquee class="bg-black">
+					<div class="bg-black">
+					<div class="flex" style="padding: 5px;">
+						<div class="flex" style="margin: auto;" >
+							<h2 class="text-white" style="margin: auto;">GET ACCESS NOW!</h2>
+							<img src="./assets/image-fBLQvAFN1-transformed 1.png" width="50">
+						</div>
+						<div style="margin: auto;padding-inline: 20px;"><img src="./assets/Line 5.png"></div>
+						<div class="flex" style="margin: auto;" >
+							<h2 class="text-white" style="margin: auto;">GET ACCESS NOW!</h2>
+							<img src="./assets/image-fBLQvAFN1-transformed 1.png" width="50">
+						</div>
+						<div style="margin: auto;padding-inline: 20px;"><img src="./assets/Line 5.png"></div>
+						<div class="flex" style="margin: auto;" >
+							<h2 class="text-white" style="margin: auto;">GET ACCESS NOW!</h2>
+							<img src="./assets/image-fBLQvAFN1-transformed 1.png" width="50">
+						</div>
+					</div>
+				</div>
+			</marquee>
 
-                <div class="container" style="margin-top: 50px; text-align: center;">
-                    <div class="btn btn-orange" style="border: 0px;width: fit-content; margin: auto;">Services</div>
-                    <div class="x-large bold mt-2">How Hirex. Work</div>
-                    <div class="text-black mt-2">The awesome people who makes<br>all this possible</div>
-                    <div class="row mt-3" style="GAP: 20PX">
-                        <div class="col-3">
-                            <div class="card">
-                                <div class="text-dark large">START HERE</div>
-                                <div class="x-large text-black bold">Who we are & What We Do</div>
-                                <img src="./assets/Designer _Flatline 1.png" class="card-img mt-2">
-                                <div class="mt-3 btn bg-green text-white shadow" style="width: fit-content; margin: auto;">
-                                    <SPAN>START HERE <IMG src="./assets/arrow-right.png"></SPAN>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="card">
-                                <div class="text-dark large">Custom Design</div>
-                                <div class="x-large text-black bold">We'll design your Projects</div>
-                                <img src="./assets/Notifications_Flatline 1.png" class="card-img mt-2">
-                                <div class="mt-3 btn bg-yellow text-black shadow" style="width: fit-content; margin: auto;">
-                                    <SPAN>START HERE <IMG src="./assets/arrow-right.png"></SPAN>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="card">
-                                <div class="text-dark large">Contact Us</div>
-                                <div class="x-large text-black bold">Drop us your message!</div>
-                                <img src="./assets/Fortnite_Two Color 1.png" class="card-img mt-2">
-                                <div class="mt-3 btn bg-orange text-black shadow" style="width: fit-content; margin: auto;">
-                                    <SPAN>START HERE <IMG src="./assets/arrow-right.png"></SPAN>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+				<div class="container" style="margin-top: 50px; text-align: center;">
+					<div class="btn btn-orange" style="border: 0px;width: fit-content; margin: auto;">Services</div>
+					<div class="x-large bold mt-2">How Hirex. Work</div>
+					<div class="text-black mt-2">The awesome people who makes<br>all this possible</div>
+					<div class="row mt-3" style="GAP: 20PX">
+						<div class="col-3">
+							<div class="card">
+								<div class="text-dark large">START HERE</div>
+								<div class="x-large text-black bold">Who we are & What We Do</div>
+								<img src="./assets/Designer _Flatline 1.png" class="card-img mt-2">
+								<div class="mt-3 btn bg-green text-white shadow" style="width: fit-content; margin: auto;">
+									<SPAN>START HERE <IMG src="./assets/arrow-right.png"></SPAN>
+								</div>
+							</div>
+						</div>
+						<div class="col-3">
+							<div class="card">
+								<div class="text-dark large">Custom Design</div>
+								<div class="x-large text-black bold">We'll design your Projects</div>
+								<img src="./assets/Notifications_Flatline 1.png" class="card-img mt-2">
+								<div class="mt-3 btn bg-yellow text-black shadow" style="width: fit-content; margin: auto;">
+									<SPAN>START HERE <IMG src="./assets/arrow-right.png"></SPAN>
+								</div>
+							</div>
+						</div>
+						<div class="col-3">
+							<div class="card">
+								<div class="text-dark large">Contact Us</div>
+								<div class="x-large text-black bold">Drop us your message!</div>
+								<img src="./assets/Fortnite_Two Color 1.png" class="card-img mt-2">
+								<div class="mt-3 btn bg-orange text-black shadow" style="width: fit-content; margin: auto;">
+									<SPAN>START HERE <IMG src="./assets/arrow-right.png"></SPAN>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-            <section id="works">
-                <div class="container">
-                    <div class="content mt-3" style="text-align: center;">
-                        <div class="btn bold text-black" style="border-radius: 20px; width: fit-content; margin: auto; background-color: rgb(114, 197, 224); color: white; border: 0px">Works</div>
-                        <div class="x-large text-black mt-2">Find our latest works</div>
-                        <div class="large text-black" style="width: 600px; margin: auto;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta impedit quidem in</div>    
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-2">
-                            <img src="./assets/Rectangle 13.png" class="img">
-                            <div class="btn btn-transperant" style="width: fit-content;">Web Design</div>
-                            <div class="large text-dark bold">Website design form digital agency</div>
-                            <p>Build a unique website with Hirex template</p>
-                            <a href=""><div class="flex">Read More<img src="./assets/arrow-right-2.png"></div></a>
-                        </div>
-                        <div class="col-2">
-                            <img src="./assets/Rectangle 13-1.png" class="img">
-                            <div class="btn btn-transperant" style="width: fit-content;">3D Design</div>
-                            <div class="large text-dark bold mt-3">Realistic 3D model of living room</div>
-                            <p>Build a unique website with Hirex template</p>
-                            <a href=""><div class="flex">Read More<img src="./assets/arrow-right-2.png"></div></a>
-                            <div class="btn btn-yellow shadow mt-2" style="width: fit-content; margin-left: 60%;"><span>View All<img src="./assets/arrow-right-2.png"></span></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+			<section id="works">
+				<div class="container">
+					<div class="content mt-3" style="text-align: center;">
+						<div class="btn bold text-black" style="border-radius: 20px; width: fit-content; margin: auto; background-color: rgb(114, 197, 224); color: white; border: 0px">Works</div>
+						<div class="x-large text-black mt-2">Find our latest works</div>
+						<div class="large text-black" style="width: 600px; margin: auto;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta impedit quidem in</div>    
+					</div>
+					<div class="row mt-3">
+						<div class="col-2">
+							<img src="./assets/Rectangle 13.png" class="img">
+							<div class="btn btn-transperant" style="width: fit-content;">Web Design</div>
+							<div class="large text-dark bold">Website design form digital agency</div>
+							<p>Build a unique website with Hirex template</p>
+							<a href=""><div class="flex">Read More<img src="./assets/arrow-right-2.png"></div></a>
+						</div>
+						<div class="col-2">
+							<img src="./assets/Rectangle 13-1.png" class="img">
+							<div class="btn btn-transperant" style="width: fit-content;">3D Design</div>
+							<div class="large text-dark bold mt-3">Realistic 3D model of living room</div>
+							<p>Build a unique website with Hirex template</p>
+							<a href=""><div class="flex">Read More<img src="./assets/arrow-right-2.png"></div></a>
+							<div class="btn btn-yellow shadow mt-2" style="width: fit-content; margin-left: 60%;"><span>View All<img src="./assets/arrow-right-2.png"></span></div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-            <section id="plans mt-3">
-                <div class="container mt-3">
-                    <div class="content" style="width: fit-content; text-align: center; margin: 0 auto;">
-                        <div class="x-large">Plans & Planning</div>
-                        <p>The awesome people who makes all this possible</p>
-                    </div>
+			<section id="plans mt-3">
+				<div class="container mt-3">
+					<div class="content" style="width: fit-content; text-align: center; margin: 0 auto;">
+						<div class="x-large">Plans & Planning</div>
+						<p>The awesome people who makes all this possible</p>
+					</div>
 
-                    <div class="row mt-3">
-                        <div class="col-3">
-                            <div class="card plans-card" style="text-align: center;">
-                                <div class="text-dark large">FREE</div>
-                                <div class="price">
-                                    <span class="x-large text-black bold">$0</span>/MONTH
-                                </div>
-                                <p>start free while your learn more about our services</p>
-                                <hr class="bg-card">
-                                <div class="list" style="text-align: left;">
-                                    <li class="list-item">Free forever get the basic essentials</li>
-                                    <li class="list-item">Advanced security and performance</li>
-                                    <li class="list-item">Unlimited unhosted sites</li>
-                                    <li class="list-item">Live suport</li>
-                                </div>
-                                <div class="btn bg-yellow text-black" style="width: fit-content; margin: 20px auto;">
-                                    <SPAN>START HERE <IMG src="./assets/arrow-right.png"></SPAN>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="card plans-card" style="text-align: center;">
-                                <div class="text-dark large">BASIC</div>
-                                <div class="price">
-                                    <span class="x-large text-black bold">$19</span>/MONTH
-                                </div>
-                                <p>start free while your learn more about our services</p>
-                                <hr class="bg-card">
-                                <div class="list" style="text-align: left;">
-                                    <li class="list-item">Free forever get the basic essentials</li>
-                                    <li class="list-item">Advanced security and performance</li>
-                                    <li class="list-item">Unlimited unhosted sites</li>
-                                    <li class="list-item">Live suport</li>
-                                </div>
-                                <div class="btn bg-orange text-black " style="width: fit-content; margin: 20px auto;">
-                                    <SPAN>START HERE <IMG src="./assets/arrow-right.png"></SPAN>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="card plans-card" style="text-align: center;">
-                                <div class="text-dark large">ADVANCE</div>
-                                <div class="price">
-                                    <span class="x-large text-black bold">$99</span>/MONTH
-                                </div>
-                                <p>start free while your learn more about our services</p>
-                                <hr class="bg-card">
-                                <div class="list" style="text-align: left;">
-                                    <li class="list-item">Free forever get the basic essentials</li>
-                                    <li class="list-item">Advanced security and performance</li>
-                                    <li class="list-item">Unlimited unhosted sites</li>
-                                    <li class="list-item">Live suport</li>
-                                </div>
-                                <div class="btn bg-green text-black" style="width: fit-content; margin: 20px auto;">
-                                    <SPAN>START HERE <IMG src="./assets/arrow-right-2.png"></SPAN>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+					<div class="row mt-3">
+						<div class="col-3">
+							<div class="card plans-card" style="text-align: center;">
+								<div class="text-dark large">FREE</div>
+								<div class="price">
+									<span class="x-large text-black bold">$0</span>/MONTH
+								</div>
+								<p>start free while your learn more about our services</p>
+								<hr class="bg-card">
+								<div class="list" style="text-align: left;">
+									<li class="list-item">Free forever get the basic essentials</li>
+									<li class="list-item">Advanced security and performance</li>
+									<li class="list-item">Unlimited unhosted sites</li>
+									<li class="list-item">Live suport</li>
+								</div>
+								<div class="btn bg-yellow text-black" style="width: fit-content; margin: 20px auto;">
+									<SPAN>START HERE <IMG src="./assets/arrow-right.png"></SPAN>
+								</div>
+							</div>
+						</div>
+						<div class="col-3">
+							<div class="card plans-card" style="text-align: center;">
+								<div class="text-dark large">BASIC</div>
+								<div class="price">
+									<span class="x-large text-black bold">$19</span>/MONTH
+								</div>
+								<p>start free while your learn more about our services</p>
+								<hr class="bg-card">
+								<div class="list" style="text-align: left;">
+									<li class="list-item">Free forever get the basic essentials</li>
+									<li class="list-item">Advanced security and performance</li>
+									<li class="list-item">Unlimited unhosted sites</li>
+									<li class="list-item">Live suport</li>
+								</div>
+								<div class="btn bg-orange text-black " style="width: fit-content; margin: 20px auto;">
+									<SPAN>START HERE <IMG src="./assets/arrow-right.png"></SPAN>
+								</div>
+							</div>
+						</div>
+						<div class="col-3">
+							<div class="card plans-card" style="text-align: center;">
+								<div class="text-dark large">ADVANCE</div>
+								<div class="price">
+									<span class="x-large text-black bold">$99</span>/MONTH
+								</div>
+								<p>start free while your learn more about our services</p>
+								<hr class="bg-card">
+								<div class="list" style="text-align: left;">
+									<li class="list-item">Free forever get the basic essentials</li>
+									<li class="list-item">Advanced security and performance</li>
+									<li class="list-item">Unlimited unhosted sites</li>
+									<li class="list-item">Live suport</li>
+								</div>
+								<div class="btn bg-green text-black" style="width: fit-content; margin: 20px auto;">
+									<SPAN>START HERE <IMG src="./assets/arrow-right-2.png"></SPAN>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-            <section id="profile-section" class="bg-green2">
-                <div class="container" style="position: relative;">
-                    <div class="arrow" style="position: absolute; top: 50%; left: -2%; cursor: pointer;" onclick="prevSlide('profile')"><img src="./assets/arrow-left-2.png"></div>
-                    <div class="arrow" style="position: absolute; top: 50%; right: -2%; cursor: pointer;" onclick="nextSlide('profile')"><img src="./assets/arrow-right-2.png"></div>
-                    <div class="row" id="profile">
-                        <div class="col profile" style="display: block">
-                            <div class="row">
-                                <div class="col-2">
-                                    <div style="position: relative;">
-                                        <img src="./assets/testimonials-img.png" style="border-top-left-radius: 50%; border-top-right-radius: 50%; width: 70%;">
-                                        <div class="btn bg-yellow flex" style="border-radius: 50px; width: fit-content; position: absolute; top: 91%; left: 20%;">
-                                            <div style="margin: auto;">@mase.place</div>
-                                            <div class="btn bg-green" style="margin: auto; width: fit-content; border-radius: 50px;"><img src="./assets/arrow_top-right.png"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2" style="position: relative;">
-                                    <div class="large bold" style="width: 90%;">
-                                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quam odio vero autem cum atque incidunt accusantium. Doloremque in vero quas possimus velit voluptate, consequatur laboriosam quos, fuga dignissimos eveniet."
-                                    </div>
-                                    <p style="width: 90%;">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet recusandae magni delectus voluptas eveniet quas ab repellendus, saepe similique et illum asperiores ut mollitia temporibus quos nulla animi, necessitatibus aliquam?
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col profile" style="display: none;">
-                            <div class="row">
-                                <div class="col-2">
-                                    <div style="position: relative;">
-                                        <img src="./assets/testimonials-img.png" style="border-top-left-radius: 50%; border-top-right-radius: 50%; width: 70%;">
-                                        <div class="btn bg-yellow flex" style="border-radius: 50px; width: fit-content; position: absolute; top: 91%; left: 20%;">
-                                            <div style="margin: auto;">@mase1.place</div>
-                                            <div class="btn bg-green" style="margin: auto; width: fit-content; border-radius: 50px;"><img src="./assets/arrow_top-right.png"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2" style="position: relative;">
-                                    <div class="large bold" style="width: 90%;">
-                                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quam odio vero autem cum atque incidunt accusantium. Doloremque in vero quas possimus velit voluptate, consequatur laboriosam quos, fuga dignissimos eveniet."
-                                    </div>
-                                    <p style="width: 90%;">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet recusandae magni delectus voluptas eveniet quas ab repellendus, saepe similique et illum asperiores ut mollitia temporibus quos nulla animi, necessitatibus aliquam?
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col profile" style="display: none;">
-                            <div class="row">
-                                <div class="col-2">
-                                    <div style="position: relative;">
-                                        <img src="./assets/testimonials-img.png" style="border-top-left-radius: 50%; border-top-right-radius: 50%; width: 70%;">
-                                        <div class="btn bg-yellow flex" style="border-radius: 50px; width: fit-content; position: absolute; top: 91%; left: 20%;">
-                                            <div style="margin: auto;">@mase2.place</div>
-                                            <div class="btn bg-green" style="margin: auto; width: fit-content; border-radius: 50px;"><img src="./assets/arrow_top-right.png"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2" style="position: relative;">
-                                    <div class="large bold" style="width: 90%;">
-                                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quam odio vero autem cum atque incidunt accusantium. Doloremque in vero quas possimus velit voluptate, consequatur laboriosam quos, fuga dignissimos eveniet."
-                                    </div>
-                                    <p style="width: 90%;">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet recusandae magni delectus voluptas eveniet quas ab repellendus, saepe similique et illum asperiores ut mollitia temporibus quos nulla animi, necessitatibus aliquam?
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+			<section id="profile-section" class="bg-green2">
+				<div class="container" style="position: relative;">
+					<div class="arrow" style="position: absolute; top: 50%; left: -2%; cursor: pointer;" onclick="prevSlide('profile')"><img src="./assets/arrow-left-2.png"></div>
+					<div class="arrow" style="position: absolute; top: 50%; right: -2%; cursor: pointer;" onclick="nextSlide('profile')"><img src="./assets/arrow-right-2.png"></div>
+					<div class="row" id="profile">
+						<div class="col profile" style="display: block">
+							<div class="row">
+								<div class="col-2">
+									<div style="position: relative;">
+										<img src="./assets/testimonials-img.png" style="border-top-left-radius: 50%; border-top-right-radius: 50%; width: 70%;">
+										<div class="btn bg-yellow flex" style="border-radius: 50px; width: fit-content; position: absolute; top: 91%; left: 20%;">
+											<div style="margin: auto;">@mase.place</div>
+											<div class="btn bg-green" style="margin: auto; width: fit-content; border-radius: 50px;"><img src="./assets/arrow_top-right.png"></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-2" style="position: relative;">
+									<div class="large bold" style="width: 90%;">
+										"Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quam odio vero autem cum atque incidunt accusantium. Doloremque in vero quas possimus velit voluptate, consequatur laboriosam quos, fuga dignissimos eveniet."
+									</div>
+									<p style="width: 90%;">
+										Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet recusandae magni delectus voluptas eveniet quas ab repellendus, saepe similique et illum asperiores ut mollitia temporibus quos nulla animi, necessitatibus aliquam?
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col profile" style="display: none;">
+							<div class="row">
+								<div class="col-2">
+									<div style="position: relative;">
+										<img src="./assets/testimonials-img.png" style="border-top-left-radius: 50%; border-top-right-radius: 50%; width: 70%;">
+										<div class="btn bg-yellow flex" style="border-radius: 50px; width: fit-content; position: absolute; top: 91%; left: 20%;">
+											<div style="margin: auto;">@mase1.place</div>
+											<div class="btn bg-green" style="margin: auto; width: fit-content; border-radius: 50px;"><img src="./assets/arrow_top-right.png"></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-2" style="position: relative;">
+									<div class="large bold" style="width: 90%;">
+										"Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quam odio vero autem cum atque incidunt accusantium. Doloremque in vero quas possimus velit voluptate, consequatur laboriosam quos, fuga dignissimos eveniet."
+									</div>
+									<p style="width: 90%;">
+										Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet recusandae magni delectus voluptas eveniet quas ab repellendus, saepe similique et illum asperiores ut mollitia temporibus quos nulla animi, necessitatibus aliquam?
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col profile" style="display: none;">
+							<div class="row">
+								<div class="col-2">
+									<div style="position: relative;">
+										<img src="./assets/testimonials-img.png" style="border-top-left-radius: 50%; border-top-right-radius: 50%; width: 70%;">
+										<div class="btn bg-yellow flex" style="border-radius: 50px; width: fit-content; position: absolute; top: 91%; left: 20%;">
+											<div style="margin: auto;">@mase2.place</div>
+											<div class="btn bg-green" style="margin: auto; width: fit-content; border-radius: 50px;"><img src="./assets/arrow_top-right.png"></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-2" style="position: relative;">
+									<div class="large bold" style="width: 90%;">
+										"Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quam odio vero autem cum atque incidunt accusantium. Doloremque in vero quas possimus velit voluptate, consequatur laboriosam quos, fuga dignissimos eveniet."
+									</div>
+									<p style="width: 90%;">
+										Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet recusandae magni delectus voluptas eveniet quas ab repellendus, saepe similique et illum asperiores ut mollitia temporibus quos nulla animi, necessitatibus aliquam?
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-            <section id="blog">
-                <div class="container">
-                    <div class="content mt-3">
-                        <div class="btn bold text-black" style="border-radius: 20px; width: fit-content; background-color: rgb(245, 173, 189); color: white; border: 0px">Blog</div>
-                        <div class="x-large text-black mt-2 bold">Stay Updated</div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-2">
-                            <img src="./assets/Rectangle 19.png" class="img">
-                            <div class="btn btn-transperant" style="width: fit-content;">Web Design</div>
-                            <div class="large text-dark bold">Website design form digital agency</div>
-                            <p>Build a unique website with Hirex template</p>
-                            <a href=""><div class="flex">Read More<img src="./assets/arrow-right-2.png"></div></a>
-                        </div>
-                        <div class="col-2">
-                            <img src="./assets/Rectangle 20.png" class="img"    >
-                            <div class="btn btn-transperant" style="width: fit-content;">Web Design</div>
-                            <div class="large text-dark bold">Website design form digital agency</div>
-                            <p>Build a unique website with Hirex template</p>
-                            <a href=""><div class="flex">Read More<img src="./assets/arrow-right-2.png"></div></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+			<section id="blog">
+				<div class="container">
+					<div class="content mt-3">
+						<div class="btn bold text-black" style="border-radius: 20px; width: fit-content; background-color: rgb(245, 173, 189); color: white; border: 0px">Blog</div>
+						<div class="x-large text-black mt-2 bold">Stay Updated</div>
+					</div>
+					<div class="row mt-3">
+						<div class="col-2">
+							<img src="./assets/Rectangle 19.png" class="img">
+							<div class="btn btn-transperant" style="width: fit-content;">Web Design</div>
+							<div class="large text-dark bold">Website design form digital agency</div>
+							<p>Build a unique website with Hirex template</p>
+							<a href=""><div class="flex">Read More<img src="./assets/arrow-right-2.png"></div></a>
+						</div>
+						<div class="col-2">
+							<img src="./assets/Rectangle 20.png" class="img"    >
+							<div class="btn btn-transperant" style="width: fit-content;">Web Design</div>
+							<div class="large text-dark bold">Website design form digital agency</div>
+							<p>Build a unique website with Hirex template</p>
+							<a href=""><div class="flex">Read More<img src="./assets/arrow-right-2.png"></div></a>
+						</div>
+					</div>
+				</div>
+			</section>
 
-            <section>
-                <div class="bg-yellow" style="padding-top: 10%; padding-bottom: 10%;">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-2">
-                                <div class="x-large text-black bold">Get our Latests news & updates</div>
-                                <form>
-                                    <input type="text" placeholder="NAME" name="name" class="input-out">
-                                    <input type="text" placeholder="EMAIL" name="email" class="input-out">
-                                    <button class="flex input-out mt-2">
-                                        <div class="text-black" style="width: 100%; margin:0; text-align: left;">SUBSCRIBE</div>
-                                        <img src="./assets/arrow-right-2.png">
-                                    </button>
-                                </form>
-                            </div>
-                            <div class="col-2">
-                                <div class="large">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint velit aliquam fugiat illum. Laudantium beatae tenetur ullam repellat rem cum impedit, in commodi incidunt repellendus, omnis, pariatur dolor odit unde?</div>
-                                <div class="btn btn-transperant mt-2" style="width: fit-content;">Book a Call</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <marquee class="bg-black">
-                    <div class="bg-black">
-                    <div class="flex" style="padding: 5px;">
-                        <div class="flex" style="margin: auto;" >
-                            <h2 class="text-white" style="margin: auto;">THANK YOU FOR YOUR VISIT</h2>
-                        </div>
-                        <div style="padding-inline: 40px; margin: auto;"><img src="./assets/Line 4.png"></div>
-                        <div class="flex" style="margin: auto;" >
-                            <h2 class="text-white" style="margin: auto;">THANK YOU FOR YOUR VISIT</h2>
-                        </div>
-                        <div style="padding-inline: 40px; margin: auto;"><img src="./assets/Group 59.png"></div>
-                        <div class="flex" style="margin: auto;" >
-                            <h2 class="text-white" style="margin: auto;">THANK YOU FOR YOUR VISIT</h2>
-                        </div>
-                    </div>
-                </div>
-            </marquee>
-            </section>
-        </div>
+			<section>
+				<div class="bg-yellow" style="padding-top: 10%; padding-bottom: 10%;">
+					<div class="container">
+						<div class="row">
+							<div class="col-2">
+								<div class="x-large text-black bold">Get our Latests news & updates</div>
+								<form>
+									<input type="text" placeholder="NAME" name="name" class="input-out">
+									<input type="text" placeholder="EMAIL" name="email" class="input-out">
+									<button class="flex input-out mt-2">
+										<div class="text-black" style="width: 100%; margin:0; text-align: left;">SUBSCRIBE</div>
+										<img src="./assets/arrow-right-2.png">
+									</button>
+								</form>
+							</div>
+							<div class="col-2">
+								<div class="large">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint velit aliquam fugiat illum. Laudantium beatae tenetur ullam repellat rem cum impedit, in commodi incidunt repellendus, omnis, pariatur dolor odit unde?</div>
+								<div class="btn btn-transperant mt-2" style="width: fit-content;">Book a Call</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<marquee class="bg-black">
+					<div class="bg-black">
+					<div class="flex" style="padding: 5px;">
+						<div class="flex" style="margin: auto;" >
+							<h2 class="text-white" style="margin: auto;">THANK YOU FOR YOUR VISIT</h2>
+						</div>
+						<div style="padding-inline: 40px; margin: auto;"><img src="./assets/Line 4.png"></div>
+						<div class="flex" style="margin: auto;" >
+							<h2 class="text-white" style="margin: auto;">THANK YOU FOR YOUR VISIT</h2>
+						</div>
+						<div style="padding-inline: 40px; margin: auto;"><img src="./assets/Group 59.png"></div>
+						<div class="flex" style="margin: auto;" >
+							<h2 class="text-white" style="margin: auto;">THANK YOU FOR YOUR VISIT</h2>
+						</div>
+					</div>
+				</div>
+			</marquee>
+			</section>
+		</div>
 
-        <footer>
-            <div class="container">
-                <img src="./assets/HireX_black.png">
-                <hr>
-                <div class="row mt-3">
-                    <div class="col-4">
-                        <div class="list">
-                            <div class="text-black">Products</div>
-                            <div class="list-item large text-black">Platform</div>
-                            <div class="list-item large text-black">Store Overview</div>
-                            <div class="list-item large text-black">Email Reports</div>
-                            <div class="list-item large text-black">Portfolio</div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="list">
-                            <div class="text-black">Resource</div>
-                            <div class="list-item large text-black">Case Studies</div>
-                            <div class="list-item large text-black">Product Guides</div>
-                            <div class="list-item large text-black">Reports</div>
-                            <div class="list-item large text-black">Blog</div>
-                            <div class="list-item large text-black">FAQ</div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="list">
-                            <div class="text-black">Comapny</div>
-                            <div class="list-item large text-black">Careers</div>
-                            <div class="list-item large text-black">Contact Sales</div>
-                            <div class="list-item large text-black">Contact Support</div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="list">
-                            <div class="text-black">Partner</div>
-                            <div class="list-item large text-black">Partner With Us</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-2">Terms and conditions Privacy Policy</div>
-                    <div class="col-2" style=" width: fit-content;">&#xa9;HIREX, Inc. 2022</div>
-                </div>
-            </div>
-        </footer>
-    </div>
+		<footer>
+			<div class="container">
+				<img src="./assets/HireX_black.png">
+				<hr>
+				<div class="row mt-3">
+					<div class="col-4">
+						<div class="list">
+							<div class="text-black">Products</div>
+							<div class="list-item large text-black">Platform</div>
+							<div class="list-item large text-black">Store Overview</div>
+							<div class="list-item large text-black">Email Reports</div>
+							<div class="list-item large text-black">Portfolio</div>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="list">
+							<div class="text-black">Resource</div>
+							<div class="list-item large text-black">Case Studies</div>
+							<div class="list-item large text-black">Product Guides</div>
+							<div class="list-item large text-black">Reports</div>
+							<div class="list-item large text-black">Blog</div>
+							<div class="list-item large text-black">FAQ</div>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="list">
+							<div class="text-black">Comapny</div>
+							<div class="list-item large text-black">Careers</div>
+							<div class="list-item large text-black">Contact Sales</div>
+							<div class="list-item large text-black">Contact Support</div>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="list">
+							<div class="text-black">Partner</div>
+							<div class="list-item large text-black">Partner With Us</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class="col-2">Terms and conditions Privacy Policy</div>
+					<div class="col-2" style=" width: fit-content;">&#xa9;HIREX, Inc. 2022</div>
+				</div>
+			</div>
+		</footer>
+	</div>
 </body>
 </html>

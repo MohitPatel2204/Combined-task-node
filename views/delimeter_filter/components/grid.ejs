@@ -1,64 +1,64 @@
 <script src="/js/delimiter_filter/pagination.js"></script>
 
 <body>
-    <table border="2" style="text-align: center;" width="1000px" align="center" id="<%=table.name%>">        
-        <thead></thead>
-        <tbody></tbody>
-        <tfoot>
-            <tr>
-                <td colspan="<%=table.data.length%>">
-                    <form>
-                        <input type="text" placeholder="Search here...." id="globalsearch" onfocus="">
-                        <input type="button" value="Go" onclick="globalSearch(obj, 'globalsearch')">
-                        <input type="button" value="Show More Search" onclick="toggle('inputs')">
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <%let keys = Object.keys(table.data[0])%>
-                <td  id="inputs" style="display: none;" colspan="<%=keys.length%>">
-                    <% keys.forEach(key=>{ %>   
-                        <input type="text" name=<%=key%> id=<%=key%> placeholder = "Enter <%=key%>">
-                    <% }) %>
-                    <select name="type" id="type">
-                        <option value="and">And</option>
-                        <option value="Or">Or</option>
-                    </select>
-                    <button onclick="searchAll(obj)">Go</button>
-                    <button onclick="clearData(obj)">Clear</button>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="<%=table.data.length%>">
-                    <div colspan="4" style="text-align: center;display: flex; margin:10px auto; width: fit-content; height: 30px; gap: 10px">
-                        <button onclick="pagination(obj, this)" id="first"><<</button>
-                        <button onclick="pagination(obj, this)"  id="prev"><</button>
-                        <p id="page">1</p>
-                        <button onclick="pagination(obj, this)"  id="next">></button>
-                        <button onclick="pagination(obj, this)"  id="last">>></button>
-                    </div>
-                </td>
-            </tr>
-        </tfoot>
-    </table>    
+	<table border="2" style="text-align: center;" width="1000px" align="center" id="<%=table.name%>">        
+		<thead></thead>
+		<tbody></tbody>
+		<tfoot>
+			<tr>
+				<td colspan="<%=table.data.length%>">
+					<form>
+						<input type="text" placeholder="Search here...." id="globalsearch" onfocus="">
+						<input type="button" value="Go" onclick="globalSearch(obj, 'globalsearch')">
+						<input type="button" value="Show More Search" onclick="toggle('inputs')">
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<%let keys = Object.keys(table.data[0])%>
+				<td  id="inputs" style="display: none;" colspan="<%=keys.length%>">
+					<% keys.forEach(key=>{ %>   
+						<input type="text" name=<%=key%> id=<%=key%> placeholder = "Enter <%=key%>">
+					<% }) %>
+					<select name="type" id="type">
+						<option value="and">And</option>
+						<option value="Or">Or</option>
+					</select>
+					<button onclick="searchAll(obj)">Go</button>
+					<button onclick="clearData(obj)">Clear</button>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="<%=table.data.length%>">
+					<div colspan="4" style="text-align: center;display: flex; margin:10px auto; width: fit-content; height: 30px; gap: 10px">
+						<button onclick="pagination(obj, this)" id="first"><<</button>
+						<button onclick="pagination(obj, this)"  id="prev"><</button>
+						<p id="page">1</p>
+						<button onclick="pagination(obj, this)"  id="next">></button>
+						<button onclick="pagination(obj, this)"  id="last">>></button>
+					</div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>    
 </body>
 
 <script>
-    const getJson = (text) => {
-        let div = document.createElement("div");
-        div.innerHTML = text;
-        return JSON.parse(div.innerHTML)
-    }
-    let data = getJson(`<%=JSON.stringify(table.data)%>`);
-    let obj = {
-        dataTableId: `<%=table.name%>`,
-        displayRecord: `<%=table.displayRecord%>`,
-        data: data,
-        printPageNo: "page",
-        buttonsID: ["first", "prev",  "next", "last"],
-    }
-    if(`<%=JSON.stringify(table.header)%>`)
-        obj["header"] = getJson(`<%=JSON.stringify(table.header)%>`);
-    console.log(obj);
-    pagination(obj);
+	const getJson = (text) => {
+		let div = document.createElement("div");
+		div.innerHTML = text;
+		return JSON.parse(div.innerHTML)
+	}
+	let data = getJson(`<%=JSON.stringify(table.data)%>`);
+	let obj = {
+		dataTableId: `<%=table.name%>`,
+		displayRecord: `<%=table.displayRecord%>`,
+		data: data,
+		printPageNo: "page",
+		buttonsID: ["first", "prev",  "next", "last"],
+	}
+	if(`<%=JSON.stringify(table.header)%>`)
+		obj["header"] = getJson(`<%=JSON.stringify(table.header)%>`);
+	console.log(obj);
+	pagination(obj);
 </script>

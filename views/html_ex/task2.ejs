@@ -1,534 +1,534 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awanhoster</title>
-    <link rel="stylesheet" href="./css/htmltask2.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script>
-        // global variable declare 
-        let previousResultCard = null;
-        let displayContentPreviousId = "wordpress-content";
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Awanhoster</title>
+	<link rel="stylesheet" href="./css/htmltask2.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<script>
+		// global variable declare 
+		let previousResultCard = null;
+		let displayContentPreviousId = "wordpress-content";
 
-        // function defining
-        function displayContent(id)
-        {
-            document.getElementById(displayContentPreviousId).style.display = "none";
-            document.getElementById(id).style.display = "block";
-            displayContentPreviousId = id;
-        }
+		// function defining
+		function displayContent(id)
+		{
+			document.getElementById(displayContentPreviousId).style.display = "none";
+			document.getElementById(id).style.display = "block";
+			displayContentPreviousId = id;
+		}
 
-        function cardChangeTheme(card, mainBg, subBg, textColor, classname)
-        {
-            card.style.background = mainBg;
-            card.style.color = textColor;
-            card.children[0].style.background = subBg;
-            card.children[0].style.color = textColor;    
-            card.children[2].className = classname;
-        }
+		function cardChangeTheme(card, mainBg, subBg, textColor, classname)
+		{
+			card.style.background = mainBg;
+			card.style.color = textColor;
+			card.children[0].style.background = subBg;
+			card.children[0].style.color = textColor;    
+			card.children[2].className = classname;
+		}
 
-        function changeDarkCard(resultCard)
-        {
-            let result = resultCard.parentNode;
-            cardChangeTheme(result, "#0A2259", "#6A88B6", "white", "btn btn-orange mt-3");
-            if(previousResultCard != null)
-            {
-                cardChangeTheme(previousResultCard, "white", "#F0F6FF", "#0A2259", "btn btn-out-dark mt-3");
-            }
-            previousResultCard = result;    
-        }
+		function changeDarkCard(resultCard)
+		{
+			let result = resultCard.parentNode;
+			cardChangeTheme(result, "#0A2259", "#6A88B6", "white", "btn btn-orange mt-3");
+			if(previousResultCard != null)
+			{
+				cardChangeTheme(previousResultCard, "white", "#F0F6FF", "#0A2259", "btn btn-out-dark mt-3");
+			}
+			previousResultCard = result;    
+		}
 
-        let sliderCount = 1;
+		let sliderCount = 1;
 
-        function nextFun(id)
-        {
-            document.getElementById(id).style.scrollBehavior = "smooth";
-            document.getElementById(id).scrollBy(300, 0);
-        }
-        function prevFun(id)
-        {
-            document.getElementById(id).style.scrollBehavior = "smooth";
-            document.getElementById(id).scrollBy(-300, 0);
-        }
-    </script>
+		function nextFun(id)
+		{
+			document.getElementById(id).style.scrollBehavior = "smooth";
+			document.getElementById(id).scrollBy(300, 0);
+		}
+		function prevFun(id)
+		{
+			document.getElementById(id).style.scrollBehavior = "smooth";
+			document.getElementById(id).scrollBy(-300, 0);
+		}
+	</script>
 </head>
 <body>
-    <div class="body">
-        <header class="bg-lblue">
-            <div class="navigation flex">
-                <div class="left flex">
-                    <img src="./assets/cloud-sunny.png" width="50px">
-                    <div class="flex text-dark" style="font-size: 30px;"><div class="bold">Awan</div>Hoster</div>
-                </div>
-                <div class="right">
-                    <div class="nav-item"><button class="btn btn-out-dark">Login</button></div>
-                    <div class="nav-item"><a href="">Community</a></div>
-                    <div class="nav-item"><a href="">Pricing</a></div>
-                    <div class="nav-item"><a href="">Integration</a></div>
-                    <div class="nav-item"><a href="">Hosting</a></div>
-                </div>
-            </div>
-        </header>
+	<div class="body">
+		<header class="bg-lblue">
+			<div class="navigation flex">
+				<div class="left flex">
+					<img src="./assets/cloud-sunny.png" width="50px">
+					<div class="flex text-dark" style="font-size: 30px;"><div class="bold">Awan</div>Hoster</div>
+				</div>
+				<div class="right">
+					<div class="nav-item"><button class="btn btn-out-dark">Login</button></div>
+					<div class="nav-item"><a href="">Community</a></div>
+					<div class="nav-item"><a href="">Pricing</a></div>
+					<div class="nav-item"><a href="">Integration</a></div>
+					<div class="nav-item"><a href="">Hosting</a></div>
+				</div>
+			</div>
+		</header>
 
-        <div class="main">
-            <!-- hosting section -->
-            <section id="hosting" class="bg-lblue">
-                <div class="container hosting-section">
-                    <div class="row">
-                        <div class="col-2">
-                            <h1 class="text-dark bold">Hosting<br>Services for<br>for website</h1>
-                            <h3 class="text-dark fsize" style="width: 80%;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur magnam expedita ipsa, earum, sunt voluptatibus nesciunt iure perferendis laudantium iste enim rem. Veniam exercitationem hic fugiat, provident quibusdam voluptatem corporis!</h3>
-                            <div class="btn-group">
-                                <div class="row mt-3">
-                                    <div class="col-2"><a href="" class="btn btn-orange">Get Started</a></div>
-                                    <div class="col-2"><a href="" class="btn btn-out-dark">Get Migration Help</a></div>
-                                </div>
-                            </div>
-                            <img class="mt-3" src="./assets/arrow-down.png">
-                        </div>
-                        <div class="col-2">
-                            <img src="./assets/portrait-confident-bearded-man-using-laptop-computer 1.png" width="600px">
-                        </div>
-                    </div>
-                </div>
-            </section>
+		<div class="main">
+			<!-- hosting section -->
+			<section id="hosting" class="bg-lblue">
+				<div class="container hosting-section">
+					<div class="row">
+						<div class="col-2">
+							<h1 class="text-dark bold">Hosting<br>Services for<br>for website</h1>
+							<h3 class="text-dark fsize" style="width: 80%;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur magnam expedita ipsa, earum, sunt voluptatibus nesciunt iure perferendis laudantium iste enim rem. Veniam exercitationem hic fugiat, provident quibusdam voluptatem corporis!</h3>
+							<div class="btn-group">
+								<div class="row mt-3">
+									<div class="col-2"><a href="" class="btn btn-orange">Get Started</a></div>
+									<div class="col-2"><a href="" class="btn btn-out-dark">Get Migration Help</a></div>
+								</div>
+							</div>
+							<img class="mt-3" src="./assets/arrow-down.png">
+						</div>
+						<div class="col-2">
+							<img src="./assets/portrait-confident-bearded-man-using-laptop-computer 1.png" width="600px">
+						</div>
+					</div>
+				</div>
+			</section>
 
-            <!-- experience section -->
-            <section id="experience" class="bg-light">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-5">
-                            <div class="text-dark fsize">Those Who Fave Experiences The Best Performance</div>
-                        </div>
-                        <div class="col-5"><img src="./assets/Telkom Indonesia Logo.png"></div>
-                        <div class="col-5"><img src="./assets/Jetstar Airways Logo.png"></div>
-                        <div class="col-5"><img src="./assets/Nescafe Logo.png"></div>
-                        <div class="col-5"><img src="./assets/Lenovo Logo.png"></div>
-                    </div>
-                </div>
-            </section>
+			<!-- experience section -->
+			<section id="experience" class="bg-light">
+				<div class="container">
+					<div class="row">
+						<div class="col-5">
+							<div class="text-dark fsize">Those Who Fave Experiences The Best Performance</div>
+						</div>
+						<div class="col-5"><img src="./assets/Telkom Indonesia Logo.png"></div>
+						<div class="col-5"><img src="./assets/Jetstar Airways Logo.png"></div>
+						<div class="col-5"><img src="./assets/Nescafe Logo.png"></div>
+						<div class="col-5"><img src="./assets/Lenovo Logo.png"></div>
+					</div>
+				</div>
+			</section>
 
-            <section id="integration">
-                <div class="container integration-section">
-                    <div class="row">
-                        <div class="col-2">
-                            <img src="./assets/Group 3552.png">
-                        </div>
-                        <div class="col-2">
-                            <div class="row">
-                                <h2 class="text-dark">Boost the Speed of<br>Your Website</h2>
-                                <div class="row">
-                                    <div class="col-2">
-                                        <div class="heading text-blue bold">Faster Build Process</div>
-                                        <div class="text-gray fsize">We can speed up the process of creating your website</div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="heading text-blue bold">Faster Delivery</div>
-                                        <div class="text-gray fsize">Our purchases and services can be completed quickly</div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="heading text-blue bold">Faster Access Spped</div>
-                                        <div class="text-gray fsize">Superb network infrastructure and hardware to support fast and stable access</div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="heading text-blue bold">24/7 Faster Service</div>
-                                        <div class="text-gray fsize">We have a response time of less than 180 seconds, available 24 hours a day.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+			<section id="integration">
+				<div class="container integration-section">
+					<div class="row">
+						<div class="col-2">
+							<img src="./assets/Group 3552.png">
+						</div>
+						<div class="col-2">
+							<div class="row">
+								<h2 class="text-dark">Boost the Speed of<br>Your Website</h2>
+								<div class="row">
+									<div class="col-2">
+										<div class="heading text-blue bold">Faster Build Process</div>
+										<div class="text-gray fsize">We can speed up the process of creating your website</div>
+									</div>
+									<div class="col-2">
+										<div class="heading text-blue bold">Faster Delivery</div>
+										<div class="text-gray fsize">Our purchases and services can be completed quickly</div>
+									</div>
+									<div class="col-2">
+										<div class="heading text-blue bold">Faster Access Spped</div>
+										<div class="text-gray fsize">Superb network infrastructure and hardware to support fast and stable access</div>
+									</div>
+									<div class="col-2">
+										<div class="heading text-blue bold">24/7 Faster Service</div>
+										<div class="text-gray fsize">We have a response time of less than 180 seconds, available 24 hours a day.</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-            <section id="price" class="bg-lblue">
-                <div class="container price-section">
-                    <h2 class="text-dark bold text-center">Host Any Website With Our<br>Fully Managed Services</h2>
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="card">
-                                <div class="card">
-                                    <div class="flex">
-                                        <div class="icon" style="background-color: white;">
-                                            <img src="./assets/cloud-sunny.png" style="border-radius: 50%;">
-                                        </div>
-                                        <div class="heading">Cloud Hosting</div>
-                                    </div>
-                                    <div style="width: fit-content;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, eveniet aspernatur. Recusandae, quo laudantium corrupti verit</div>
-                                </div>
-                                <div class="price mt-3"><span class="small bold">$5.9</span>/month</div>
-                                <div class="btn btn-out-dark mt-3" style="width: 87%;" onclick="changeDarkCard(this)">More Detail</div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="card">
-                                <div class="card">
-                                    <div class="flex">
-                                        <div class="icon" style="background-color: white">
-                                            <img src="./assets/buildings.png">
-                                        </div>
-                                        <div class="heading">Corporate</div>
-                                    </div>
-                                    <div style="width: fit-content;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, eveniet aspernatur. Recusandae, quo laudantium corrupti verit</div>
-                                </div>
-                                <div class="price mt-3"><span class="small bold">$19</span>/month</div>
-                                <div class="btn btn-out-dark mt-3" style="width: 87%" onclick="changeDarkCard(this)">More Detail</div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="card">
-                                <div class="card">
-                                    <div class="flex">
-                                        <div class="icon" style="background-color: white">
-                                            <img src="./assets/driver.png">
-                                        </div>
-                                        <div class="heading">Cloud VPS</div>
-                                    </div>
-                                    <div style="width: fit-content;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, eveniet aspernatur. Recusandae, quo laudantium corrupti verit</div>
-                                </div>
-                                <div class="price mt-3"><span class="small bold">$19</span>/month</div>
-                                <div class="btn btn-out-dark mt-3" style="width: 87%" onclick="changeDarkCard(this)">More Detail</div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="card">
-                                <div class="card">
-                                    <div class="flex">
-                                        <div class="icon" style="background-color: white">
-                                            <img src="./assets/monitor-mobbile.png">
-                                        </div>
-                                        <div class="heading">Dedicated</div>
-                                    </div>
-                                    <div style="width: fit-content;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, eveniet aspernatur. Recusandae, quo laudantium corrupti verit</div>
-                                </div>
-                                <div class="price mt-3"><span class="small bold">$19</span>/month</div>
-                                <div class="btn btn-out-dark mt-3" style="width: 87%" onclick="changeDarkCard(this)">More Detail</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+			<section id="price" class="bg-lblue">
+				<div class="container price-section">
+					<h2 class="text-dark bold text-center">Host Any Website With Our<br>Fully Managed Services</h2>
+					<div class="row">
+						<div class="col-4">
+							<div class="card">
+								<div class="card">
+									<div class="flex">
+										<div class="icon" style="background-color: white;">
+											<img src="./assets/cloud-sunny.png" style="border-radius: 50%;">
+										</div>
+										<div class="heading">Cloud Hosting</div>
+									</div>
+									<div style="width: fit-content;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, eveniet aspernatur. Recusandae, quo laudantium corrupti verit</div>
+								</div>
+								<div class="price mt-3"><span class="small bold">$5.9</span>/month</div>
+								<div class="btn btn-out-dark mt-3" style="width: 87%;" onclick="changeDarkCard(this)">More Detail</div>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="card">
+								<div class="card">
+									<div class="flex">
+										<div class="icon" style="background-color: white">
+											<img src="./assets/buildings.png">
+										</div>
+										<div class="heading">Corporate</div>
+									</div>
+									<div style="width: fit-content;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, eveniet aspernatur. Recusandae, quo laudantium corrupti verit</div>
+								</div>
+								<div class="price mt-3"><span class="small bold">$19</span>/month</div>
+								<div class="btn btn-out-dark mt-3" style="width: 87%" onclick="changeDarkCard(this)">More Detail</div>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="card">
+								<div class="card">
+									<div class="flex">
+										<div class="icon" style="background-color: white">
+											<img src="./assets/driver.png">
+										</div>
+										<div class="heading">Cloud VPS</div>
+									</div>
+									<div style="width: fit-content;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, eveniet aspernatur. Recusandae, quo laudantium corrupti verit</div>
+								</div>
+								<div class="price mt-3"><span class="small bold">$19</span>/month</div>
+								<div class="btn btn-out-dark mt-3" style="width: 87%" onclick="changeDarkCard(this)">More Detail</div>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="card">
+								<div class="card">
+									<div class="flex">
+										<div class="icon" style="background-color: white">
+											<img src="./assets/monitor-mobbile.png">
+										</div>
+										<div class="heading">Dedicated</div>
+									</div>
+									<div style="width: fit-content;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, eveniet aspernatur. Recusandae, quo laudantium corrupti verit</div>
+								</div>
+								<div class="price mt-3"><span class="small bold">$19</span>/month</div>
+								<div class="btn btn-out-dark mt-3" style="width: 87%" onclick="changeDarkCard(this)">More Detail</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-            <section id="community">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-2" style="width: 25%; margin: 0px;">
-                            <div class="list">
-                                <li class="flex" onclick="displayContent('wordpress-content')">
-                                    <img src="./assets/WordPress.com Logo.png">
-                                    <div class="fsize text-dark" style="margin: auto 5px;">Wordpress</div>
-                                </li>
-                                <li class="flex" onclick="displayContent('magento-content')">
-                                    <img src="./assets/WordPress.com Logo.png">
-                                    <div class="fsize text-dark" style="margin: auto 5px;">Magento</div>
-                                </li>
-                                <li class="flex" onclick="displayContent('laravel-content')">
-                                    <img src="./assets/WordPress.com Logo.png">
-                                    <div class="fsize text-dark" style="margin: auto 5px;">Laravel</div>
-                                </li>
-                                <li class="flex" onclick="displayContent('php-content')">
-                                    <img src="./assets/WordPress.com Logo.png">
-                                    <div class="fsize text-dark" style="margin: auto 5px;">php</div>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="col-2" style="width: 60%;">
-                            <div class="content" id="wordpress-content">
-                                <div class="large text-dark">The Best Managed Cloud Hosting For Worpress</div>
-                                <div class="fsize text-gray mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error officia perferendis modi natus suscipit, blanditiis quae fugit laborum accusamus nihil, iste ullam sequi facilis, itaque quod illo ipsa magni atque?</div>
-                                <div class="row mt-3">
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Unlimited Bandwith
-                                    </div>
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Network Speed
-                                    </div>
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Turbo Power
-                                    </div>
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Xtreme Freedom
-                                    </div>
-                                </div>
-                                <div class="btn btn-orange mt-3" style="width: fit-content;">More detail</div>
-                            </div>
-                            
-                            <div class="content" id="magento-content" style="display: none;">
-                                <div class="large text-dark">The Best Managed Cloud Hosting For Magento</div>
-                                <div class="fsize text-gray mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error officia perferendis modi natus suscipit, blanditiis quae fugit laborum accusamus nihil, iste ullam sequi facilis, itaque quod illo ipsa magni atque?</div>
-                                <div class="row mt-3">
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Unlimited Bandwith
-                                    </div>
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Network Speed
-                                    </div>
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Turbo Power
-                                    </div>
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Xtreme Freedom
-                                    </div>
-                                </div>
-                                <div class="btn btn-orange mt-3" style="width: fit-content;">More detail</div>
-                            </div>
-                            
-                            <div class="content" id="laravel-content" style="display: none;">
-                                <div class="large text-dark">The Best Managed Cloud Hosting For Laravel</div>
-                                <div class="fsize text-gray mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error officia perferendis modi natus suscipit, blanditiis quae fugit laborum accusamus nihil, iste ullam sequi facilis, itaque quod illo ipsa magni atque?</div>
-                                <div class="row mt-3">
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Unlimited Bandwith
-                                    </div>
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Network Speed
-                                    </div>
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Turbo Power
-                                    </div>
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Xtreme Freedom
-                                    </div>
-                                </div>
-                                <div class="btn btn-orange mt-3" style="width: fit-content;">More detail</div>
-                            </div>
-                            
-                            <div class="content" id="php-content" style="display: none;">
-                                <div class="large text-dark">The Best Managed Cloud Hosting For php</div>
-                                <div class="fsize text-gray mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error officia perferendis modi natus suscipit, blanditiis quae fugit laborum accusamus nihil, iste ullam sequi facilis, itaque quod illo ipsa magni atque?</div>
-                                <div class="row mt-3">
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Unlimited Bandwith
-                                    </div>
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Network Speed
-                                    </div>
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Turbo Power
-                                    </div>
-                                    <div class="flex col-2">
-                                        <img src="./assets/Vector.png">
-                                        Xtreme Freedom
-                                    </div>
-                                </div>
-                                <div class="btn btn-orange mt-3" style="width: fit-content;">More detail</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+			<section id="community">
+				<div class="container">
+					<div class="row">
+						<div class="col-2" style="width: 25%; margin: 0px;">
+							<div class="list">
+								<li class="flex" onclick="displayContent('wordpress-content')">
+									<img src="./assets/WordPress.com Logo.png">
+									<div class="fsize text-dark" style="margin: auto 5px;">Wordpress</div>
+								</li>
+								<li class="flex" onclick="displayContent('magento-content')">
+									<img src="./assets/WordPress.com Logo.png">
+									<div class="fsize text-dark" style="margin: auto 5px;">Magento</div>
+								</li>
+								<li class="flex" onclick="displayContent('laravel-content')">
+									<img src="./assets/WordPress.com Logo.png">
+									<div class="fsize text-dark" style="margin: auto 5px;">Laravel</div>
+								</li>
+								<li class="flex" onclick="displayContent('php-content')">
+									<img src="./assets/WordPress.com Logo.png">
+									<div class="fsize text-dark" style="margin: auto 5px;">php</div>
+								</li>
+							</div>
+						</div>
+						<div class="col-2" style="width: 60%;">
+							<div class="content" id="wordpress-content">
+								<div class="large text-dark">The Best Managed Cloud Hosting For Worpress</div>
+								<div class="fsize text-gray mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error officia perferendis modi natus suscipit, blanditiis quae fugit laborum accusamus nihil, iste ullam sequi facilis, itaque quod illo ipsa magni atque?</div>
+								<div class="row mt-3">
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Unlimited Bandwith
+									</div>
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Network Speed
+									</div>
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Turbo Power
+									</div>
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Xtreme Freedom
+									</div>
+								</div>
+								<div class="btn btn-orange mt-3" style="width: fit-content;">More detail</div>
+							</div>
+							
+							<div class="content" id="magento-content" style="display: none;">
+								<div class="large text-dark">The Best Managed Cloud Hosting For Magento</div>
+								<div class="fsize text-gray mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error officia perferendis modi natus suscipit, blanditiis quae fugit laborum accusamus nihil, iste ullam sequi facilis, itaque quod illo ipsa magni atque?</div>
+								<div class="row mt-3">
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Unlimited Bandwith
+									</div>
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Network Speed
+									</div>
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Turbo Power
+									</div>
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Xtreme Freedom
+									</div>
+								</div>
+								<div class="btn btn-orange mt-3" style="width: fit-content;">More detail</div>
+							</div>
+							
+							<div class="content" id="laravel-content" style="display: none;">
+								<div class="large text-dark">The Best Managed Cloud Hosting For Laravel</div>
+								<div class="fsize text-gray mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error officia perferendis modi natus suscipit, blanditiis quae fugit laborum accusamus nihil, iste ullam sequi facilis, itaque quod illo ipsa magni atque?</div>
+								<div class="row mt-3">
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Unlimited Bandwith
+									</div>
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Network Speed
+									</div>
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Turbo Power
+									</div>
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Xtreme Freedom
+									</div>
+								</div>
+								<div class="btn btn-orange mt-3" style="width: fit-content;">More detail</div>
+							</div>
+							
+							<div class="content" id="php-content" style="display: none;">
+								<div class="large text-dark">The Best Managed Cloud Hosting For php</div>
+								<div class="fsize text-gray mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error officia perferendis modi natus suscipit, blanditiis quae fugit laborum accusamus nihil, iste ullam sequi facilis, itaque quod illo ipsa magni atque?</div>
+								<div class="row mt-3">
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Unlimited Bandwith
+									</div>
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Network Speed
+									</div>
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Turbo Power
+									</div>
+									<div class="flex col-2">
+										<img src="./assets/Vector.png">
+										Xtreme Freedom
+									</div>
+								</div>
+								<div class="btn btn-orange mt-3" style="width: fit-content;">More detail</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-            <section id="customer">
-                <div class="container customer-section">
-                    <div class="flex">
-                        <div class="large text-dark">How Our Customers<br>Feel About US</div>
-                        <div class="group flex" style="margin-left: 50%;">
-                            <div class="icon bg-lblue" style="cursor: pointer;" onclick="prevFun('profileCard')"><img src="./assets/arrow-left.png" height="23px"></div>
-                            <div class="icon bg-lblue" style="cursor: pointer;" onclick="nextFun('profileCard')"><img src="./assets/arrow-right.png" height="23px"></div>
-                        </div>
-                    </div>
-                    <div class="row mt-3" style="flex-wrap: nowrap; gap: 20px; overflow-x: auto;width: 100%;" id="profileCard">
-                        <div class="col-4">
-                            <div class="bg-lblue" style="padding: 20px; width: 300px">
-                                <div class="card text-center" style="background-color: white;">
-                                    <img src="./assets/profile.png">
-                                    <div class="flex mt-2" style="margin-left: 35%;">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                    </div>
-                                    <div class="text-gray mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, possimus! Repudiandae magni quia, exercitationem dolorum quae, rerum, eaque voluptas ab cumque dignissimos nostrum facilis vel temporibus? Optio nemo quae corporis.</div>
-                                    <div class="fsize text-dark mt-2">Guy</div>
-                                    <div class="text-gray">Manager 1</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="bg-lblue" style="padding: 20px; width: 300px">
-                                <div class="card text-center" style="background-color: white;">
-                                    <img src="./assets/profile.png">
-                                    <div class="flex mt-2" style="margin-left: 35%;">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                    </div>
-                                    <div class="text-gray mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, possimus! Repudiandae magni quia, exercitationem dolorum quae, rerum, eaque voluptas ab cumque dignissimos nostrum facilis vel temporibus? Optio nemo quae corporis.</div>
-                                    <div class="fsize text-dark mt-2">Guy</div>
-                                    <div class="text-gray">Manager 2</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="bg-lblue" style="padding: 20px; width: 300px">
-                                <div class="card text-center" style="background-color: white;">
-                                    <img src="./assets/profile.png">
-                                    <div class="flex mt-2" style="margin-left: 35%;">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                    </div>
-                                    <div class="text-gray mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, possimus! Repudiandae magni quia, exercitationem dolorum quae, rerum, eaque voluptas ab cumque dignissimos nostrum facilis vel temporibus? Optio nemo quae corporis.</div>
-                                    <div class="fsize text-dark mt-2">Guy</div>
-                                    <div class="text-gray">Manager 3</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="bg-lblue" style="padding: 20px; width: 300px">
-                                <div class="card text-center" style="background-color: white;">
-                                    <img src="./assets/profile.png">
-                                    <div class="flex mt-2" style="margin-left: 35%;">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                    </div>
-                                    <div class="text-gray mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, possimus! Repudiandae magni quia, exercitationem dolorum quae, rerum, eaque voluptas ab cumque dignissimos nostrum facilis vel temporibus? Optio nemo quae corporis.</div>
-                                    <div class="fsize text-dark mt-2">Guy</div>
-                                    <div class="text-gray">Manager 4</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="bg-lblue" style="padding: 20px; width: 300px">
-                                <div class="card text-center" style="background-color: white;">
-                                    <img src="./assets/profile.png">
-                                    <div class="flex mt-2" style="margin-left: 35%;">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                    </div>
-                                    <div class="text-gray mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, possimus! Repudiandae magni quia, exercitationem dolorum quae, rerum, eaque voluptas ab cumque dignissimos nostrum facilis vel temporibus? Optio nemo quae corporis.</div>
-                                    <div class="fsize text-dark mt-2">Guy</div>
-                                    <div class="text-gray">Manager 5</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="bg-lblue" style="padding: 20px; width: 300px">
-                                <div class="card text-center" style="background-color: white;">
-                                    <img src="./assets/profile.png">
-                                    <div class="flex mt-2" style="margin-left: 35%;">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                    </div>
-                                    <div class="text-gray mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, possimus! Repudiandae magni quia, exercitationem dolorum quae, rerum, eaque voluptas ab cumque dignissimos nostrum facilis vel temporibus? Optio nemo quae corporis.</div>
-                                    <div class="fsize text-dark mt-2">Guy</div>
-                                    <div class="text-gray">Manager 6</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="bg-lblue" style="padding: 20px; width: 300px">
-                                <div class="card text-center" style="background-color: white;">
-                                    <img src="./assets/profile.png">
-                                    <div class="flex mt-2" style="margin-left: 35%;">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                        <img src="./assets/Star 2.png">
-                                    </div>
-                                    <div class="text-gray mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, possimus! Repudiandae magni quia, exercitationem dolorum quae, rerum, eaque voluptas ab cumque dignissimos nostrum facilis vel temporibus? Optio nemo quae corporis.</div>
-                                    <div class="fsize text-dark mt-2">Guy</div>
-                                    <div class="text-gray">Manager 7</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+			<section id="customer">
+				<div class="container customer-section">
+					<div class="flex">
+						<div class="large text-dark">How Our Customers<br>Feel About US</div>
+						<div class="group flex" style="margin-left: 50%;">
+							<div class="icon bg-lblue" style="cursor: pointer;" onclick="prevFun('profileCard')"><img src="./assets/arrow-left.png" height="23px"></div>
+							<div class="icon bg-lblue" style="cursor: pointer;" onclick="nextFun('profileCard')"><img src="./assets/arrow-right.png" height="23px"></div>
+						</div>
+					</div>
+					<div class="row mt-3" style="flex-wrap: nowrap; gap: 20px; overflow-x: auto;width: 100%;" id="profileCard">
+						<div class="col-4">
+							<div class="bg-lblue" style="padding: 20px; width: 300px">
+								<div class="card text-center" style="background-color: white;">
+									<img src="./assets/profile.png">
+									<div class="flex mt-2" style="margin-left: 35%;">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+									</div>
+									<div class="text-gray mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, possimus! Repudiandae magni quia, exercitationem dolorum quae, rerum, eaque voluptas ab cumque dignissimos nostrum facilis vel temporibus? Optio nemo quae corporis.</div>
+									<div class="fsize text-dark mt-2">Guy</div>
+									<div class="text-gray">Manager 1</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="bg-lblue" style="padding: 20px; width: 300px">
+								<div class="card text-center" style="background-color: white;">
+									<img src="./assets/profile.png">
+									<div class="flex mt-2" style="margin-left: 35%;">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+									</div>
+									<div class="text-gray mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, possimus! Repudiandae magni quia, exercitationem dolorum quae, rerum, eaque voluptas ab cumque dignissimos nostrum facilis vel temporibus? Optio nemo quae corporis.</div>
+									<div class="fsize text-dark mt-2">Guy</div>
+									<div class="text-gray">Manager 2</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="bg-lblue" style="padding: 20px; width: 300px">
+								<div class="card text-center" style="background-color: white;">
+									<img src="./assets/profile.png">
+									<div class="flex mt-2" style="margin-left: 35%;">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+									</div>
+									<div class="text-gray mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, possimus! Repudiandae magni quia, exercitationem dolorum quae, rerum, eaque voluptas ab cumque dignissimos nostrum facilis vel temporibus? Optio nemo quae corporis.</div>
+									<div class="fsize text-dark mt-2">Guy</div>
+									<div class="text-gray">Manager 3</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="bg-lblue" style="padding: 20px; width: 300px">
+								<div class="card text-center" style="background-color: white;">
+									<img src="./assets/profile.png">
+									<div class="flex mt-2" style="margin-left: 35%;">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+									</div>
+									<div class="text-gray mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, possimus! Repudiandae magni quia, exercitationem dolorum quae, rerum, eaque voluptas ab cumque dignissimos nostrum facilis vel temporibus? Optio nemo quae corporis.</div>
+									<div class="fsize text-dark mt-2">Guy</div>
+									<div class="text-gray">Manager 4</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="bg-lblue" style="padding: 20px; width: 300px">
+								<div class="card text-center" style="background-color: white;">
+									<img src="./assets/profile.png">
+									<div class="flex mt-2" style="margin-left: 35%;">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+									</div>
+									<div class="text-gray mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, possimus! Repudiandae magni quia, exercitationem dolorum quae, rerum, eaque voluptas ab cumque dignissimos nostrum facilis vel temporibus? Optio nemo quae corporis.</div>
+									<div class="fsize text-dark mt-2">Guy</div>
+									<div class="text-gray">Manager 5</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="bg-lblue" style="padding: 20px; width: 300px">
+								<div class="card text-center" style="background-color: white;">
+									<img src="./assets/profile.png">
+									<div class="flex mt-2" style="margin-left: 35%;">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+									</div>
+									<div class="text-gray mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, possimus! Repudiandae magni quia, exercitationem dolorum quae, rerum, eaque voluptas ab cumque dignissimos nostrum facilis vel temporibus? Optio nemo quae corporis.</div>
+									<div class="fsize text-dark mt-2">Guy</div>
+									<div class="text-gray">Manager 6</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="bg-lblue" style="padding: 20px; width: 300px">
+								<div class="card text-center" style="background-color: white;">
+									<img src="./assets/profile.png">
+									<div class="flex mt-2" style="margin-left: 35%;">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+										<img src="./assets/Star 2.png">
+									</div>
+									<div class="text-gray mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, possimus! Repudiandae magni quia, exercitationem dolorum quae, rerum, eaque voluptas ab cumque dignissimos nostrum facilis vel temporibus? Optio nemo quae corporis.</div>
+									<div class="fsize text-dark mt-2">Guy</div>
+									<div class="text-gray">Manager 7</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-            <section id="plans" class="bg-lblue">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-2">
-                            <div class="large text-dark">Try It Now And Stop<br>Doubting Anything<br>Else</div>
-                            <div class="text-dark mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In neque labore sint quaerat optio vel explicabo quis cupiditate, quod voluptates ex nisi, possimus iusto ipsa dicta iure recusandae, porro ad.</div>
-                            <div class="flex mt-2">
-                                <div class="btn btn-orange">Start Free Trial</div>
-                                <div class="btn btn-out-dark">See All Plans</div>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <img src="./assets/Group 1000008788.png">
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+			<section id="plans" class="bg-lblue">
+				<div class="container">
+					<div class="row">
+						<div class="col-2">
+							<div class="large text-dark">Try It Now And Stop<br>Doubting Anything<br>Else</div>
+							<div class="text-dark mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In neque labore sint quaerat optio vel explicabo quis cupiditate, quod voluptates ex nisi, possimus iusto ipsa dicta iure recusandae, porro ad.</div>
+							<div class="flex mt-2">
+								<div class="btn btn-orange">Start Free Trial</div>
+								<div class="btn btn-out-dark">See All Plans</div>
+							</div>
+						</div>
+						<div class="col-2">
+							<img src="./assets/Group 1000008788.png">
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
 
-        <footer class="bg-dark" style="color: white;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-2">
-                            <img src="./assets/logo-white.png">
-                            <br class="mt-2">
-                            Lorem ipsum dolor sit amet consectetur<br>adipisicing elit.
-                            <div class="flex mt-2">
-                                <i class="bi bi-facebook" style="margin: 10PX;"></i>
-                                <i class="bi bi-twitter" style="margin: 10PX;"></i>
-                                <i class="bi bi-instagram" style="margin: 10PX;"></i>
-                                <i class="bi bi-youtube" style="margin: 10PX;"></i>
-                                <i class="bi bi-discord" style="margin: 10PX;"></i>
-                            </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="heading">Company</div>
-                                <div class="list-item">About</div>
-                                <div class="list-item">Blog</div>
-                                <div class="list-item">Leadership</div>
-                                <div class="list-item">Careers</div>
-                                <div class="list-item">Legal</div>
-                            </div>
-                            <div class="col-4">
-                                <div class="heading">Product</div>
-                                <div class="list-item">API</div>
-                                <div class="list-item">Pricing</div>
-                                <div class="list-item">Documentation</div>
-                                <div class="list-item">Relase Notes</div>
-                            </div>
-                            <div class="col-4">
-                                <div class="heading">Contact</div>
-                                <div class="list-item">Support</div>
-                                <div class="list-item">Sales</div>
-                                <div class="list-item">Report Abuse</div>
-                                <div class="list-item">System status</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
+		<footer class="bg-dark" style="color: white;">
+			<div class="container">
+				<div class="row">
+					<div class="col-2">
+							<img src="./assets/logo-white.png">
+							<br class="mt-2">
+							Lorem ipsum dolor sit amet consectetur<br>adipisicing elit.
+							<div class="flex mt-2">
+								<i class="bi bi-facebook" style="margin: 10PX;"></i>
+								<i class="bi bi-twitter" style="margin: 10PX;"></i>
+								<i class="bi bi-instagram" style="margin: 10PX;"></i>
+								<i class="bi bi-youtube" style="margin: 10PX;"></i>
+								<i class="bi bi-discord" style="margin: 10PX;"></i>
+							</div>
+					</div>
+					<div class="col-2">
+						<div class="row">
+							<div class="col-4">
+								<div class="heading">Company</div>
+								<div class="list-item">About</div>
+								<div class="list-item">Blog</div>
+								<div class="list-item">Leadership</div>
+								<div class="list-item">Careers</div>
+								<div class="list-item">Legal</div>
+							</div>
+							<div class="col-4">
+								<div class="heading">Product</div>
+								<div class="list-item">API</div>
+								<div class="list-item">Pricing</div>
+								<div class="list-item">Documentation</div>
+								<div class="list-item">Relase Notes</div>
+							</div>
+							<div class="col-4">
+								<div class="heading">Contact</div>
+								<div class="list-item">Support</div>
+								<div class="list-item">Sales</div>
+								<div class="list-item">Report Abuse</div>
+								<div class="list-item">System status</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
 </body>
 </html>

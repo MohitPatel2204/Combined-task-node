@@ -1,73 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="/css/api_call_json_style.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="/css/api_call_json_style.css" rel="stylesheet">
 </head>
 <body>
-    <table align="center" width="50%">
-        <tr>
-            <th colspan="8">
-                <h1>Welcome</h1>
-            </th>
-        </tr>
-        <tr>
-            <th colspan="8" style="text-align: left;">
-                <ul style="list-style: none; font-weight: bold; font-size: large;">
-                    <li style="padding: 10px;">Student ID : <%= result.student[0].sid%></li>
-                    <li style="padding: 10px;">Student Name : <%= result.student[0].fname %></li>
-                    <li style="padding: 10px;">Student Gender : <%= result.student[0].gender %></li>
-                    <li style="padding: 10px;">Email ID : <%= result.student[0].email %></li>
-                    <li style="padding: 10px;">Mobile No : <%= result.student[0].mobileno %></li>
-                    <li style="padding: 10px;">Birth Date : <%= result.student[0].birthdate %></li>
-                </ul>
-            </th>
-        </tr>
+	<table align="center" width="50%">
+		<tr>
+			<th colspan="8">
+				<h1>Welcome</h1>
+			</th>
+		</tr>
+		<tr>
+			<th colspan="8" style="text-align: left;">
+				<ul style="list-style: none; font-weight: bold; font-size: large;">
+					<li style="padding: 10px;">Student ID : <%= result.student[0].sid%></li>
+					<li style="padding: 10px;">Student Name : <%= result.student[0].fname %></li>
+					<li style="padding: 10px;">Student Gender : <%= result.student[0].gender %></li>
+					<li style="padding: 10px;">Email ID : <%= result.student[0].email %></li>
+					<li style="padding: 10px;">Mobile No : <%= result.student[0].mobileno %></li>
+					<li style="padding: 10px;">Birth Date : <%= result.student[0].birthdate %></li>
+				</ul>
+			</th>
+		</tr>
 
-        <tr>
-            <th rowspan="2">Subject name</th>
-            <th colspan="2">Priliminary</th>
-            <th colspan="2">Terminal</th>
-            <th colspan="2">Final</th>
-            <th rowspan="2">Total Mark</th>
-        </tr>
+		<tr>
+			<th rowspan="2">Subject name</th>
+			<th colspan="2">Priliminary</th>
+			<th colspan="2">Terminal</th>
+			<th colspan="2">Final</th>
+			<th rowspan="2">Total Mark</th>
+		</tr>
 
-        <tr>
-            <th>Theory</th>
-            <th>Prectical</th>
-            <th>Theory</th>
-            <th>Prectical</th>
-            <th>Theory</th>
-            <th>Prectical</th>
-        </tr>
+		<tr>
+			<th>Theory</th>
+			<th>Prectical</th>
+			<th>Theory</th>
+			<th>Prectical</th>
+			<th>Theory</th>
+			<th>Prectical</th>
+		</tr>
 
-        <% result.marks.forEach(mark=>{ %>
-            <tr>
-                <% Object.keys(mark).forEach(key => { %>
-                    <td><%= mark[key] %></td>
-                <% }) %>
-            </tr>
-        <% }) %>
+		<% result.marks.forEach(mark=>{ %>
+			<tr>
+				<% Object.keys(mark).forEach(key => { %>
+					<td><%= mark[key] %></td>
+				<% }) %>
+			</tr>
+		<% }) %>
 
-        <tr>
-            <td colspan="7" style="line-height: 30px;">
-                Present Day : <%= result.attendance[0].No_of_present_day %><br>
-                Absent Day : <%= result.attendance[0].No_of_absent_day %><br>
-                Total Day : <%= result.attendance[0].Total_day %><br>
-                Attendance : <%= (result.attendance[0].No_of_present_day / result.attendance[0].Total_day * 100).toFixed(2) %>%
-            </td>
-            <th>
-                Total : <%= result.total[0].total %><br>
-                Percentage : <%= result.total[0].percentage.toFixed(2) %>%<br>
-            </th>
-        </tr>
-        <tr>
-            <td colspan="8">
-                <a href="/allresult/">Back</a>
-            </td>
-        </tr>
-    </table>
+		<tr>
+			<td colspan="7" style="line-height: 30px;">
+				Present Day : <%= result.attendance[0].No_of_present_day %><br>
+				Absent Day : <%= result.attendance[0].No_of_absent_day %><br>
+				Total Day : <%= result.attendance[0].Total_day %><br>
+				Attendance : <%= (result.attendance[0].No_of_present_day / result.attendance[0].Total_day * 100).toFixed(2) %>%
+			</td>
+			<th>
+				Total : <%= result.total[0].total %><br>
+				Percentage : <%= result.total[0].percentage.toFixed(2) %>%<br>
+			</th>
+		</tr>
+		<tr>
+			<td colspan="8">
+				<a href="/allresult/">Back</a>
+			</td>
+		</tr>
+	</table>
 </body>
 </html>

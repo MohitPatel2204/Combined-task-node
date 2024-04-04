@@ -2,88 +2,88 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="/css/api_call_json_style.css" rel="stylesheet">
-    <script src="/js/api_call_json/getAPI.js"></script>
-    <script>
-        const createComments = (comments) => {
-            let comment_table = document.getElementById("comment_table");
-            comment_table.innerHTML = "";
-            if (comments.length <= 0) {
-                comment_table.innerHTML = "Comment is not avilable";
-                comment_table.style.color = 'red';
-                return;
-            }
-            comments.forEach(comment => {
-                let div = document.createElement("div");
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="/css/api_call_json_style.css" rel="stylesheet">
+	<script src="/js/api_call_json/getAPI.js"></script>
+	<script>
+		const createComments = (comments) => {
+			let comment_table = document.getElementById("comment_table");
+			comment_table.innerHTML = "";
+			if (comments.length <= 0) {
+				comment_table.innerHTML = "Comment is not avilable";
+				comment_table.style.color = 'red';
+				return;
+			}
+			comments.forEach(comment => {
+				let div = document.createElement("div");
 
-                div.style = "width: 500px; border: 1px solid black; border-radius: 10px; margin: 10px; padding: 10px";
-                Object.keys(comment).forEach(key => {
-                    let p = document.createElement("p");
-                    p.innerHTML = `<b>${key}</b> : ${comment[key]}`
-                    div.appendChild(p);
-                })
-                comment_table.appendChild(div);
-            })
-        }
+				div.style = "width: 500px; border: 1px solid black; border-radius: 10px; margin: 10px; padding: 10px";
+				Object.keys(comment).forEach(key => {
+					let p = document.createElement("p");
+					p.innerHTML = `<b>${key}</b> : ${comment[key]}`
+					div.appendChild(p);
+				})
+				comment_table.appendChild(div);
+			})
+		}
 
-        const createPost = (post) => {
-            let post_table = document.getElementById("post_table");
+		const createPost = (post) => {
+			let post_table = document.getElementById("post_table");
 
-            Object.keys(post).forEach(key => {
-                let tr = document.createElement("tr");
-                let th = document.createElement("th");
-                th.innerHTML = key;
-                tr.appendChild(th);
+			Object.keys(post).forEach(key => {
+				let tr = document.createElement("tr");
+				let th = document.createElement("th");
+				th.innerHTML = key;
+				tr.appendChild(th);
 
-                td = document.createElement("td");
-                if (key == "image" || key == "thumbnail")
-                    td.innerHTML = `<img src='${post[key]}' alt='Image is not found' width="300"    >`;
-                else
-                    td.innerHTML = post[key];
-                tr.appendChild(td);
-                post_table.appendChild(tr);
-            })
-        }
+				td = document.createElement("td");
+				if (key == "image" || key == "thumbnail")
+					td.innerHTML = `<img src='${post[key]}' alt='Image is not found' width="300"    >`;
+				else
+					td.innerHTML = post[key];
+				tr.appendChild(td);
+				post_table.appendChild(tr);
+			})
+		}
 
-        const serachComment = (comments, id) => {
-            let arr = [];
-            comments.forEach(comment => {
-                if (comment.postId == id)
-                    arr.push(comment)
-            })
-            return arr;
-        }
+		const serachComment = (comments, id) => {
+			let arr = [];
+			comments.forEach(comment => {
+				if (comment.postId == id)
+					arr.push(comment)
+			})
+			return arr;
+		}
 
-     getAPI("/clientEnvVariable/").then(async (urls) => {
-            let id = window.location.href.split("/").pop();
-            let post = await getAPI(urls.POSTS_API_URL + "/" + id.toString());
-            createPost(post);
+	 getAPI("/clientEnvVariable/").then(async (urls) => {
+			let id = window.location.href.split("/").pop();
+			let post = await getAPI(urls.POSTS_API_URL + "/" + id.toString());
+			createPost(post);
 
-            document.getElementById("commentbtn").addEventListener("click", async () => {
-                let comment = await getAPI(urls.COMMENTS_API_URL);
-                comment = serachComment(comment, id);
-                createComments(comment);
-            })
-        }).catch(error => {
-            document.write("<h1 color=red>Data is not avilable</h1>")
-        })
-    </script>
-    <style>
-        td,
-        th {
-            text-align: left;
-        }
-    </style>
+			document.getElementById("commentbtn").addEventListener("click", async () => {
+				let comment = await getAPI(urls.COMMENTS_API_URL);
+				comment = serachComment(comment, id);
+				createComments(comment);
+			})
+		}).catch(error => {
+			document.write("<h1 color=red>Data is not avilable</h1>")
+		})
+	</script>
+	<style>
+		td,
+		th {
+			text-align: left;
+		}
+	</style>
 </head>
 
 <body>
-    <a href="/posts">Back</a>
-    <h1 style="margin: auto; text-align: center;">Post</h1>
-    <table id="post_table" border="2"></table>
-    <button id="commentbtn" style="margin: auto;">View comment</button>
-    <div id="comment_table" style="display: flex; gap: 3; flex-wrap: wrap;"></div>
+	<a href="/posts">Back</a>
+	<h1 style="margin: auto; text-align: center;">Post</h1>
+	<table id="post_table" border="2"></table>
+	<button id="commentbtn" style="margin: auto;">View comment</button>
+	<div id="comment_table" style="display: flex; gap: 3; flex-wrap: wrap;"></div>
 </body>
 </html>

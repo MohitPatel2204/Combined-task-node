@@ -1,8 +1,8 @@
 const getPosts = ((request, response) => {
-	try{
+	try {
 		response.render("api_call_json/posts");
 	}
-	catch{
+	catch {
 		response.render("error");
 	}
 })

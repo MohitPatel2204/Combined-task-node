@@ -1,5 +1,5 @@
 const errorPage = ((request, response)=>{
-        response.render("error");
+	response.render("error");
 })
 
 module.exports = errorPage;

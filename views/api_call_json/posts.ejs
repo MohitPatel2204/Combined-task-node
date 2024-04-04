@@ -2,38 +2,38 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 </head>
 
 <body>
-    <p id="posts"></p>
-    <link href="/css/api_call_json_style.css" rel = "stylesheet">
-    <script src="/js/api_call_json/getAPI.js"></script>
-    <script src="/js/api_call_json/createGrid.js"></script>
-    
-    <script>
-        getAPI("/clientEnvVariable/").then(async (result) => {
-            console.log(result.POSTS_API_URL)
-            let data =await getAPI(result.POSTS_API_URL);
-            let obj = {
-                parentNode: "posts",
-                name: "posts_gird",
-                data: data,
-                displayRecord: 10,
-                header: {
-                    id: "ID",
-                    userId: "User  ID",
-                    title: "Title",
-                }
-            }
-            console.log(obj);
-            createGrid(obj);
-        }).catch(error => {
-            document.write("<h1 style='color: red'>Data is not avilable</h1>")
-        });
-    </script>
+	<p id="posts"></p>
+	<link href="/css/api_call_json_style.css" rel = "stylesheet">
+	<script src="/js/api_call_json/getAPI.js"></script>
+	<script src="/js/api_call_json/createGrid.js"></script>
+	
+	<script>
+		getAPI("/clientEnvVariable/").then(async (result) => {
+			console.log(result.POSTS_API_URL)
+			let data =await getAPI(result.POSTS_API_URL);
+			let obj = {
+				parentNode: "posts",
+				name: "posts_gird",
+				data: data,
+				displayRecord: 10,
+				header: {
+					id: "ID",
+					userId: "User  ID",
+					title: "Title",
+				}
+			}
+			console.log(obj);
+			createGrid(obj);
+		}).catch(error => {
+			document.write("<h1 style='color: red'>Data is not avilable</h1>")
+		});
+	</script>
 </body>
 
 </html>

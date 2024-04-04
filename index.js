@@ -16,20 +16,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.listen(port, error=>{
-    try{
-        if(error)
-        {
-            loger.error(`ERROR : Other server is running ${port}, So change port number`)
-        }
-        else
-        {
-            loger.info(`Server is running ${port}`);
-            loger.info(`URL is : http://${process.env.HOST}:${port}/index`);
-            app.use(cookieParser());
-            app.use(routers);
-        }
-    }
-    catch(error){
-        loger.error(`ERROR : Other server is running ${port}, So change port number`)
-    }
+	try{
+		if(error)
+		{
+			loger.error(`ERROR : Other server is running ${port}, So change port number`)
+		}
+		else
+		{
+			loger.info(`Server is running ${port}`);
+			loger.info(`URL is : http://${process.env.HOST}:${port}/index`);
+			app.use(cookieParser());
+			app.use(routers);
+		}
+	}
+	catch(error){
+		loger.error(`ERROR : Other server is running ${port}, So change port number`)
+	}
 })

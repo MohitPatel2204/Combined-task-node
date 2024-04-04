@@ -1,27 +1,27 @@
 <div style="display: flex; gap: 10px">
-    <%if(page.hide.indexOf("first")==-1){%>
-        <a href="/student/first/<%=page['key']%>/<%=page['order']%>" ><<</a>
-    <%} else { %>
-        <a href="" ><<</a>
-    <%}%>
+	<%if(page.hide.indexOf("first")==-1){%>
+		<a href="/student/first/<%=page['key']%>/<%=page['order']%>" ><<</a>
+	<%} else { %>
+		<a href="" ><<</a>
+	<%}%>
 
-    <%if(page.hide.indexOf("0")==-1){%>
-        <a href="/student/0/<%=page['key']%>/<%=page['order']%>" ><</a>
-    <%} else { %>
-        <a href=""><</a>
-    <%}%>
+	<%if(page.hide.indexOf("0")==-1){%>
+		<a href="/student/0/<%=page['key']%>/<%=page['order']%>" ><</a>
+	<%} else { %>
+		<a href=""><</a>
+	<%}%>
 
-    <p style="margin-top: auto;">Page no : <%=page.currentPageno+1%></p>
+	<p style="margin-top: auto;">Page no : <%=page.currentPageno+1%></p>
 
-    <%if(page.hide.indexOf("1")==-1){%>
-        <a href="/student/1/<%=page['key']%>/<%=page['order']%>" >></a>
-    <%} else { %>
-        <a href="">></a>
-    <%}%>
+	<%if(page.hide.indexOf("1")==-1){%>
+		<a href="/student/1/<%=page['key']%>/<%=page['order']%>" >></a>
+	<%} else { %>
+		<a href="">></a>
+	<%}%>
 
-    <%if(page.hide.indexOf("last")==-1){%>
-        <a href="/student/last/<%=page['key']%>/<%=page['order']%>" >>></a>
-    <%} else { %>
-        <a href="">>></a>
-    <%}%>
+	<%if(page.hide.indexOf("last")==-1){%>
+		<a href="/student/last/<%=page['key']%>/<%=page['order']%>" >>></a>
+	<%} else { %>
+		<a href="">>></a>
+	<%}%>
 </div>

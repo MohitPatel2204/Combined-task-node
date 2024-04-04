@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="/css/api_call_json_style.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="/css/api_call_json_style.css" rel="stylesheet">
 
 </head>
 <body>
-    <h1>Name : Mordiya Mohit</h1>
-    <h2>Emp ID : 24DEV044</h2>
-    <%-include("components/pagination")%>
-    <%-include("components/att_filter")%>
-    <table border="1">
-        <tr>
-            <%Object.keys(fields).forEach((key=>{%>
-                <td><%=fields[key]%></td>
-            <%}))%>
-        </tr>
-        <%if(result==[]) {%>
-            <tr><td colspan="5">Data is not exist</td></tr>
-        <%} else {%>
-            <%result.forEach(student=>{%>
-                <tr>
-                    <%Object.keys(student).forEach((key=>{%>
-                        <td><%=student[key]%></td>
-                    <%}))%>
-                </tr>
-            <%})%>
-        <%}%>
-    </table>
+	<h1>Name : Mordiya Mohit</h1>
+	<h2>Emp ID : 24DEV044</h2>
+	<%-include("components/pagination")%>
+	<%-include("components/att_filter")%>
+	<table border="1">
+		<tr>
+			<%Object.keys(fields).forEach((key=>{%>
+				<td><%=fields[key]%></td>
+			<%}))%>
+		</tr>
+		<%if(result==[]) {%>
+			<tr><td colspan="5">Data is not exist</td></tr>
+		<%} else {%>
+			<%result.forEach(student=>{%>
+				<tr>
+					<%Object.keys(student).forEach((key=>{%>
+						<td><%=student[key]%></td>
+					<%}))%>
+				</tr>
+			<%})%>
+		<%}%>
+	</table>
 </body>
 </body>
 </html>

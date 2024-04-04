@@ -1,1 +1,29 @@
-{"0":{"firstname":"mohit","lastname":"patel","age":"21","mobileno":"9874563210","email":"mohit@gmail.com","gender":"Male","hobby":["singing","writing"],"address":"kaliyabid"},"1":{"firstname":"yash","lastname":"patel","age":"21","mobileno":"8527419630","email":"yash@gmail.com","gender":"Male","hobby":["singing","drawing"],"address":"bhavnagar"},"index":1}
+{
+  "0": {
+    "firstname": "mohit",
+    "lastname": "patel",
+    "age": "21",
+    "mobileno": "9874563210",
+    "email": "mohit@gmail.com",
+    "gender": "Male",
+    "hobby": [
+      "singing",
+      "writing"
+    ],
+    "address": "kaliyabid"
+  },
+  "1": {
+    "firstname": "yash",
+    "lastname": "patel",
+    "age": "21",
+    "mobileno": "8527419630",
+    "email": "yash@gmail.com",
+    "gender": "Male",
+    "hobby": [
+      "singing",
+      "drawing"
+    ],
+    "address": "bhavnagar"
+  },
+  "index": 1
+}
