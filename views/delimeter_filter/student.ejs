@@ -28,7 +28,11 @@
 	</table>
 
 	<div style="margin: auto; width: fit-content;">
-		<%- include('components/grid', {table: table}); %>
+		<% if(typeof table != 'undefined') { %>
+			<%- include('components/grid', {table: table}); %>
+		<% } else if (typeof error != 'undefined') { %>
+			<h1 style="color: red;"><%= error %></h1>	
+		<% } %>
 	</div>
 </body>
 </html>

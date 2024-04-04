@@ -84,6 +84,11 @@ const student = (async (request, response) => {
 
   try {
     let result = await db.executeQuery(query);
+    if(result.length==0)
+    {
+      response.render("delimeter_filter/student", { exp , error: "Data is not found"});
+      return;
+    }
     let table = {
       name: "table1",
       data: result,
@@ -91,7 +96,8 @@ const student = (async (request, response) => {
     }
     response.render("delimeter_filter/student", { table, exp });
   }
-  catch {
+  catch(error) { 
+    console.log(error)
     response.render("error");
   }
 })

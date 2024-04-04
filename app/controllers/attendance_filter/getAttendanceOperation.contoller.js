@@ -49,7 +49,7 @@ const getAttendanceOperation = (async(request, response) => {
 			month: month,
 			year: year
 		};
-		response.render("attendance_filter/attendance", {fields, result, page, selectedValue});
+		response.render("attendance_filter/attendance",{fields, result, page, selectedValue})
 	}
 	catch{
 		response.render("error");
