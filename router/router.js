@@ -6,6 +6,7 @@ const clientEnvVariable = require("../app/controllers/clientEnvVariable.controll
 const student = require("../app/controllers/delimeter_filter.js/student.controller");
 const dynamic_component = require("../app/controllers/dynamic_component.controller/dynamic_component.controller");
 const errorPage = require("../app/controllers/error.controller");
+const grid_filter = require("../app/controllers/grid_filter/grid_filter");
 const home = require("../app/controllers/home.controller");
 const { task1, task2 , task3 } = require("../app/controllers/html_ex.controller/tasks.controller");
 const index = require("../app/controllers/index.controller");
@@ -126,10 +127,15 @@ routers.get("/timezone_convertor", isAuthentication, convertor);
 /* ========================================================
 user json by module routers
 =========================================================== */
-routers.get("/userjson/",userjson);
-routers.get("/userjson/display",userjsonDisplay);
-routers.get("/userjson/add", userAddGet);
-routers.post("/userjson/add", userAddPost);
+routers.get("/userjson/", isAuthentication,userjson);
+routers.get("/userjson/display", isAuthentication,userjsonDisplay);
+routers.get("/userjson/add", isAuthentication,userAddGet);
+routers.post("/userjson/add", isAuthentication,userAddPost);
+
+/* ========================================================
+grid filter module routers
+=========================================================== */
+routers.get("/grid_filter", isAuthentication,grid_filter);
 
 /* ========================================================
 job application without ajax by module routers
@@ -149,24 +155,24 @@ routers.get("/job_app_without_ajax/candidates/", isAuthentication, viewAllCandid
 /* ========================================================
 job application with ajax by module routers
 =========================================================== */
-routers.get("/job_app_ajax/candidate/:id", candidateAPI);
+routers.get("/job_app_ajax/candidate/:id", isAuthentication,candidateAPI);
 
-routers.get('/job_app_ajax/delete/:id', deleteCandidate);
+routers.get('/job_app_ajax/delete/:id', isAuthentication,deleteCandidate);
 
-routers.get("/job_app_ajax/insert_candidate", candidateAddGet)
-routers.post("/job_app_ajax/insert_candidate", validation,candidateAddPost);
+routers.get("/job_app_ajax/insert_candidate", isAuthentication,candidateAddGet)
+routers.post("/job_app_ajax/insert_candidate", isAuthentication,validation,candidateAddPost);
 
-routers.get("/job_app_ajax/update_candidate/:id", candidateUpdateGet);
-routers.post("/job_app_ajax/update_candidate/:id", validation,candidateUpdatePost);
+routers.get("/job_app_ajax/update_candidate/:id", isAuthentication,candidateUpdateGet);
+routers.post("/job_app_ajax/update_candidate/:id", isAuthentication,validation,candidateUpdatePost);
 
 routers.get("/job_app_ajax/candidates", viewAllCandidatesAjax);
 
 /* ========================================================
 html ex. by module routers
 =========================================================== */
-routers.get("/task1", task1);
-routers.get("/task2", task2);
-routers.get("/task3", task3);
+routers.get("/task1", isAuthentication,task1);
+routers.get("/task2", isAuthentication, task2);
+routers.get("/task3", isAuthentication, task3);
 
 /* ========================================================
 error page routers

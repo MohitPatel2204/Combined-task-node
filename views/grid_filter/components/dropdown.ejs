@@ -1,0 +1,10 @@
+<%if(select.options && select.name) {%>
+    <% const keys = Object.keys(select.options); %>
+    <select id="<%=select.name%>" name="<%=select.name%>" <%if(select.tabindex)%><%= select.tabindex %>>
+        <% keys.forEach(key=>{ %>
+            <option value="<%=key%>" <%if(select.selected==key){%>selected<%}%>>
+                <%= select.options[key] %>
+            </option>
+        <% }) %>
+    </select>
+<% } %>

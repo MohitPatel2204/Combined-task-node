@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/api_call_json_style.css" rel = "stylesheet">
+
+</head>
+<body>
+    
+    <form style="margin: auto; width: fit-content; text-align: center;">
+        <%- include('components/dropdown', {select: databaseName}); %>
+        <br>
+        <textarea placeholder="Enter query" name="query" cols="100" rows="5" ><% if(query!=null) { %><%= query%><% } %></textarea>
+        <br>
+        <input type="submit" value="GO" style="width: 100%">
+    </form>
+
+    <hr>
+    <div style="margin: auto; width: fit-content;">
+        <% try{ %>
+            <%- include('components/grid', {table: table}); %>
+        <% } catch { %>
+            <p>Data is not found</p>
+        <% } %>
+    </div>
+</body>
+</html>

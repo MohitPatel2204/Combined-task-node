@@ -1,7 +1,7 @@
 table {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-collapse: collapse;
-    font-size: 20px;
+    font-size: medium;
     width: 100%;
 }
 
@@ -30,8 +30,18 @@ th {
 td {
     padding: 20px;
 }
+textarea,
+select,
+input {
+    border: 1px solid #273746;
+    color: #273746;
+    font-size: medium;
+    padding: 10px;
+}
 
 
+input[type='submit'],
+input[type='button'],
 button {
     background-color: #273746;
     cursor: pointer;
@@ -41,6 +51,8 @@ button {
     font-size: 20px;
 }
 
+input[type='submit']:hover,
+input[type='button']:hover,
 button:hover {
     border-radius: 5px;
     font-weight: lighter;
