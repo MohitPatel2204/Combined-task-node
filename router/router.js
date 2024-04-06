@@ -145,7 +145,7 @@ routers.get("/job_app_without_ajax/delete/:id", isAuthentication, deleteData);
 routers.get("/job_app_without_ajax/fetch/:id", isAuthentication, fetchData);
 
 routers.get("/job_app_without_ajax/insert", isAuthentication, insertGet);
-routers.post("/job_app_without_ajax/insert", formValidate, isAuthentication, insertPost)
+routers.post("/job_app_without_ajax/insert", isAuthentication, insertPost)
 
 routers.get("/job_app_without_ajax/update/:id", isAuthentication, updateGet);
 routers.post("/job_app_without_ajax/update/:id", formValidate, isAuthentication, updatePost);

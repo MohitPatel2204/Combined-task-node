@@ -1,25 +1,27 @@
 const isRequiredString = (obj) =>{
     keys = Object.keys(obj);
+    let error = [];
     for(let i=0; i<keys.length; i++)
     {
         if(document.getElementById(keys[i]).value.trim()=="")
         {
-            return keys[i];
+            error.push(keys[i]);
         }
     }
-    return true;
+    return error;
 }
 
 const isNumberString = (obj) =>{
+    let error = [];
     let keys = Object.keys(obj);
     for(let i=0; i<keys.length; i++)
     {
         if(!isNaN(document.getElementById(keys[i]).value.trim()))
         {
-            return keys[i];
+            error.push(keys[i]);
         }
     }
-    return true;
+    return error;
 }
 
 const regularExp = (type, id) => {
@@ -29,15 +31,15 @@ const regularExp = (type, id) => {
     switch(type)
     {
         case "email":
-            if(EMAIL.matched(document.getElementById(id).value.trim()))
+            if(EMAIL.test(document.getElementById(id).value))
                 return true;
             break;
         case "mobile":
-            if(CONTACT.match(document.getElementById(id).value.trim()))
+            if(CONTACT.test(document.getElementById(id).value))
                 return true;
             break;
         case "date":
-            if(DATE.match(document.getElementById(id).value.trim()))
+            if(DATE.test(document.getElementById(id).value))
                 return true;
             break;
     }
@@ -45,6 +47,7 @@ const regularExp = (type, id) => {
 }
 
 const arrayRequired = (arr) => {
+    let error = [];
     for(let i=0; i<arr.length; i++)
     {
         let obj = arr[i];
@@ -72,12 +75,14 @@ const arrayRequired = (arr) => {
         } 
         else
         {
-            return obj;
+            error.push(obj);
         }
     }
-    return true;
+    return error;
 }
 const isArraySame = (arr) => {
+    let error = [];
+
     for(let i=0; i<arr.length; i++)
     {
         let obj = arr[i];
@@ -95,15 +100,27 @@ const isArraySame = (arr) => {
         for(let i=0; i<result.length; i++)
         {
             if(size != result[i].length)
-                return obj;
+                error.push(obj);
         }
     }
-    return true;
+    return error;
+}
+
+const printErrorMessage = (id, msg) => {
+    let node = document.getElementsByName(id)[0].parentNode;
+    node.innerHTML += `<span class='text-danger'>${msg}</span>`;
+}
+
+const removeErrorMessage = () => {
+    const errors = document.querySelectorAll('span.text-danger')
+    errors.forEach(error=>error.remove())
 }
 
 const isValidate = () => {
-    console.log("1")
-    let errorMessage = document.getElementById("error_message")
+    removeErrorMessage();
+    let errorArray = [];
+
+    // required string or no
     let requiredStr = {
         firstname: "First name",
         lastname: "Last name",
@@ -113,112 +130,92 @@ const isValidate = () => {
         dob: "Birthdate",
         expectedctc: "Excepted CTC"
     }
-
     let result = isRequiredString(requiredStr);
-    if(result == true)
-    {
-        let obj = {
-            firstname: "First name",
-            lastname: "Last name",
-            designation: "Designation",
-        }
+    result.forEach(item=>{
+        if(errorArray.indexOf(item)<0)
+            errorArray.push(item);
+    })
 
-        let result = isNumberString(obj);
-        if(result != true)
-        {   
-            document.getElementById(result).focus();
-            errorMessage.hidden = false;
-            errorMessage.innerHTML = `ERRRO : Please, Enter valid ${obj[result]}`;
-            return false;
-        }
-
-        if(regularExp("email", "email")!=true)
-        {
-            errorMessage.hidden = false;
-            errorMessage.innerHTML = `ERRRO : Please, Enter valid email ID`;
-            return false;
-        }
-        else if(regularExp("mobile", "phno")!=true)
-        {
-            errorMessage.hidden = false;
-            errorMessage.innerHTML = `ERRRO : Please, Enter valid mobileno`;
-            return false;
-        }
-        else if(regularExp("date", "dob")!=true)
-        {
-            errorMessage.hidden = false;
-            errorMessage.innerHTML = `ERRRO : Please, Enter valid date`;
-            return false;
-        }
+    // // check number string
+    let obj = {
+        firstname: "First name",
+        lastname: "Last name",
+        designation: "Designation",
     }
-    else
+    result = isNumberString(obj);
+    result.forEach(item=>{
+        if(errorArray.indexOf(item)<0)
+            errorArray.push(item);
+    })
+    
+    // // is regex or not 
+    if(regularExp("email", "email")!=true)
     {
-        document.getElementById(result).focus();
-        errorMessage.hidden = false;
-        errorMessage.innerHTML = `ERROR: Please, Enter ${requiredStr[result]}`;
-        return false;
+        if(errorArray.indexOf('email')<0)   
+            errorArray.push('email')
     }
+    else if(regularExp("mobile", "phno")!=true)
+    {
+        if(errorArray.indexOf('phno')<0)   
+            errorArray.push('phno')
+    }
+    else if(regularExp("date", "dob")!=true)
+    {
+        if(errorArray.indexOf('dob')<0)   
+            errorArray.push('dob')
+    } 
 
-    let obj = [
+    //---language known 
+    obj = [
         {
             name: "hindilanguage[]",
-            label: "Hindi language",
             size: 2,
             type: "select",
             required: false
         },
         {
             name: "englishlanguage[]",
-            label: "English language",
             size: 2,
             type: "select",
             required: false
         },
         {
             name: "gujratilanguage[]",
-            label: "Gujrati language",
             size: 2,
             type: "select",
             required: false
         },
         {
             name: "phpchk[]",
-            label: "PHP language",
             size: 2,
             type: "select",
             required: false
         },
         {
             name: "oraclechk[]",
-            label: "Oracle language",
             size: 2,
             type: "select",
             required: false
         },
         {
             name: "mysqlchk[]",
-            label: "Mysql language",
             size: 2,
             type: "select",
             required: false
         },
         {
             name: "laravelchk[]",
-            label: "Laravel language",
             size: 2,
             type: "select",
             required: false
         },
     ]
     result = arrayRequired(obj);
-
-    if(result != true)
-    {
-        document.getElementsByName(result.name)[0].focus();
-        errorMessage.hidden = false;
-        errorMessage.innerHTML = `ERROR: Please, Enter ${result.label}`;
-        return false;
-    }
+    result = result.map(item=>item.name)
+    result.forEach(item=>{
+        if(errorArray.indexOf(item)<0)
+            errorArray.push(item);
+    })
 
     let obj1 = [
         {
@@ -237,16 +234,21 @@ const isValidate = () => {
             require: false
         },
     ]
-
     result = isArraySame(obj1);
-    if(result!=true)
+    result = result.map(item=>item.data[0])
+    result.forEach(item=>{
+        if(errorArray.indexOf(item)<0)
+            errorArray.push(item);
+    })
+
+    if(errorArray.length > 0)
     {
-        document.getElementsByName(result.data[0])[0].focus();
-        errorMessage.hidden = false;
-        errorMessage.innerHTML = `ERROR: Please, Enter ${result.label}`;
+        document.getElementsByName(errorArray[0])[0].focus();
+        errorArray.forEach(item=>{
+            printErrorMessage(item, `${item} invalid...`)
+        })
         return false;
     }
-
     return true;
 }
 
