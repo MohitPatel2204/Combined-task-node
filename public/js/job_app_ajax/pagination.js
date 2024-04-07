@@ -190,9 +190,9 @@ const is_valid_education_details = () => {
 
 	if(errorArray.length > 0)
 	{
-		errorArray.forEach(item=>{
-			printErrorMessage(item, `${item} is invalid....`);
-		})
+		document.getElementById("error").style.display = 'block';
+		document.getElementById("error").className = 'alert text-center alert-danger';
+		document.getElementById("error").innerHTML = 'Error eduction is invalid'
 		return false;
 	}
 	return true;
@@ -215,9 +215,9 @@ const is_valid_work = () => {
 
 	if(errorArray.length > 0)
 	{
-		errorArray.forEach(item=>{
-			printErrorMessage(item, `${item} is invalid....`);
-		})
+		document.getElementById("error").style.display = 'block';
+		document.getElementById("error").className = 'alert text-center alert-danger';
+		document.getElementById("error").innerHTML = 'Error eduction is invalid'
 		return false;
 	}
 	return true;
@@ -321,9 +321,9 @@ const is_valid_reference = () => {
 
 	if(errorArray.length > 0)
 	{
-		errorArray.forEach(item=>{
-			printErrorMessage(item, `${item} is invalid....`);
-		})
+		document.getElementById("error").style.display = 'block';
+		document.getElementById("error").className = 'alert text-center alert-danger';
+		document.getElementById("error").innerHTML = 'Error eduction is invalid'
 		return false;
 	}
 	return true;

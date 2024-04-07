@@ -1,6 +1,12 @@
 require('dotenv').config();
 const express = require('express');
-const loger = require('pino')()
+const loger = require('pino')(
+	{
+		transport: {
+		  target: 'pino-pretty'
+		},
+	  }
+)
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const routers = require('./router/router');
