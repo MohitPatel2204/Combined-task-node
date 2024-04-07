@@ -2,32 +2,28 @@ let current = 0;
 
 const isRequiredString = (obj) =>{
 	keys = Object.keys(obj);
+	let error = [];
 	for(let i=0; i<keys.length; i++)
 	{
 		if(document.getElementById(keys[i]).value.trim()=="")
 		{
-			return keys[i];
+			error.push(keys[i]);
 		}
 	}
-	return true;
-}
-
-const displayError = (msg) => {
-	error = document.getElementById("error");
-	error.style.display = 'block';
-	error.innerHTML = msg;
+	return error;
 }
 
 const isNumberString = (obj) =>{
 	let keys = Object.keys(obj);
+	let error= [];
 	for(let i=0; i<keys.length; i++)
 	{
 		if(!isNaN(document.getElementById(keys[i]).value.trim()))
 		{
-			return keys[i];
+			error.push(keys[i]);
 		}
 	}
-	return true;
+	return error;
 }
 
 const regularExp = (type, id) => {
@@ -53,9 +49,11 @@ const regularExp = (type, id) => {
 }
 
 const isArraySame = (arr) => {
-	for(let j=0; j<arr.length; j++)
+	let error = [];
+	let count = 0;
+	for(let i=0; i<arr.length; i++)
 	{
-		let obj = arr[j];
+		let obj = arr[i];
 		let result = []
 		obj.data.forEach(item=>{
 			item = document.getElementsByName(item)
@@ -66,20 +64,21 @@ const isArraySame = (arr) => {
 			});
 			result.push(row);
 		})
+
 		let size = result[0].length;
-		for(let i=0; i<result.length; i++)
+		for(let j=0; j<result.length; j++)
 		{
-			if(size != result[i].length)
-			{   
-				obj['count'] = i;
-				return obj;
+			if(size != result[j].length)
+			{
+				error.push(obj);
 			}
 		}
 	}
-	return true;
+	return error;
 }
 
 const arrayRequired = (arr) => {
+	let error = [];
 	for(let i=0; i<arr.length; i++)
 	{
 		let obj = arr[i];
@@ -107,13 +106,15 @@ const arrayRequired = (arr) => {
 		} 
 		else
 		{
-			return obj;
+			error.push(obj);
 		}
 	}
-	return true;
+	return error;
 }
 
 const is_valid_basic_detail = () => {
+	let errorArray = [];
+
 	let obj = {
 		first_name: "First name",
 		last_name: "Last name",
@@ -126,12 +127,10 @@ const is_valid_basic_detail = () => {
 		city: "City",
 	}
 	let res = isRequiredString(obj);
-	if(res != true)
-	{     
-		displayError(`Please, Enter ${obj[res]}`);
-		document.getElementById(res).focus();
-		return false;
-	}
+	res.forEach(item=>{
+		if(errorArray.indexOf(item)<0)
+			errorArray.push(item);
+	})
 
 	obj = {
 		first_name: "First name",
@@ -143,28 +142,33 @@ const is_valid_basic_detail = () => {
 	}
 
 	res = isNumberString(obj);
-	if(res != true)
-	{
-		displayError(`Please, Enter valid ${res}`);
-		document.getElementById(res).focus();
-		return false;
-	}
+	res.forEach(item=>{
+		if(errorArray.indexOf(item)<0)
+			errorArray.push(item);
+	})
+
 	if(regularExp("email", "email")!=true)
 	{
-		displayError(`Please, Enter valid email id`);
-		document.getElementById("email").focus()
-		return false;
+		if(errorArray.indexOf("email")<0)
+			errorArray.push('email')
 	}
 	if(regularExp("mobile", "phone_no")!=true)
 	{
-		displayError(`Please, Enter valid phone number`);
-		document.getElementById("phone_no").focus()
-		return false;
+		if(errorArray.indexOf("phone_no")<0)
+			errorArray.push('phone_no')
 	}
 	if(regularExp("date", "birthdate")!=true)
 	{
-		displayError(`Please, Enter valid birthdate`);
-		document.getElementById("birthdate").focus()
+		if(errorArray.indexOf("birthdate")<0)
+			errorArray.push('birthdate')
+	}
+
+	if(errorArray.length>0)
+	{
+		document.getElementsByName(errorArray[0])[0].focus();
+		errorArray.forEach(item=>{
+			printErrorMessage(item, `${item} is invalid....`);
+		})
 		return false;
 	}
 	return true;
@@ -176,12 +180,19 @@ const is_valid_education_details = () => {
 		data: ['course', 'board', 'passing_year', 'percentage'],
 		require: false
 	}]
-
 	let result = isArraySame(obj);
-	if(result!=true)
+	result = result.map(item=>item.data[0]);
+	let errorArray = [];
+	result.forEach(item=>{
+		if(errorArray.indexOf(item)<0)
+			errorArray.push(item);
+	})
+
+	if(errorArray.length > 0)
 	{
-		document.getElementsByName(result.data[0])[0].focus();
-		displayError(`ERROR: Please, Enter ${result.label}`);
+		errorArray.forEach(item=>{
+			printErrorMessage(item, `${item} is invalid....`);
+		})
 		return false;
 	}
 	return true;
@@ -195,10 +206,18 @@ const is_valid_work = () => {
 	}]
 
 	let result = isArraySame(obj);
-	if(result!=true)
+	result = result.map(item=>item.data[0]);
+	let errorArray = [];
+	result.forEach(item=>{
+		if(errorArray.indexOf(item)<0)
+			errorArray.push(item);
+	})
+
+	if(errorArray.length > 0)
 	{
-		document.getElementsByName(result.data[0])[0].focus();
-		displayError(`ERROR: Please, Enter ${result.label}`);
+		errorArray.forEach(item=>{
+			printErrorMessage(item, `${item} is invalid....`);
+		})
 		return false;
 	}
 	return true;
@@ -230,10 +249,12 @@ const is_valid_language = () => {
 	]
 
 	let result = arrayRequired(obj);
-	if(result!=true)
+	result = result.map(item=>item.name);
+	if(result.length > 0)
 	{
-		document.getElementsByName(result.name)[0].focus();
-		displayError(`ERROR: Please, Enter ${result.label}`);
+		result.forEach(item=>{
+			printErrorMessage(item, `${item} is invalid....`)
+		})
 		return false;
 	}
 	return true;
@@ -272,10 +293,12 @@ const is_valid_technology = () => {
 	]
 
 	let result = arrayRequired(obj);
-	if(result!=true)
+	result = result.map(item=>item.name);
+	if(result.length > 0)
 	{
-		document.getElementsByName(result.name)[0].focus();
-		displayError(`ERROR: Please, Enter ${result.label}`);
+		result.forEach(item=>{
+			printErrorMessage(item, `${item} is invalid....`)
+		})
 		return false;
 	}
 	return true;
@@ -289,10 +312,18 @@ const is_valid_reference = () => {
 	}]
 
 	let result = isArraySame(obj);
-	if(result!=true)
+	result = result.map(item=>item.data[0]);
+	let errorArray = [];
+	result.forEach(item=>{
+		if(errorArray.indexOf(item)<0)
+			errorArray.push(item);
+	})
+
+	if(errorArray.length > 0)
 	{
-		document.getElementsByName(result.data[0])[0].focus();
-		displayError(`ERROR: Please, Enter ${result.label}`);
+		errorArray.forEach(item=>{
+			printErrorMessage(item, `${item} is invalid....`);
+		})
 		return false;
 	}
 	return true;
@@ -305,16 +336,20 @@ const is_valid_preference = () => {
 		department: "Department"
 	}
 	let res = isRequiredString(obj);
-	if(res != true)
-	{     
-		displayError(`Please, Enter ${obj[res]}`);
-		document.getElementById(res).focus();
+	if(res.length>0)
+	{
+		document.getElementsByName(res[0])[0].focus();
+		res.forEach(item=>{
+			printErrorMessage(item, `${item} is invalid....`);
+		})
 		return false;
 	}
 	return true;
 }
 
 const pageination = (flag) => {
+	removeErrorMessage();
+
 	document.getElementById("error").style.display = 'none';
 	const header = document.getElementById("header_section").children;
 	const body = document.getElementById("form_section").children;
@@ -377,7 +412,6 @@ const pageination = (flag) => {
 
 const removenode = (node) => {
 	const parent = node.parentNode;
-	// console.log(parent)
 	parent.remove();   
 }
 
@@ -393,4 +427,14 @@ const add = (node, size) => {
 		copy.appendChild(p);
 		parent.appendChild(copy)
 	}
+}
+
+const printErrorMessage = (id, msg) => {
+    let node = document.getElementsByName(id)[0].parentNode;
+    node.innerHTML += `<span class='text-danger'>${msg}</span>`;
+}
+
+const removeErrorMessage = () => {
+    const errors = document.querySelectorAll('span.text-danger')
+    errors.forEach(error=>error.remove())
 }
