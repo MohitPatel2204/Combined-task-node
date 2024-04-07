@@ -118,7 +118,7 @@ const removeErrorMessage = () => {
 
 const isValidate = () => {
     removeErrorMessage();
-    let errorArray = [];
+    let errorArray = {};
 
     // required string or no
     let requiredStr = {
@@ -132,11 +132,11 @@ const isValidate = () => {
     }
     let result = isRequiredString(requiredStr);
     result.forEach(item=>{
-        if(errorArray.indexOf(item)<0)
-            errorArray.push(item);
+        if(Object.keys(errorArray).indexOf(item)<0)
+            errorArray[item] = `${item} is required...`;
     })
 
-    // // check number string
+    // check number string
     let obj = {
         firstname: "First name",
         lastname: "Last name",
@@ -144,25 +144,25 @@ const isValidate = () => {
     }
     result = isNumberString(obj);
     result.forEach(item=>{
-        if(errorArray.indexOf(item)<0)
-            errorArray.push(item);
+        if(Object.keys(errorArray).indexOf(item)<0)
+            errorArray[item] = `${item} is number us not valid`;
     })
     
     // // is regex or not 
     if(regularExp("email", "email")!=true)
     {
-        if(errorArray.indexOf('email')<0)   
-            errorArray.push('email')
+        if(Object.keys(errorArray).indexOf('email')<0)   
+            errorArray['email'] = `email id is invalid...`;
     }
     else if(regularExp("mobile", "phno")!=true)
     {
-        if(errorArray.indexOf('phno')<0)   
-            errorArray.push('phno')
+        if(Object.keys(errorArray).indexOf('phno')<0)   
+            errorArray['phno'] = `phone number is invalid...`
     }
     else if(regularExp("date", "dob")!=true)
     {
-        if(errorArray.indexOf('dob')<0)   
-            errorArray.push('dob')
+        if(Object.keys(errorArray).indexOf('dob')<0)   
+            errorArray['dob'] = 'birthdate is invalid....'
     } 
 
     //---language known 
@@ -213,8 +213,8 @@ const isValidate = () => {
     result = arrayRequired(obj);
     result = result.map(item=>item.name)
     result.forEach(item=>{
-        if(errorArray.indexOf(item)<0)
-            errorArray.push(item);
+        if(Object.keys(errorArray).indexOf(item)<0)
+            errorArray[item] = `${item} is selection is invalid...`;
     })
 
     let obj1 = [
@@ -237,15 +237,14 @@ const isValidate = () => {
     result = isArraySame(obj1);
     result = result.map(item=>item.data[0])
     result.forEach(item=>{
-        if(errorArray.indexOf(item)<0)
-            errorArray.push(item);
+        if(Object.keys(errorArray).indexOf(item)<0)
+            errorArray[item] = `${item} all field is required...`;
     })
 
-    if(errorArray.length > 0)
+    if(Object.keys(errorArray).length > 0)
     {
-        document.getElementsByName(errorArray[0])[0].focus();
-        errorArray.forEach(item=>{
-            printErrorMessage(item, `${item} invalid...`)
+        Object.keys(errorArray).forEach(item=>{
+            printErrorMessage(item, errorArray[item])
         })
         return false;
     }
