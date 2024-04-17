@@ -57,7 +57,7 @@ routers.get("/forgetpassword/:username", forgetPassword)
 routers.get("/login/", loginUserGet)
 routers.post("/login/", loginUserPost)
 routers.get("/user", isAuthentication,isValidPost, userGet)
-routers.post("/user", isAuthentication, userPost)
+routers.post("/user", userPost)
 routers.get("/users", isValidGet, usersGet)
 routers.get("/logout", logout);
 routers.get("/dashboard", dashboard);

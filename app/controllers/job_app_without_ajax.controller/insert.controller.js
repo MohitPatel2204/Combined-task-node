@@ -12,8 +12,8 @@ const insertPost = (async (request, response) => {
       response.render("job_app_without_ajax/form", { error: result });
     }
   }
-  catch {
-    response.render("job_app_without_ajax/form", { error: "Server side error, data not inserted...." });
+  catch (error){
+    response.render("job_app_without_ajax/form", { error: "Server side error, data not inserted...." + error });
   }
 })
 

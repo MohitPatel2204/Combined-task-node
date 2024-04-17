@@ -18,5 +18,8 @@ const modifyData = async() => {
         }
     })
     result = await result.json();
-    displayError(result.error);
+    console.log(result)
+
+    document.getElementById("error").style.display = 'block';
+    document.getElementById("error").innerHTML = result.error;      
 }

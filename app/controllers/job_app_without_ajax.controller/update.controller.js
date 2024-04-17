@@ -17,8 +17,8 @@ const updatePost = (async (request, response) => {
       response.render("job_app_without_ajax/form", { error: result });
     }
   }
-  catch {
-    response.render("job_app_without_ajax/form", { error: "Server side error, Data is not updated...." });
+  catch(error) {
+    response.render("job_app_without_ajax/form", { error: "Server side error, Data is not updated...." + error });
   }
 })
 

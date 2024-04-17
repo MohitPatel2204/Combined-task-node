@@ -1,27 +1,25 @@
 const isRequiredString = (obj) =>{
     keys = Object.keys(obj);
-    let error = [];
     for(let i=0; i<keys.length; i++)
     {
         if(document.getElementById(keys[i]).value.trim()=="")
         {
-            error.push(keys[i]);
+            return keys[i];
         }
     }
-    return error;
+    return true;
 }
 
 const isNumberString = (obj) =>{
-    let error = [];
     let keys = Object.keys(obj);
     for(let i=0; i<keys.length; i++)
     {
         if(!isNaN(document.getElementById(keys[i]).value.trim()))
         {
-            error.push(keys[i]);
+            return keys[i];
         }
     }
-    return error;
+    return true;
 }
 
 const regularExp = (type, id) => {
@@ -31,15 +29,15 @@ const regularExp = (type, id) => {
     switch(type)
     {
         case "email":
-            if(EMAIL.test(document.getElementById(id).value))
+            if(EMAIL.matched(document.getElementById(id).value.trim()))
                 return true;
             break;
         case "mobile":
-            if(CONTACT.test(document.getElementById(id).value))
+            if(CONTACT.match(document.getElementById(id).value.trim()))
                 return true;
             break;
         case "date":
-            if(DATE.test(document.getElementById(id).value))
+            if(DATE.match(document.getElementById(id).value.trim()))
                 return true;
             break;
     }
@@ -47,7 +45,6 @@ const regularExp = (type, id) => {
 }
 
 const arrayRequired = (arr) => {
-    let error = [];
     for(let i=0; i<arr.length; i++)
     {
         let obj = arr[i];
@@ -75,14 +72,12 @@ const arrayRequired = (arr) => {
         } 
         else
         {
-            error.push(obj);
+            return obj;
         }
     }
-    return error;
+    return true;
 }
 const isArraySame = (arr) => {
-    let error = [];
-
     for(let i=0; i<arr.length; i++)
     {
         let obj = arr[i];
@@ -100,27 +95,22 @@ const isArraySame = (arr) => {
         for(let i=0; i<result.length; i++)
         {
             if(size != result[i].length)
-                error.push(obj);
+                return obj;
         }
     }
-    return error;
-}
-
-const printErrorMessage = (id, msg) => {
-    let node = document.getElementsByName(id)[0].parentNode;
-    node.innerHTML += `<span class='text-danger'>${msg}</span>`;
-}
-
-const removeErrorMessage = () => {
-    const errors = document.querySelectorAll('span.text-danger')
-    errors.forEach(error=>error.remove())
+    return true;
 }
 
 const isValidate = () => {
+<<<<<<< HEAD
     removeErrorMessage();
     let errorArray = {};
 
     // required string or no
+=======
+    console.log("1")
+    let errorMessage = document.getElementById("error_message")
+>>>>>>> parent of eb6c9e2 (Job application without ajax client side validation modified....)
     let requiredStr = {
         firstname: "First name",
         lastname: "Last name",
@@ -130,7 +120,9 @@ const isValidate = () => {
         dob: "Birthdate",
         expectedctc: "Excepted CTC"
     }
+
     let result = isRequiredString(requiredStr);
+<<<<<<< HEAD
     result.forEach(item=>{
         if(Object.keys(errorArray).indexOf(item)<0)
             errorArray[item] = `${item} is required...`;
@@ -164,58 +156,120 @@ const isValidate = () => {
         if(Object.keys(errorArray).indexOf('dob')<0)   
             errorArray['dob'] = 'birthdate is invalid....'
     } 
+=======
+    if(result == true)
+    {
+        let obj = {
+            firstname: "First name",
+            lastname: "Last name",
+            designation: "Designation",
+        }
 
-    //---language known 
-    obj = [
+        let result = isNumberString(obj);
+        if(result != true)
+        {   
+            document.getElementById(result).focus();
+            errorMessage.hidden = false;
+            errorMessage.innerHTML = `ERRRO : Please, Enter valid ${obj[result]}`;
+            return false;
+        }
+>>>>>>> parent of eb6c9e2 (Job application without ajax client side validation modified....)
+
+        if(regularExp("email", "email")!=true)
+        {
+            errorMessage.hidden = false;
+            errorMessage.innerHTML = `ERRRO : Please, Enter valid email ID`;
+            return false;
+        }
+        else if(regularExp("mobile", "phno")!=true)
+        {
+            errorMessage.hidden = false;
+            errorMessage.innerHTML = `ERRRO : Please, Enter valid mobileno`;
+            return false;
+        }
+        else if(regularExp("date", "dob")!=true)
+        {
+            errorMessage.hidden = false;
+            errorMessage.innerHTML = `ERRRO : Please, Enter valid date`;
+            return false;
+        }
+    }
+    else
+    {
+        document.getElementById(result).focus();
+        errorMessage.hidden = false;
+        errorMessage.innerHTML = `ERROR: Please, Enter ${requiredStr[result]}`;
+        return false;
+    }
+
+    let obj = [
         {
             name: "hindilanguage[]",
+            label: "Hindi language",
             size: 2,
             type: "select",
             required: false
         },
         {
             name: "englishlanguage[]",
+            label: "English language",
             size: 2,
             type: "select",
             required: false
         },
         {
             name: "gujratilanguage[]",
+            label: "Gujrati language",
             size: 2,
             type: "select",
             required: false
         },
         {
             name: "phpchk[]",
+            label: "PHP language",
             size: 2,
             type: "select",
             required: false
         },
         {
             name: "oraclechk[]",
+            label: "Oracle language",
             size: 2,
             type: "select",
             required: false
         },
         {
             name: "mysqlchk[]",
+            label: "Mysql language",
             size: 2,
             type: "select",
             required: false
         },
         {
             name: "laravelchk[]",
+            label: "Laravel language",
             size: 2,
             type: "select",
             required: false
         },
     ]
     result = arrayRequired(obj);
+<<<<<<< HEAD
     result = result.map(item=>item.name)
     result.forEach(item=>{
         if(Object.keys(errorArray).indexOf(item)<0)
             errorArray[item] = `${item} is selection is invalid...`;
     })
+=======
+
+    if(result != true)
+    {
+        document.getElementsByName(result.name)[0].focus();
+        errorMessage.hidden = false;
+        errorMessage.innerHTML = `ERROR: Please, Enter ${result.label}`;
+        return false;
+    }
+>>>>>>> parent of eb6c9e2 (Job application without ajax client side validation modified....)
 
     let obj1 = [
         {
@@ -234,6 +288,7 @@ const isValidate = () => {
             require: false
         },
     ]
+<<<<<<< HEAD
     result = isArraySame(obj1);
     result = result.map(item=>item.data[0])
     result.forEach(item=>{
@@ -246,8 +301,18 @@ const isValidate = () => {
         Object.keys(errorArray).forEach(item=>{
             printErrorMessage(item, errorArray[item])
         })
+=======
+
+    result = isArraySame(obj1);
+    if(result!=true)
+    {
+        document.getElementsByName(result.data[0])[0].focus();
+        errorMessage.hidden = false;
+        errorMessage.innerHTML = `ERROR: Please, Enter ${result.label}`;
+>>>>>>> parent of eb6c9e2 (Job application without ajax client side validation modified....)
         return false;
     }
+
     return true;
 }
 

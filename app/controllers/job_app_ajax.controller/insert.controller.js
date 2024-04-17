@@ -62,7 +62,7 @@ const candidateAddPost = (async (request, response) => {
     response.send({ 'error': "Data is sucessfully inserted" })
   }
   catch (error) {
-    response.send({ 'error': "Server side error, please restart your applications..." })
+    response.send({ 'error': "Server side error, please restart your applications..." +error })
   }
 })
 

@@ -6,7 +6,7 @@ const getDate = (date) => {
 	{
 		arr = date.split("/")
 	}
-	if(arr[0].toString().length == 2)
+	if(arr[0].length == 2)
 	{
 		return `${arr[2]}/${arr[1]}/${arr[0]}`;
 	}
@@ -27,9 +27,9 @@ const updateData = async(data) => {
 			"state": data.state,
 			"gender": data.gender=='male'?'m':'f',
 			"relationship": data.relationshipstatus,
-			"dob": getDate(data.dob),
+			"dob": data.dob,
 			"expected_ctc": data.expectedctc,
-			"prefered_location": data.preferedlocation.toString(),
+			"prefered_location": JSON.stringify(data.preferedlocation),
 			"department": data.department,
 			"city": data.city,
 		},{
@@ -150,6 +150,7 @@ const updateData = async(data) => {
 		return true;
 	}
 	catch(error){
+		console.log(error)
 		throw error;
 	}
 }   

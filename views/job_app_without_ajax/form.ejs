@@ -71,6 +71,10 @@
 			<% if(typeof success!='undefined') { %><div class="row"></div><div class="col alert bg-success text-center text-light"><%= success %></div></div><% } %>
 
 			<div class="row">
+				<div class="col"><div class="alert bg-danger text-center text-light" id="error_message" hidden></div></div>
+			</div>
+
+			<div class="row">
 				<div class="col">
 					<fieldset>
 						<legend>Basic Details</legend>
@@ -121,7 +125,7 @@
 								</div>
 								<div class="col-md-6">
 									<label>Birthdate : </label><br>
-									<input type="text" name="dob" class="form-control" placeholder="Enter birthdate" id="dob" size="10" tabindex="9">
+									<input type="date" name="dob" class="form-control" placeholder="Enter birthdate" id="dob" size="10" tabindex="9">
 								</div>
 							</div>
 

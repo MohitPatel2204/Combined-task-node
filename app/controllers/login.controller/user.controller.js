@@ -1,7 +1,7 @@
 const database = require("../../../services/database");
 const { getCode } = require("../../../services/date");
 
-const userPost = (async (request, response) => {
+const userPost = async (request, response) => {
   let user = request.body;
   let db = new database(process.env.DB_DATABASE);
   try {
@@ -9,7 +9,7 @@ const userPost = (async (request, response) => {
     if (typeof result == 'string') {
       response.send({
         flag: false,
-        msg: "Sorry, Something is wrong, Restart Application...",
+        msg: "Sorry, Something is wrong, Restart Application..." + result,
       })
     }
     if (result.length == 0) {
@@ -22,7 +22,6 @@ const userPost = (async (request, response) => {
         phoneno: user.phoneno,
         activation_code: activationCode,
       })
-
       if (typeof result == 'string') {
         response.send({
           flag: false,
@@ -51,7 +50,7 @@ const userPost = (async (request, response) => {
         if (typeof result == 'string') {
           response.send({
             flag: false,
-            msg: "Somethig is wrong, Please restart application....",
+            msg: "Somethig is wrong, Please restart application...." + result,
           })
         }
         else {
@@ -71,13 +70,13 @@ const userPost = (async (request, response) => {
       }
     }
   }
-  catch {
+  catch(error) {
     response.send({
       flag: false,
-      msg: "Sorry, Something is wrong, Restart Application...",
+      msg: "Sorry, Something is wrong, Restart Application..." + error,
     })
   }
-})
+}
 
 
 const userGet = (async (request, response) => {

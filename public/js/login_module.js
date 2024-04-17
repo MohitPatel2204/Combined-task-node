@@ -100,14 +100,12 @@ const addUser = async () => {
 	if (isValidUSer() == false) {
 		return false;
 	}
+	console.log("data");
 	let data = new URLSearchParams(new FormData(document.getElementById("register_form")));
 	document.getElementById('error').style.display = 'block';
-
-	let host = global.env.HOST;
-	let port = global.env.PORT;
 	
 	if (data) {
-		let response = await fetch(`http://${host}:${port}/user`, {
+		let response = await fetch('/user', {
 			method: "post",
 			body: data,
 			headers: {

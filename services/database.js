@@ -61,7 +61,7 @@ class database{
 		sql = sql.slice(0, sql.length-1) + ") values (";
 		Object.keys(data).forEach(key=>{
 			sql += `?,`;
-			values.push(data[key].toString());
+			values.push(data[key]);
 		})
 		sql = sql.slice(0, sql.length-1) + ");";
 		try{
@@ -78,13 +78,13 @@ class database{
 
 		Object.keys(newdata).forEach(key=>{
 			sql += `${key} = ?, `
-			values.push(newdata[key].toString());
+			values.push(newdata[key]);
 		})
 		sql = sql.slice(0, sql.length-2) + " where ";
 		
 		Object.keys(conditions).forEach(key=>{
 			sql += `${key} = ? and `;
-			values.push(conditions[key].toString());
+			values.push(conditions[key]);
 		})
 		
 		sql = sql.slice(0, sql.length-5) + ";";
@@ -101,7 +101,7 @@ class database{
 		let sql = `delete from ${tablename} where `;
 		Object.keys(conditions).forEach(key=>{
 			sql += `${key} = ? and `;
-			values.push(conditions[key].toString());
+			values.push(conditions[key]);
 		})
 		
 		sql = sql.slice(0, sql.length-5) + ";";

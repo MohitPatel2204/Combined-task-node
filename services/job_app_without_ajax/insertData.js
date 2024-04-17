@@ -12,7 +12,7 @@ const getDate = (date) => {
 const insertData = async(data) => {
 	try{
 		const db = new database(process.env.DB_DATABASE);
-		
+		console.log(data.preferedlocation)
 		let result = await db.insertData("candidates_master", {
 			"first_name": data.firstname,
 			"last_name": data.lastname,
@@ -24,9 +24,9 @@ const insertData = async(data) => {
 			"state": data.state,
 			"gender": data.gender=='male'?'m':'f',
 			"relationship": data.relationshipstatus,
-			"dob": getDate(data.dob),
+			"dob": data.dob,
 			"expected_ctc": data.expectedctc,
-			"prefered_location": data.preferedlocation.toString(),
+			"prefered_location": JSON.stringify(data.preferedlocation),
 			"department": data['department[]'],
 			"city": data.city,
 		});
@@ -138,7 +138,7 @@ const insertData = async(data) => {
 		}
 		return true;
 	}
-	catch{
+	catch (error){
 		throw error;
 	}
 }
